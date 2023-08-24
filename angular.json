@@ -13,7 +13,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "C:/Users/yan/Documents/Programas/Honoka/Backend/Hirotsuka/src/raw/dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
