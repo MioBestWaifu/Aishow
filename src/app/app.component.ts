@@ -12,9 +12,10 @@ export class AppComponent implements OnInit, OnDestroy{
   title = 'Hayasaka';
   constructor (private conn:ServerConnectionService, private router:Router){}
   async ngOnInit(){
-    const y = await firstValueFrom(this.conn.EstablishConnection());
-    const x = await firstValueFrom(this.conn.GetTargetPage());
-    this.router.navigateByUrl(x);
+    this.router.navigateByUrl("/pages/login")
+    // const y = await firstValueFrom(this.conn.EstablishConnection());
+    // const x = await firstValueFrom(this.conn.GetTargetPage());
+    // this.router.navigateByUrl(x);
   }
 
   async ngOnDestroy(){
