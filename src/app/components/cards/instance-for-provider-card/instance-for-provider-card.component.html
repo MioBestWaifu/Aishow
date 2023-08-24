@@ -1,0 +1,14 @@
+<div class="flexbox main centerHor">
+    <img class="highlightImage" [src]="request.client.imageUrl">
+    <div class="flexbox pad highlightBox">
+        <div>
+            <p class="standardText highlightText">{{request.client.name}}</p>
+            <p class="standardText highlightText">{{request.service.serviceName}}</p>
+            <p class=" standardText">R${{request.cost}}</p>
+        </div>
+        <div class="pad">
+            <p class="standardText">{{request.startDate}} - {{request.endDate}}</p>
+            <p class="standardText">{{request.startTime}} - {{request.endTime}}</p>
+        </div>
+    </div>
+</div>

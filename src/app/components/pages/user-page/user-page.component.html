@@ -1,0 +1,19 @@
+<div class="pageWrapper">
+    <app-header></app-header>
+    <app-lateral-bar [user]=buffer.userInfo class="lateralDiv roseBorder"></app-lateral-bar>
+    <div class="contentWrapper">
+        <div class="flexbox">
+            <div style="width: 100%">
+                <div id="bordas">
+                    <app-user-basic-info [user]="info"></app-user-basic-info>
+                </div>
+                <ol>
+                    <li *ngFor="let x of info.services">
+                        <app-service-card [service]="x"></app-service-card>
+                    </li>
+                </ol>
+            </div>
+            <app-review-lateral-list [reviews]="info.reviews"></app-review-lateral-list>
+        </div>
+    </div>
+</div>

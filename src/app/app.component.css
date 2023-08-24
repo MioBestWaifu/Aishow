@@ -1,0 +1,25 @@
+::ng-deep * {
+      
+    margin: 0;
+    padding: 0;
+} ::ng-deep .mat-mdc-button.mat-unthemed {
+    --mdc-text-button-label-text-color: var(--rose);
+} ::ng-deep .mat-calendar-arrow {
+    fill: var(--rose);
+} ::ng-deep .mat-calendar-table-header,.mat-calendar-body-label {
+    color: var(--rose);
+} ::ng-deep .mat-calendar-table-header-divider:after {
+    background: var(--rose);
+} ::ng-deep .mat-calendar-body-cell-content, .mat-date-range-input-separator {
+    color: var(--font-color);
+    border-color: #0000;
+} ::ng-deep .mat-calendar {
+    background-color: var(--background-color);
+    border: 0.1vw solid var(--rose);
+} ::ng-deep .mat-calendar-body-selected{
+    background-color: var(--rose);
+}::ng-deep .mat-calendar-body-label {
+    color: var(--rose);
+}::ng-deep .mat-calendar-table-header{
+    color: var(--rose);
+}

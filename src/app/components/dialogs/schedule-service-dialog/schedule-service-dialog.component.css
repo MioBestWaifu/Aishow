@@ -1,0 +1,18 @@
+.roseBorder{
+    background-color: var(--background-color);
+} label{
+    display: block;
+} #inputs{
+    padding-left: 3%;
+} .standardText{
+    white-space: nowrap;
+} .padTop{
+    padding-top: 4%;
+} .standardButton{
+    width: 9vw;
+    margin-top: 5%;
+    height: auto;
+    font-size: var(--d-size);
+} p{
+    font-size: var(--d-size);
+}

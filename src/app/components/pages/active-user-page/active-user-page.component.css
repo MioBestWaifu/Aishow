@@ -1,0 +1,15 @@
+.standardButton{
+    width: 8vw;
+    position: absolute;
+    bottom: 3vw;
+    height: 5vh;
+    margin-left: 30%;
+} .borda{
+    width: 100%;
+    border-bottom-width: 0.1vw;
+    border-top-width: 0vw;
+    border-left-width: 0vw;
+    border-right-width: 0vw;
+    border-color: var(--rose);
+    border-style: solid;
+}

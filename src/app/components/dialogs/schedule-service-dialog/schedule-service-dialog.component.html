@@ -1,0 +1,25 @@
+<div class="roseBorder">
+    <mat-dialog-content>
+        <form #form class="flexbox" (ngSubmit)="save()">
+            <mat-card class="demo-inline-calendar-card">
+                <mat-calendar #picker [(selected)]="selected" [dateFilter]="myFilter" (selectedChange)="dayChanged()"></mat-calendar>
+            </mat-card>
+            <div id="inputs">
+                <div>
+                    <label class="standardText"  id="from">From:</label>
+                    <input id="fromInput" type="time" name="startHour" [(ngModel)]="startHour" (change)="hourChanged()">
+                </div>
+                <div class="padTop">
+                    <label class="standardText"  id="to" >To:</label>
+                    <input id="toInput" type="time" name="endHour" [(ngModel)]="endHour" (change)="hourChanged()">
+                </div>
+                <p class="standardText bigText roseText padTop">Cost: {{cost}}</p>
+                <button type="button" class="standardButton centerHor" (click)="save()">Schedule</button>
+            </div>
+        </form>
+    </mat-dialog-content>
+    <!-- <mat-dialog-actions>
+        <button class="mat-raised-button standardButton"(click)="cancel()">Cancel</button>
+        <button class="mat-raised-button mat-primary standardButton"(click)="save()">Save</button>
+    </mat-dialog-actions> -->
+</div>

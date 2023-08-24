@@ -1,0 +1,37 @@
+.main{
+    width: 95%;
+    border-style: solid;
+    border-width: 0.1vw;
+    border-color: var(--rose);
+    overflow: hidden; /* make sure it hides the content that overflows */
+    white-space: nowrap; /* don't break the line */
+    text-overflow: ellipsis; /* give the beautiful '...' effect */
+} img{
+    width: 25%;
+    aspect-ratio: 1/1;
+} .pad{
+    padding-left: 2%;
+} i{
+    color: var(--rose);
+    font-size: 250%;
+    aspect-ratio: 1/1;
+} .btns{
+    width: 25%;
+    min-height: 100%;
+} .lowBorder{
+    border-bottom-width: 0.1vw;
+    border-top-width: 0vw;
+    border-left-width: 0vw;
+    border-right-width: 0vw;
+    border-color: var(--rose);
+    border-style: solid;
+} .rightBorder{
+    border-bottom-width: 0vw;
+    border-top-width: 0vw;
+    border-left-width: 0vw;
+    border-right-width: 0.1vw;
+    border-color: var(--rose);
+    border-style: solid;
+} p {
+    font-size: var(--a-size);
+}

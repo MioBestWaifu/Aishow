@@ -1,0 +1,24 @@
+<div class="flexbox main centerHor">
+    <img class="highlightImage" [src]="request.client.imageUrl">
+    <div class="flexbox pad highlightBox rightBorder" style="width: 50%; max-width: 50%; overflow: hidden; overflow-x: scroll;">
+        <div>
+            <p class="standardText highlightText">Client: {{request.client.name}}</p>
+            <p class="standardText">From: {{request.startDate}}</p>
+            <p class="standardText">From: {{request.startTime}}</p>
+            <p class="standardText">Cost: R${{request.cost}}</p>
+        </div>
+        <div class="pad">
+            <p class="standardText highlightText">Service: {{request.service.serviceName}}</p>
+            <p class="standardText">To: {{request.endDate}}</p>
+            <p class="standardText">To: {{request.endTime}}</p>
+        </div>
+    </div>
+    <div class="btns">
+        <div class="highlightBox hoverPointer lowBorder" style="height:50%; text-align: center;" (click)="accept()">
+            <i class="material-symbols-outlined icon centerHor">check</i>
+        </div>
+        <div class="highlightBox hoverPointer" style="height:50%; text-align: center;" (click)="deny()">
+            <i class="material-symbols-outlined icon centerHor">close</i>
+        </div>
+    </div>
+</div>

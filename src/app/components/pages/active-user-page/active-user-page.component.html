@@ -1,0 +1,12 @@
+<div class="pageWrapper">
+    <app-header></app-header>
+    <app-lateral-bar [user]=buffer.userInfo class="lateralDiv roseBorder"></app-lateral-bar>
+    <div class="contentWrapper">
+        <div class="flexbox borda">
+            <div class="centerHor">
+                <app-user-basic-info [user]="buffer.userInfo"></app-user-basic-info>
+                <button class="standardButton" (click)="edit()">Edit profile</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div class="pageWrapper">
+    <app-header></app-header>
+    <app-lateral-bar [user]=buffer.userInfo class="lateralDiv roseBorder"></app-lateral-bar>
+    <div class="contentWrapper">
+        <div class="flexbox">
+            <div style="width: 100%;">
+                <div id="bordas">
+                    <img [src]="info.templateImageUrl" alt="" class="roseBorder">
+                    <div id="nameDiv">
+                        <p [textContent]="info.serviceName" class="titleText"></p>
+                        <app-star-rating [rating]="info.averageScore" [imgWidth]="w"></app-star-rating>
+                        <!-- Botar link pra pag de areas qnd tiver -->
+                        <p [textContent]="info.providerName" class="standardText highlightText" id="providerText" [routerLink]="['/users',info.providerId]"></p>
+                        <p class="standardText rose" style="font-size: var(--e-size); padding-top: 3%;">{{info.costPerHour}}</p>
+                    </div>
+                </div>
+                <button class="standardButton" (click)="schedule()">SCHEDULE</button>
+            </div>
+            <app-review-lateral-list [reviews]="info.reviews"></app-review-lateral-list>
+    </div>
+</div>

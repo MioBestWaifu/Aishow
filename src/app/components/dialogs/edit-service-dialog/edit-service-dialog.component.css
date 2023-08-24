@@ -1,0 +1,9 @@
+.unselected{
+    background-color: var(--font-color);
+    width: 4vw;
+}.selected{
+    background-color: var(--rose);
+    width: 4vw;
+}.padTop{
+    padding-top: 2%;
+}

@@ -1,0 +1,12 @@
+img{
+    border-radius: 50%;
+    width: 18vw;
+    height: 18vw;
+} ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(0, 0, 0);
+    opacity: 1; /* Firefox */
+} ::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgb(0, 0, 0);
+} #name{
+    padding-top: 5%;
+}

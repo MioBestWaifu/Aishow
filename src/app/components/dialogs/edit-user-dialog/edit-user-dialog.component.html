@@ -1,0 +1,28 @@
+<div class="roseBorder">
+    <h2 mat-dialog-title>Edit profile</h2>
+    <mat-dialog-content>
+        <div class="flexbox">
+            <img [src]="croppedImage" alt="">
+            <image-cropper
+                style="max-height: 20vw; max-width: 55vw;"
+                [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="1/1"
+                format="png"
+                (imageCropped)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (cropperReady)="cropperReady()"
+                (loadImageFailed)="loadImageFailed()"
+            ></image-cropper>
+        </div>
+        <input type="file" class="imageInput" accept="image/*" (change)="fileChangeEvent($event)"/>
+        <div id="Name">
+            <p class="standardText reverseText">Username:</p>
+            <input style="display: block;" type="text" [placeholder]="buffer.userInfo.name" maxlength="32" [(ngModel)]="newName">
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button class="mat-raised-button standardButton"(click)="cancel()">Cancel</button>
+        <button class="mat-raised-button mat-primary standardButton"(click)="save()">Save</button>
+    </mat-dialog-actions>
+</div>

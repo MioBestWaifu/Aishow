@@ -1,0 +1,28 @@
+#requests{
+    width: 100%;
+} #instances{
+    width: 35%;
+} #services{
+    width: 100%;
+} #tabGroup{
+    width: 65%;
+    min-width: 65%;
+    max-width: 65%;
+}.tab{
+    width: 50%;
+    max-width: 50%;
+    border-width:  0vw 0.1vw 0.1vw 0vw;
+    border-style: solid;
+    border-color: var(--rose);
+    font-size: var(--d-size);
+    height:7%;
+    text-align: center;
+    &:hover{
+        cursor: pointer;
+    }
+} #schedule{
+    font-size: var(--d-size);
+    text-align: center;
+} app-services-for-provider-list {
+    width: 100%;
+}

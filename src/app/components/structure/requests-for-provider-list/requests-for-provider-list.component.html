@@ -1,0 +1,5 @@
+<ol>
+    <li *ngFor="let req of buffer.schedule.pendingRequests">
+        <app-request-for-provider-card [request]=req></app-request-for-provider-card>
+    </li>
+</ol>
