@@ -24,6 +24,9 @@ export class LoginFormsComponent {
   constructor(private conn:ServerConnectionService, private router:Router,private buffer:BufferserviceService,private dialog:MatDialog){}
 
   async Submit(){
+    const y = await firstValueFrom(this.conn.Buff());
+    alert(y);
+    return;
     if (!this.email  || !this.password){
       this.dialog.open(MissingInfoDialogComponent)
       return;

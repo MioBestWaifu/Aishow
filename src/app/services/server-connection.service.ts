@@ -39,6 +39,10 @@ export class ServerConnectionService {
   EstablishConnection(){
     // return this.http.get(this.requestsUrl+"pages?type=establish",{responseType:'text'});
   }
+
+  Buff():Observable<string>{
+    return this.http.get<string>("api/Test");
+  }
   
   TryToLogin(forms:LoginTemplate):Observable<HttpResponse<UserInformation>>{
     return null;
