@@ -41,7 +41,7 @@ export class ServerConnectionService {
   }
 
   Buff():Observable<string>{
-    return this.http.get<string>("api/Test");
+    return this.http.get("api/Test",{responseType:"text"});
   }
   
   TryToLogin(forms:LoginTemplate):Observable<HttpResponse<UserInformation>>{
