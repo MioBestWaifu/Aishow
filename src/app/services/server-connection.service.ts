@@ -24,14 +24,14 @@ import { ServiceSchedule } from 'src/serviceSchedule';
 })
 export class ServerConnectionService {
   requestsUrl:string;
-  loginHeader = new HttpHeaders();
+  jsonHeader = new HttpHeaders().set('content-type', 'application/json');
   loginParams = new HttpParams();
   test:UserInformation;
   constructor(private http:HttpClient) {
     // const x = window.location.href;
     // const y = x.split("/");
     // console.log(y);
-    // this.requestsUrl = y[0] + "//" +y[2] + ":80/"
+    this.requestsUrl = "http://localhost:4200/api/"
     // console.log(this.requestsUrl);
     // this.loginParams = this.loginParams.append("type", "01");
   }
@@ -39,23 +39,17 @@ export class ServerConnectionService {
   EstablishConnection(){
     // return this.http.get(this.requestsUrl+"pages?type=establish",{responseType:'text'});
   }
-
-  Buff():Observable<string>{
-    return this.http.get("api/Test",{responseType:"text"});
-  }
   
   TryToLogin(forms:LoginTemplate):Observable<HttpResponse<UserInformation>>{
-    return null;
       try{
-      return this.http.post<UserInformation>(this.requestsUrl+"login",JSON.stringify(forms),{observe:'response'});
+      return this.http.post<UserInformation>(this.requestsUrl+"login",JSON.stringify(forms),{observe:'response', headers:this.jsonHeader});
       } catch(error){
         return null;
       }
   }
 
   TryToRegister(forms:RegisterTemplate):Observable<HttpResponse<string>>{
-    return null;
-    return this.http.post(this.requestsUrl+"registering",JSON.stringify(forms),{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"register",JSON.stringify(forms),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
 
   TryToCreateService(dia:CreateServiceDialogComponent):Observable<HttpResponse<string>>{
@@ -116,7 +110,6 @@ export class ServerConnectionService {
   }
 
   GetAreas():Observable<GenericInformation[]>{
-    return null;
     return this.http.get<GenericInformation[]>(this.requestsUrl+"info?type=request&category=areas");
   }
   GetModalities():Observable<GenericInformation[]>{

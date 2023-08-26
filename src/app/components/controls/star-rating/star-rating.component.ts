@@ -16,9 +16,9 @@ export class StarRatingComponent implements OnInit{
   sources:string[];
 
   constructor(private conn:ServerConnectionService){
-    this.fullstar = this.conn.requestsUrl + "images/app/fullstar.png"
-    this.halfstar = this.conn.requestsUrl + "images/app/halfstar.png"
-    this.emptystar = this.conn.requestsUrl + "images/app/emptystar.png"
+    this.fullstar = "http://localhost:8080/images/app/fullstar.png"
+    this.halfstar = "http://localhost:8080/images/app/halfstar.png"
+    this.emptystar = "http://localhost:8080/images/app/emptystar.png"
   }
   ngOnInit(): void {
     var x = this.rating;

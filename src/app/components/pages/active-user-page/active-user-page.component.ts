@@ -18,11 +18,11 @@ export class ActiveUserPageComponent implements OnInit{
   
   async ngOnInit(){
     if (this.buffer.userInfo == null){
-      this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
+      //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     }
 
     console.log(this.buffer.userInfo);
-    const x = await firstValueFrom (this.conn.SetLastPage("/viewprofile"));
+    //const x = await firstValueFrom (this.conn.SetLastPage("/viewprofile"));
   }
 
   edit(){

@@ -22,14 +22,14 @@ export class ServicePageComponent implements OnInit{
 
   async ngOnInit(){
     if (this.buffer.userInfo == null){
-      this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
+      //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     }
     
     this.sub = this.router.params.subscribe(params => {
       this.id = +params['id']; 
   
    })
-   const x = await firstValueFrom (this.conn.SetLastPage("/services/"+this.id))
+   //const x = await firstValueFrom (this.conn.SetLastPage("/services/"+this.id))
    this.info = await firstValueFrom(this.conn.GetService(this.id.toString()))
    this.buffer.lastService = this.info;
    console.log(this.info);

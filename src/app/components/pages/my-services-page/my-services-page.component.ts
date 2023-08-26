@@ -18,12 +18,12 @@ export class MyServicesPageComponent implements OnInit{
 
   async ngOnInit(){
     if (this.buffer.userInfo == null){
-      this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
+      //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     }
     this.buffer.schedule = await firstValueFrom(this.conn.GetSchedule());
     this.buffer.services = await firstValueFrom (this.conn.GetServiceList(this.buffer.userInfo.userID));
     console.log(this.buffer.services);
-    const x = await firstValueFrom (this.conn.SetLastPage("/myservices"));
+    //const x = await firstValueFrom (this.conn.SetLastPage("/myservices"));
   }
 
   create(){
