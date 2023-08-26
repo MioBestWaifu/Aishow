@@ -72,13 +72,11 @@ export class ServerConnectionService {
   }
 
   TryToUpdateServicePicture(image:string,id:number):Observable<HttpResponse<string>>{
-    return null;
-    return this.http.post(this.requestsUrl+"services?type=imageUpdate&id="+id,base64ToFile(image),{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"imageUpdate?type=service&id="+id,base64ToFile(image),{observe:'response',responseType: 'text'});
   }
 
-  TryToUpdateUserPicture(dia:EditUserDialogComponent):Observable<HttpResponse<string>>{
-    return null;
-    return this.http.post(this.requestsUrl+"personal?type=imageUpdate",base64ToFile(dia.croppedImage),{observe:'response',responseType: 'text'});
+  TryToUpdateUserPicture(dia:EditUserDialogComponent, id:number):Observable<HttpResponse<string>>{
+    return this.http.post(this.requestsUrl+"imageUpdate?type=user&id="+id,base64ToFile(dia.croppedImage),{observe:'response',responseType: 'text'});
   }
 
   TryToUpdateUserName(dia:EditUserDialogComponent):Observable<HttpResponse<string>>{
@@ -113,11 +111,9 @@ export class ServerConnectionService {
     return this.http.get<GenericInformation[]>(this.requestsUrl+"info?type=request&category=areas");
   }
   GetModalities():Observable<GenericInformation[]>{
-    return null;
     return this.http.get<GenericInformation[]>(this.requestsUrl+"info?type=request&category=mod");
   }
   GetCategories():Observable<GenericInformation[]>{
-    return null;
     return this.http.get<GenericInformation[]>(this.requestsUrl+"info?type=request&category=cat");
   }
 

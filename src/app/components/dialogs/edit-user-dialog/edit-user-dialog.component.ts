@@ -40,7 +40,7 @@ export class EditUserDialogComponent {
   } 
   async save(){
     if (this.croppedImage != this.buffer.userInfo.imageUrl){
-      var response = await firstValueFrom(this.conn.TryToUpdateUserPicture(this));
+      var response = await firstValueFrom(this.conn.TryToUpdateUserPicture(this,this.buffer.userInfo.userID));
       if(response.status != 201){
         this.dialog.open(FailedUpdateDialogComponent)
         return
