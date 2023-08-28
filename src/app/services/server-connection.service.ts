@@ -18,6 +18,7 @@ import { ScheduleServiceDialogComponent } from '../components/dialogs/schedule-s
 import { ClientServiceInteraction } from 'src/clientServiceInteraction';
 import {Utils} from 'src/utils';
 import { ServiceSchedule } from 'src/serviceSchedule';
+import { BufferserviceService } from './bufferservice.service';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class ServerConnectionService {
   jsonHeader = new HttpHeaders().set('content-type', 'application/json');
   loginParams = new HttpParams();
   test:UserInformation;
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient, private buffer:BufferserviceService) {
     // const x = window.location.href;
     // const y = x.split("/");
     // console.log(y);
@@ -41,11 +42,11 @@ export class ServerConnectionService {
   }
   
   TryToLogin(forms:LoginTemplate):Observable<HttpResponse<UserInformation>>{
-      try{
-      return this.http.post<UserInformation>(this.requestsUrl+"login",JSON.stringify(forms),{observe:'response', headers:this.jsonHeader});
-      } catch(error){
-        return null;
-      }
+    try{
+    return this.http.post<UserInformation>(this.requestsUrl+"login",JSON.stringify(forms),{observe:'response', headers:this.jsonHeader});
+    } catch(error){
+      return null;
+    }
   }
 
   TryToRegister(forms:RegisterTemplate):Observable<HttpResponse<string>>{
@@ -53,7 +54,6 @@ export class ServerConnectionService {
   }
 
   TryToCreateService(dia:CreateServiceDialogComponent):Observable<HttpResponse<string>>{
-    return null;
     const x = new ServiceInformation();
     x.serviceName = dia.name;
     x.description = dia.description;
@@ -63,11 +63,11 @@ export class ServerConnectionService {
     x.availableDays = dia.availableDays;
     x.availableFroms = dia.availableFroms;
     x.availableTos = dia.availableTos;
-    return this.http.post(this.requestsUrl+"services?type=create",JSON.stringify(x),{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"createService?id="+this.buffer.userInfo.userID,JSON.stringify(x),{observe:'response',responseType: 'text'});
   }
   
   TryToUpdateService(info:ServiceInformation):Observable<HttpResponse<string>>{
-    return null;
+    info.providerId = this.buffer.userInfo.userID;
     return this.http.post(this.requestsUrl+"services?type=update",JSON.stringify(info),{observe:'response',responseType: 'text'});
   }
 
@@ -80,14 +80,13 @@ export class ServerConnectionService {
   }
 
   TryToUpdateUserName(dia:EditUserDialogComponent):Observable<HttpResponse<string>>{
-    return null;
-    return this.http.post(this.requestsUrl+"personal?type=nameUpdate",dia.newName,{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"nameUpdate?id="+this.buffer.userInfo.userID,dia.newName,{observe:'response',responseType: 'text'});
   }
 
   TryToScheduleService(dia:ScheduleServiceDialogComponent):Observable<HttpResponse<string>>{
-    return null;
     const x = new ClientServiceInteraction();
     x.templateId = dia.buffer.lastService.templateId;
+    x.clientId = this.buffer.userInfo.userID;
     x.cost = dia.cost;
     x.hasFinished = false;
     x.isAccepted = false;
@@ -99,7 +98,7 @@ export class ServerConnectionService {
     x.endTime = dia.endHour.substring(0,2)+":"+dia.endHour.substring(3,5)+":00";
     console.log(x.endTime);
 
-    return this.http.post(this.requestsUrl+"services?type=schedule",JSON.stringify(x),{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"scheduleService",JSON.stringify(x),{observe:'response',responseType: 'text'});
   }
 
   ReloadUser():Observable<UserInformation>{
@@ -118,9 +117,8 @@ export class ServerConnectionService {
   }
 
   GetUser(id:string):Observable<UserInformation>{
-    return null;
     try{
-    return this.http.get<UserInformation>(this.requestsUrl+"users?type=request&id="+id);
+    return this.http.get<UserInformation>(this.requestsUrl+"getUser?id="+id);
     } catch (error){
       console.log(error);
       return null;
@@ -128,9 +126,8 @@ export class ServerConnectionService {
   }
 
   GetService(id:string):Observable<ServiceInformation>{
-    return null;
     try{
-    return this.http.get<ServiceInformation>(this.requestsUrl+"services?type=request&id="+id);
+    return this.http.get<ServiceInformation>(this.requestsUrl+"getService?id="+id);
     } catch (error){
       console.log(error)
       return null;
@@ -138,8 +135,7 @@ export class ServerConnectionService {
   }
 
   GetServiceList(id:number):Observable<ServiceInformation[]>{
-    return null;
-    return this.http.get<ServiceInformation[]>(this.requestsUrl+"services?type=requestAll&id="+id);
+    return this.http.get<ServiceInformation[]>(this.requestsUrl+"services?type=getAllServices&id="+id);
   }
 
   GetTargetPage():Observable<string>{
@@ -148,8 +144,7 @@ export class ServerConnectionService {
   }
 
   GetSchedule():Observable<ServiceSchedule>{
-    return null;
-    return this.http.get<ServiceSchedule>(this.requestsUrl+"services?type=requestSchedule");
+    return this.http.get<ServiceSchedule>(this.requestsUrl+"getAgenda?id="+this.buffer.userInfo.userID);
   }
 
   SetLastPage(currentPage:string):Observable<HttpResponse<string>>{
@@ -164,13 +159,11 @@ export class ServerConnectionService {
   }
 
   AcceptRequest(req:ClientServiceInteraction):Observable<HttpResponse<string>>{
-    return null;
-    return this.http.get(this.requestsUrl+"personal?type=accept&id="+req.id,{observe:'response',responseType: 'text'});
+    return this.http.get(this.requestsUrl+"answerRequest?type=accept&id="+req.id+"&idProvider="+this.buffer.userInfo.userID,{observe:'response',responseType: 'text'});
   }
 
   DenyRequest(req:ClientServiceInteraction):Observable<HttpResponse<string>>{
-    return null;
-    return this.http.get(this.requestsUrl+"personal?type=deny&id="+req.id,{observe:'response',responseType: 'text'});
+    return this.http.get(this.requestsUrl+"answerRequest?type=deny&id="+req.id+"&idProvider="+this.buffer.userInfo.userID,{observe:'response',responseType: 'text'});
   }
   
 }
