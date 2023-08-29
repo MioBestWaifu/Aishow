@@ -28,7 +28,7 @@ constructor(private buffer:BufferserviceService,private dialog:MatDialog){}
     for (let i = 0; i <= 6; i++) {
       try{
       if (this.info.availableDays[i]){
-        this.dayInfos[i] = x[i] +": " +this.info.availableFroms[i].substring(11,16)+"-"+this.info.availableTos[i].substring(11,16);
+        this.dayInfos[i] = x[i] +": " +this.info.availableFroms[i].substring(0,5)+"-"+this.info.availableTos[i].substring(0,5);
       } else {
         this.dayInfos[i] = x[i] +": N/A";
       }

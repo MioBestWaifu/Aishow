@@ -65,8 +65,8 @@ export class ServerConnectionService {
     x.availableTos = dia.availableTos;
     for(let a=0;a<=6;a++){
       if(x.availableDays[a]){
-        x.availableFroms[a] = "{\"hour\":\""+x.availableFroms[a].substring(0,2)+"\",\"minute\":\""+x.availableFroms[a].substring(2,4)+"\"\"second\":\"00\"}";
-        x.availableTos[a] = "{\"hour\":\""+x.availableTos[a].substring(0,2)+"\",\"minute\":\""+x.availableTos[a].substring(2,4)+"\"\"second\":\"00\"}";
+        x.availableFroms[a] += ":00";
+        x.availableTos[a] += ":00";
       }
     }
     return this.http.post(this.requestsUrl+"createService?id="+this.buffer.userInfo.userId,JSON.stringify(x),{observe:'response',responseType: 'text',headers:this.jsonHeader});
@@ -78,7 +78,7 @@ export class ServerConnectionService {
   }
 
   TryToUpdateServicePicture(image:string,id:number):Observable<HttpResponse<string>>{
-    return this.http.post(this.requestsUrl+"imageUpdate?type=service&id="+id,base64ToFile(image),{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"imageUpdate?type=service&id="+id+"&idProvider="+this.buffer.userInfo.userId,base64ToFile(image),{observe:'response',responseType: 'text'});
   }
 
   TryToUpdateUserPicture(dia:EditUserDialogComponent, id:number):Observable<HttpResponse<string>>{
@@ -141,7 +141,7 @@ export class ServerConnectionService {
   }
 
   GetServiceList(id:number):Observable<ServiceInformation[]>{
-    return this.http.get<ServiceInformation[]>(this.requestsUrl+"services?type=getAllServices&id="+id);
+    return this.http.get<ServiceInformation[]>(this.requestsUrl+"getAllServices?id="+id);
   }
 
   GetTargetPage():Observable<string>{
