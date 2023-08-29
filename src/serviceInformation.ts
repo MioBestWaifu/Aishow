@@ -3,9 +3,8 @@ import { ReviewInformation } from "./reviewInformation";
 export class ServiceInformation{
     serviceName:string; description:string; providerName:string; providerUrl:string; providerImageUrl:string;
     shortServiceName:string;
-    costPerHour:string;
+    costPerHour:number;
     providerId:number;
-    costInNumber:number;
     providerArea:string;
     averageScore:number;
     templateId:number;

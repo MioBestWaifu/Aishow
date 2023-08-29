@@ -20,7 +20,7 @@ export class RegisterFormsComponent{
   username:string;
   birthday:Date;
   gender:string;
-  area:number;
+  areaCode:number;
 
   constructor(private conn:ServerConnectionService, private router:Router,private dialog:MatDialog){
     this.Init();
@@ -38,13 +38,13 @@ export class RegisterFormsComponent{
 
   async Submit(){
     //console.log(this)
-    if (!this.email  || !this.password || !this.username || !this.birthday || !this.gender || !this.area){
+    if (!this.email  || !this.password || !this.username || !this.birthday || !this.gender || !this.areaCode){
       this.dialog.open(MissingInfoDialogComponent);
       return;
     }
-    let registerTemplate = new RegisterTemplate(this.email,this.password,this.username,this.birthday,this.gender,this.area);
+    let registerTemplate = new RegisterTemplate(this.email,this.password,this.username,this.birthday,this.gender,this.areaCode);
     const response = await firstValueFrom(this.conn.TryToRegister(registerTemplate));
-    if (response.status == 200){
+    if (response.body == "OK"){
       this.email = "";
       this.password = "";
       this.username = "";

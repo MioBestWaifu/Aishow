@@ -4,12 +4,13 @@ import { ServiceBundle } from "./serviceBundle";
 import { ServiceInformation } from "./serviceInformation";
 
 export class UserInformation{
-    userID:number;
+    userId:number;
     email:string;
     name:string;
     imageUrl:string;
     gender:string;
-    area:GenericInformation;
+    areaCode:number;
+    areaName:string;
     birthday:Date;
     description:string;
     serviceRecs:ServiceBundle[];

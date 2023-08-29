@@ -57,18 +57,24 @@ export class ServerConnectionService {
     const x = new ServiceInformation();
     x.serviceName = dia.name;
     x.description = dia.description;
-    x.costPerHour = dia.cost.toString();
+    x.costPerHour = dia.cost;
     x.category = dia.cat;
     x.modality = dia.mod;
     x.availableDays = dia.availableDays;
     x.availableFroms = dia.availableFroms;
     x.availableTos = dia.availableTos;
-    return this.http.post(this.requestsUrl+"createService?id="+this.buffer.userInfo.userID,JSON.stringify(x),{observe:'response',responseType: 'text'});
+    for(let a=0;a<=6;a++){
+      if(x.availableDays[a]){
+        x.availableFroms[a] = "{\"hour\":\""+x.availableFroms[a].substring(0,2)+"\",\"minute\":\""+x.availableFroms[a].substring(2,4)+"\"\"second\":\"00\"}";
+        x.availableTos[a] = "{\"hour\":\""+x.availableTos[a].substring(0,2)+"\",\"minute\":\""+x.availableTos[a].substring(2,4)+"\"\"second\":\"00\"}";
+      }
+    }
+    return this.http.post(this.requestsUrl+"createService?id="+this.buffer.userInfo.userId,JSON.stringify(x),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
   
   TryToUpdateService(info:ServiceInformation):Observable<HttpResponse<string>>{
-    info.providerId = this.buffer.userInfo.userID;
-    return this.http.post(this.requestsUrl+"services?type=update",JSON.stringify(info),{observe:'response',responseType: 'text'});
+    info.providerId = this.buffer.userInfo.userId;
+    return this.http.post(this.requestsUrl+"services?type=update",JSON.stringify(info),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
 
   TryToUpdateServicePicture(image:string,id:number):Observable<HttpResponse<string>>{
@@ -80,13 +86,13 @@ export class ServerConnectionService {
   }
 
   TryToUpdateUserName(dia:EditUserDialogComponent):Observable<HttpResponse<string>>{
-    return this.http.post(this.requestsUrl+"nameUpdate?id="+this.buffer.userInfo.userID,dia.newName,{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"updateName?id="+this.buffer.userInfo.userId,dia.newName,{observe:'response',responseType: 'text'});
   }
 
   TryToScheduleService(dia:ScheduleServiceDialogComponent):Observable<HttpResponse<string>>{
     const x = new ClientServiceInteraction();
     x.templateId = dia.buffer.lastService.templateId;
-    x.clientId = this.buffer.userInfo.userID;
+    x.clientId = this.buffer.userInfo.userId;
     x.cost = dia.cost;
     x.hasFinished = false;
     x.isAccepted = false;
@@ -98,7 +104,7 @@ export class ServerConnectionService {
     x.endTime = dia.endHour.substring(0,2)+":"+dia.endHour.substring(3,5)+":00";
     console.log(x.endTime);
 
-    return this.http.post(this.requestsUrl+"scheduleService",JSON.stringify(x),{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"scheduleService",JSON.stringify(x),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
 
   ReloadUser():Observable<UserInformation>{
@@ -144,7 +150,7 @@ export class ServerConnectionService {
   }
 
   GetSchedule():Observable<ServiceSchedule>{
-    return this.http.get<ServiceSchedule>(this.requestsUrl+"getAgenda?id="+this.buffer.userInfo.userID);
+    return this.http.get<ServiceSchedule>(this.requestsUrl+"getAgenda?id="+this.buffer.userInfo.userId);
   }
 
   SetLastPage(currentPage:string):Observable<HttpResponse<string>>{
@@ -159,11 +165,11 @@ export class ServerConnectionService {
   }
 
   AcceptRequest(req:ClientServiceInteraction):Observable<HttpResponse<string>>{
-    return this.http.get(this.requestsUrl+"answerRequest?type=accept&id="+req.id+"&idProvider="+this.buffer.userInfo.userID,{observe:'response',responseType: 'text'});
+    return this.http.get(this.requestsUrl+"answerRequest?type=accept&id="+req.id+"&idProvider="+this.buffer.userInfo.userId,{observe:'response',responseType: 'text'});
   }
 
   DenyRequest(req:ClientServiceInteraction):Observable<HttpResponse<string>>{
-    return this.http.get(this.requestsUrl+"answerRequest?type=deny&id="+req.id+"&idProvider="+this.buffer.userInfo.userID,{observe:'response',responseType: 'text'});
+    return this.http.get(this.requestsUrl+"answerRequest?type=deny&id="+req.id+"&idProvider="+this.buffer.userInfo.userId,{observe:'response',responseType: 'text'});
   }
   
 }

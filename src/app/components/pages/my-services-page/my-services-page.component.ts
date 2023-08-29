@@ -21,7 +21,7 @@ export class MyServicesPageComponent implements OnInit{
       //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     }
     this.buffer.schedule = await firstValueFrom(this.conn.GetSchedule());
-    this.buffer.services = await firstValueFrom (this.conn.GetServiceList(this.buffer.userInfo.userID));
+    this.buffer.services = await firstValueFrom (this.conn.GetServiceList(this.buffer.userInfo.userId));
     console.log(this.buffer.services);
     //const x = await firstValueFrom (this.conn.SetLastPage("/myservices"));
   }

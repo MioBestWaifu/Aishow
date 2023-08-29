@@ -3,7 +3,7 @@ export class RegisterTemplate{
     password:string;
     name:string;
     birthday:Date;
-    area:number;
+    areaCode:number;
     gender:string
 
     constructor(e:string,p:string,u:string,b:Date,g:string,a:number){
@@ -11,7 +11,7 @@ export class RegisterTemplate{
         this.password = p;
         this.name = u;
         this.birthday = b;
-        this.area = a;
+        this.areaCode = a;
         this.gender = g;
     }
 }
