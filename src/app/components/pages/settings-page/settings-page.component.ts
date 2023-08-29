@@ -13,8 +13,8 @@ export class SettingsPageComponent implements OnInit{
 
   async ngOnInit(){
     if (this.buffer.userInfo == null){
-      this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
+      //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     }
-    const x = await firstValueFrom (this.conn.SetLastPage("/settings"));
+    //const x = await firstValueFrom (this.conn.SetLastPage("/settings"));
   }
 }

@@ -11,6 +11,6 @@ export class RegisterPageComponent implements OnInit{
 
   constructor (private conn:ServerConnectionService){}
   async ngOnInit(){
-    const x = await firstValueFrom (this.conn.SetLastPage("/pages/register"));
+    ////const x = await firstValueFrom (this.conn.SetLastPage("/pages/register"));
   }
 }

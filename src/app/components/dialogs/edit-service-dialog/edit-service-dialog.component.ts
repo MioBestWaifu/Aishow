@@ -51,7 +51,7 @@ export class EditServiceDialogComponent implements OnInit, AfterContentInit{
       if (x.body == "Failed basic"){
         alert("Failed service update");
       } else if (x.body == "Failed availability"){
-        this.buffer.services = await firstValueFrom(this.conn.GetServiceList(this.buffer.userInfo.userID));
+        this.buffer.services = await firstValueFrom(this.conn.GetServiceList(this.buffer.userInfo.userId));
         alert ("Failed availability update");
       }
       return;
@@ -61,12 +61,12 @@ export class EditServiceDialogComponent implements OnInit, AfterContentInit{
       const y = await firstValueFrom(this.conn.TryToUpdateServicePicture(this.croppedImage,this.buffer.update.templateId));
 
       if (y.status != 201){
-        this.buffer.services = await firstValueFrom(this.conn.GetServiceList(this.buffer.userInfo.userID));
+        this.buffer.services = await firstValueFrom(this.conn.GetServiceList(this.buffer.userInfo.userId));
         alert ("Image update failed");
       }
     }
 
-    this.buffer.services = await firstValueFrom(this.conn.GetServiceList(this.buffer.userInfo.userID));
+    this.buffer.services = await firstValueFrom(this.conn.GetServiceList(this.buffer.userInfo.userId));
     this.dialog.closeAll();
   }
 

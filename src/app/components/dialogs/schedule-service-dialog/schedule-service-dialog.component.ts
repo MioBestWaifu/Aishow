@@ -41,12 +41,12 @@ export class ScheduleServiceDialogComponent {
     console.log(x);
     console.log(y);
     console.log(this.buffer.lastService);
-    console.log(this.buffer.lastService.costInNumber/60);
+    console.log(this.buffer.lastService.costPerHour/60);
     var diffMs = (y - x);
     var diffMins = Math.round(diffMs/60000);
     console.log(diffMs);
     console.log(diffMins);
-    this.cost = diffMins * this.buffer.lastService.costInNumber/60;
+    this.cost = diffMins * this.buffer.lastService.costPerHour/60;
   }
 
   cancel(){

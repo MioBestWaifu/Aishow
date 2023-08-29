@@ -24,7 +24,7 @@
     </div>
     <div class="formsDiv">
         <label for="area" class="standardText block">Area</label>
-        <select name="area" id="area" [(ngModel)]="area">
+        <select name="area" id="area" [(ngModel)]="areaCode">
             <option *ngFor="let a of AreaInfos" [value]="a.Id" >{{a.Name}}</option>
         </select>
     </div>

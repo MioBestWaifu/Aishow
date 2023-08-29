@@ -40,8 +40,8 @@ export class EditUserDialogComponent {
   } 
   async save(){
     if (this.croppedImage != this.buffer.userInfo.imageUrl){
-      var response = await firstValueFrom(this.conn.TryToUpdateUserPicture(this));
-      if(response.status != 201){
+      var response = await firstValueFrom(this.conn.TryToUpdateUserPicture(this,this.buffer.userInfo.userId));
+      if(response.body != "OK"){
         this.dialog.open(FailedUpdateDialogComponent)
         return
       }
@@ -49,12 +49,12 @@ export class EditUserDialogComponent {
 
     if(this.newName != undefined){
       response = await firstValueFrom(this.conn.TryToUpdateUserName(this));
-      if(response.status != 201){
+      if(response.body != "OK"){
         this.dialog.open(FailedUpdateDialogComponent)
         return
       }
     }
-    this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
+    //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     this.dialog.closeAll();
   }
 }

@@ -62,13 +62,13 @@ export class CreateServiceDialogComponent implements OnInit{
   } 
   async save(){
     var response = await firstValueFrom(this.conn.TryToCreateService(this));
-    if (response.status != 201){
+    if (response.body != "OK"){
       this.dialog.open(FailedUpdateDialogComponent)
       return
     }
 
     response = await firstValueFrom(this.conn.TryToUpdateServicePicture(this.croppedImage,-1));
-    if (response.status != 201){
+    if (response.body != "OK"){
       this.dialog.open(FailedUpdateDialogComponent)
       return
     }

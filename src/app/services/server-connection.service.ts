@@ -18,20 +18,21 @@ import { ScheduleServiceDialogComponent } from '../components/dialogs/schedule-s
 import { ClientServiceInteraction } from 'src/clientServiceInteraction';
 import {Utils} from 'src/utils';
 import { ServiceSchedule } from 'src/serviceSchedule';
+import { BufferserviceService } from './bufferservice.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServerConnectionService {
   requestsUrl:string;
-  loginHeader = new HttpHeaders();
+  jsonHeader = new HttpHeaders().set('content-type', 'application/json');
   loginParams = new HttpParams();
   test:UserInformation;
-  constructor(private http:HttpClient) {
+  constructor(private http:HttpClient, private buffer:BufferserviceService) {
     // const x = window.location.href;
     // const y = x.split("/");
     // console.log(y);
-    // this.requestsUrl = y[0] + "//" +y[2] + ":80/"
+    this.requestsUrl = "http://localhost:4200/api/"
     // console.log(this.requestsUrl);
     // this.loginParams = this.loginParams.append("type", "01");
   }
@@ -39,63 +40,59 @@ export class ServerConnectionService {
   EstablishConnection(){
     // return this.http.get(this.requestsUrl+"pages?type=establish",{responseType:'text'});
   }
-
-  Buff():Observable<string>{
-    return this.http.get("api/Test",{responseType:"text"});
-  }
   
   TryToLogin(forms:LoginTemplate):Observable<HttpResponse<UserInformation>>{
-    return null;
-      try{
-      return this.http.post<UserInformation>(this.requestsUrl+"login",JSON.stringify(forms),{observe:'response'});
-      } catch(error){
-        return null;
-      }
+    try{
+    return this.http.post<UserInformation>(this.requestsUrl+"login",JSON.stringify(forms),{observe:'response', headers:this.jsonHeader});
+    } catch(error){
+      return null;
+    }
   }
 
   TryToRegister(forms:RegisterTemplate):Observable<HttpResponse<string>>{
-    return null;
-    return this.http.post(this.requestsUrl+"registering",JSON.stringify(forms),{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"register",JSON.stringify(forms),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
 
   TryToCreateService(dia:CreateServiceDialogComponent):Observable<HttpResponse<string>>{
-    return null;
     const x = new ServiceInformation();
     x.serviceName = dia.name;
     x.description = dia.description;
-    x.costPerHour = dia.cost.toString();
+    x.costPerHour = dia.cost;
     x.category = dia.cat;
     x.modality = dia.mod;
     x.availableDays = dia.availableDays;
     x.availableFroms = dia.availableFroms;
     x.availableTos = dia.availableTos;
-    return this.http.post(this.requestsUrl+"services?type=create",JSON.stringify(x),{observe:'response',responseType: 'text'});
+    for(let a=0;a<=6;a++){
+      if(x.availableDays[a]){
+        x.availableFroms[a] += ":00";
+        x.availableTos[a] += ":00";
+      }
+    }
+    return this.http.post(this.requestsUrl+"createService?id="+this.buffer.userInfo.userId,JSON.stringify(x),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
   
   TryToUpdateService(info:ServiceInformation):Observable<HttpResponse<string>>{
-    return null;
-    return this.http.post(this.requestsUrl+"services?type=update",JSON.stringify(info),{observe:'response',responseType: 'text'});
+    info.providerId = this.buffer.userInfo.userId;
+    return this.http.post(this.requestsUrl+"services?type=update",JSON.stringify(info),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
 
   TryToUpdateServicePicture(image:string,id:number):Observable<HttpResponse<string>>{
-    return null;
-    return this.http.post(this.requestsUrl+"services?type=imageUpdate&id="+id,base64ToFile(image),{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"imageUpdate?type=service&id="+id+"&idProvider="+this.buffer.userInfo.userId,base64ToFile(image),{observe:'response',responseType: 'text'});
   }
 
-  TryToUpdateUserPicture(dia:EditUserDialogComponent):Observable<HttpResponse<string>>{
-    return null;
-    return this.http.post(this.requestsUrl+"personal?type=imageUpdate",base64ToFile(dia.croppedImage),{observe:'response',responseType: 'text'});
+  TryToUpdateUserPicture(dia:EditUserDialogComponent, id:number):Observable<HttpResponse<string>>{
+    return this.http.post(this.requestsUrl+"imageUpdate?type=user&id="+id,base64ToFile(dia.croppedImage),{observe:'response',responseType: 'text'});
   }
 
   TryToUpdateUserName(dia:EditUserDialogComponent):Observable<HttpResponse<string>>{
-    return null;
-    return this.http.post(this.requestsUrl+"personal?type=nameUpdate",dia.newName,{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"updateName?id="+this.buffer.userInfo.userId,dia.newName,{observe:'response',responseType: 'text'});
   }
 
   TryToScheduleService(dia:ScheduleServiceDialogComponent):Observable<HttpResponse<string>>{
-    return null;
     const x = new ClientServiceInteraction();
     x.templateId = dia.buffer.lastService.templateId;
+    x.clientId = this.buffer.userInfo.userId;
     x.cost = dia.cost;
     x.hasFinished = false;
     x.isAccepted = false;
@@ -107,7 +104,7 @@ export class ServerConnectionService {
     x.endTime = dia.endHour.substring(0,2)+":"+dia.endHour.substring(3,5)+":00";
     console.log(x.endTime);
 
-    return this.http.post(this.requestsUrl+"services?type=schedule",JSON.stringify(x),{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"scheduleService",JSON.stringify(x),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
 
   ReloadUser():Observable<UserInformation>{
@@ -116,22 +113,18 @@ export class ServerConnectionService {
   }
 
   GetAreas():Observable<GenericInformation[]>{
-    return null;
     return this.http.get<GenericInformation[]>(this.requestsUrl+"info?type=request&category=areas");
   }
   GetModalities():Observable<GenericInformation[]>{
-    return null;
     return this.http.get<GenericInformation[]>(this.requestsUrl+"info?type=request&category=mod");
   }
   GetCategories():Observable<GenericInformation[]>{
-    return null;
     return this.http.get<GenericInformation[]>(this.requestsUrl+"info?type=request&category=cat");
   }
 
   GetUser(id:string):Observable<UserInformation>{
-    return null;
     try{
-    return this.http.get<UserInformation>(this.requestsUrl+"users?type=request&id="+id);
+    return this.http.get<UserInformation>(this.requestsUrl+"getUser?id="+id);
     } catch (error){
       console.log(error);
       return null;
@@ -139,9 +132,8 @@ export class ServerConnectionService {
   }
 
   GetService(id:string):Observable<ServiceInformation>{
-    return null;
     try{
-    return this.http.get<ServiceInformation>(this.requestsUrl+"services?type=request&id="+id);
+    return this.http.get<ServiceInformation>(this.requestsUrl+"getService?id="+id);
     } catch (error){
       console.log(error)
       return null;
@@ -149,8 +141,7 @@ export class ServerConnectionService {
   }
 
   GetServiceList(id:number):Observable<ServiceInformation[]>{
-    return null;
-    return this.http.get<ServiceInformation[]>(this.requestsUrl+"services?type=requestAll&id="+id);
+    return this.http.get<ServiceInformation[]>(this.requestsUrl+"getAllServices?id="+id);
   }
 
   GetTargetPage():Observable<string>{
@@ -159,8 +150,7 @@ export class ServerConnectionService {
   }
 
   GetSchedule():Observable<ServiceSchedule>{
-    return null;
-    return this.http.get<ServiceSchedule>(this.requestsUrl+"services?type=requestSchedule");
+    return this.http.get<ServiceSchedule>(this.requestsUrl+"getAgenda?id="+this.buffer.userInfo.userId);
   }
 
   SetLastPage(currentPage:string):Observable<HttpResponse<string>>{
@@ -175,13 +165,11 @@ export class ServerConnectionService {
   }
 
   AcceptRequest(req:ClientServiceInteraction):Observable<HttpResponse<string>>{
-    return null;
-    return this.http.get(this.requestsUrl+"personal?type=accept&id="+req.id,{observe:'response',responseType: 'text'});
+    return this.http.get(this.requestsUrl+"answerRequest?type=accept&id="+req.id+"&idProvider="+this.buffer.userInfo.userId,{observe:'response',responseType: 'text'});
   }
 
   DenyRequest(req:ClientServiceInteraction):Observable<HttpResponse<string>>{
-    return null;
-    return this.http.get(this.requestsUrl+"personal?type=deny&id="+req.id,{observe:'response',responseType: 'text'});
+    return this.http.get(this.requestsUrl+"answerRequest?type=deny&id="+req.id+"&idProvider="+this.buffer.userInfo.userId,{observe:'response',responseType: 'text'});
   }
   
 }
