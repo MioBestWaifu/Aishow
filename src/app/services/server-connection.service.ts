@@ -29,12 +29,7 @@ export class ServerConnectionService {
   loginParams = new HttpParams();
   test:UserInformation;
   constructor(private http:HttpClient, private buffer:BufferserviceService) {
-    // const x = window.location.href;
-    // const y = x.split("/");
-    // console.log(y);
-    this.requestsUrl = "http://localhost:4200/api/"
-    // console.log(this.requestsUrl);
-    // this.loginParams = this.loginParams.append("type", "01");
+    this.requestsUrl = "/api/"
   }
 
   EstablishConnection(){

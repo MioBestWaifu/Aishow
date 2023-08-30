@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ServerConnectionService } from 'src/app/services/server-connection.service';
+import { Utils } from 'src/utils';
 
 @Component({
   selector: 'app-star-rating',
@@ -16,9 +17,9 @@ export class StarRatingComponent implements OnInit{
   sources:string[];
 
   constructor(private conn:ServerConnectionService){
-    this.fullstar = "http://localhost:8080/images/app/fullstar.png"
-    this.halfstar = "http://localhost:8080/images/app/halfstar.png"
-    this.emptystar = "http://localhost:8080/images/app/emptystar.png"
+    this.fullstar = Utils.imgUrl+"app/fullstar.png"
+    this.halfstar = Utils.imgUrl+"app/halfstar.png"
+    this.emptystar = Utils.imgUrl+"app/emptystar.png"
   }
   ngOnInit(): void {
     var x = this.rating;
