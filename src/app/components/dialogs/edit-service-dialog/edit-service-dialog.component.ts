@@ -43,6 +43,9 @@ export class EditServiceDialogComponent implements OnInit, AfterContentInit{
       } else if (this.buffer.update.availableFroms[i].startsWith("1970")){
         this.buffer.update.availableFroms[i] = this.buffer.update.availableFroms[i].substring(11,16);
         this.buffer.update.availableTos[i] = this.buffer.update.availableTos[i].substring(11,16);
+      } else {
+        this.buffer.update.availableFroms[i] = this.buffer.update.availableFroms[i].substring(0,5);
+        this.buffer.update.availableTos[i] = this.buffer.update.availableTos[i].substring(0,5);
       }
     }
     const x = await firstValueFrom(this.conn.TryToUpdateService(this.buffer.update));
