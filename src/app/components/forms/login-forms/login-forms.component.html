@@ -1,12 +1,12 @@
-<form (ngSubmit)="Submit()" class="formTemplate roseBorder">
-    <div class="formsDiv">
+<form (ngSubmit)="Submit()" class="formTemplate roseBorder" style="width: auto;">
+    <div>
         <label for="user" class="standardText block">Email</label>
         <input id="user" name="username" type="email" class = "block" [(ngModel)]="email"/>
     </div>
-    <div class="formsDiv topRel">
+    <div class="padTop">
         <label for="psswrd" class="standardText block">Password</label>
         <input id="psswrd" name="password" type="password" class="block" [(ngModel)]="password"/>
     </div>
-    <input type="submit" value="Login" class="standardButton block">
+    <input type="submit" value="Login" class="standardButton block" style="width: 40%;aspect-ratio: 5/2;margin-top: 5%;">
     <u routerLink="/register" class="autoMargin block standardText">Not registered yet? Register!</u>
 </form>

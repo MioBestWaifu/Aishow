@@ -50,7 +50,7 @@ export class EditServiceDialogComponent implements OnInit, AfterContentInit{
     }
     const x = await firstValueFrom(this.conn.TryToUpdateService(this.buffer.update));
 
-    if(x.status != 201){
+    if(x.body !="OK"){
       if (x.body == "Failed basic"){
         alert("Failed service update");
       } else if (x.body == "Failed availability"){
