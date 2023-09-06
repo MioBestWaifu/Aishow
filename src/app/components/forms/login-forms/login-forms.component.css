@@ -7,4 +7,12 @@
     margin: auto;
 } .padTop{
     padding-top: 3%;
+} label{
+    font-size: var(--dx-size);
+} .cont{
+    padding-top: 4%;
+    padding-left: 2vw;
+} .textbox {
+    width: 16vw;
+    aspect-ratio: 16/1.5;
 }
