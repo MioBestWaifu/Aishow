@@ -148,6 +148,10 @@ export class ServerConnectionService {
     return this.http.get<ServiceSchedule>(this.requestsUrl+"getAgenda?id="+this.buffer.userInfo.userId);
   }
 
+  GetUserServiceRequests():Observable<ClientServiceInteraction[]>{
+    return this.http.get<ClientServiceInteraction[]>(this.requestsUrl+"getUserRequests?id="+this.buffer.userInfo.userId);
+  }
+
   SetLastPage(currentPage:string):Observable<HttpResponse<string>>{
     return null;
     console.log("CHAMADO DE: " +currentPage)
