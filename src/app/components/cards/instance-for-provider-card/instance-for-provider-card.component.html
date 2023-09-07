@@ -1,4 +1,4 @@
-<div class="flexbox main centerHor">
+<div *ngIf="!request.provider; else isTheProvider" class="flexbox main centerHor">
     <img class="highlightImage" [src]="request.client.imageUrl">
     <div class="flexbox pad highlightBox">
         <div>
@@ -12,3 +12,19 @@
         </div>
     </div>
 </div>
+<ng-template #isTheProvider>
+    <div class="flexbox main centerHor">
+        <img class="highlightImage" [src]="request.service.templateImageUrl">
+        <div class="flexbox pad highlightBox">
+            <div>
+                <p class="standardText highlightText">{{request.service.providerName}}</p>
+                <p class="standardText highlightText">{{request.service.serviceName}}</p>
+                <p class=" standardText">R${{request.cost}}</p>
+            </div>
+            <div class="pad">
+                <p class="standardText">{{request.startDate}} - {{request.endDate}}</p>
+                <p class="standardText">{{request.startTime}} - {{request.endTime}}</p>
+            </div>
+        </div>
+    </div>
+</ng-template>

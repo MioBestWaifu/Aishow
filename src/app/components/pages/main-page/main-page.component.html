@@ -2,11 +2,12 @@
 <div class="pageWrapper">
     <app-header></app-header>
     <app-lateral-bar [user]=buffer.userInfo class="lateralDiv roseBorder"></app-lateral-bar>
-    <div class="contentWrapper">
+    <div class="contentWrapper flexbox">
         <ol>
             <li *ngFor="let bundle of buffer.userInfo.serviceRecs">
                 <app-service-row [bundle] = bundle></app-service-row>
             </li>
         </ol>
+        <app-instances-for-provider-list></app-instances-for-provider-list>
     </div>
 </div>

@@ -5,9 +5,9 @@
 } #services{
     width: 100%;
 } #tabGroup{
-    width: 65%;
-    min-width: 65%;
-    max-width: 65%;
+    width: 70%;
+    min-width: 70%;
+    max-width: 70%;
 }.tab{
     width: 50%;
     max-width: 50%;
@@ -25,4 +25,6 @@
     text-align: center;
 } app-services-for-provider-list {
     width: 100%;
+} #requestsTab{
+    border-right: 0px;
 }

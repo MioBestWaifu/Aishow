@@ -3,10 +3,14 @@
     <app-lateral-bar [user]=buffer.userInfo class="lateralDiv roseBorder"></app-lateral-bar>
     <div class="contentWrapper">
         <div class="flexbox borda">
-            <div class="centerHor">
-                <app-user-basic-info [user]="buffer.userInfo"></app-user-basic-info>
-                <button class="standardButton" (click)="edit()">Edit profile</button>
+            <div style="width: 100%;">
+                <div id="info" class="centerHor">
+                    <app-user-basic-info [user]="buffer.userInfo"></app-user-basic-info>
+                    <button class="standardButton" (click)="edit()">Edit profile</button>
+                </div>
+                <app-requests-for-user-list></app-requests-for-user-list>
             </div>
+            <app-instances-for-provider-list></app-instances-for-provider-list>
         </div>
     </div>
 </div>
