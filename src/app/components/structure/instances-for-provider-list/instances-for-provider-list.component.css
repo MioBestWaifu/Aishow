@@ -1,5 +1,20 @@
 ol{
     list-style: none;
 } li{
-    padding-top: 2vh;
+    margin-top: 2vh;
+} #topDiv{
+    border-right: 0px;
+    border-top: 0px;
+    border-left: 0px;
+    border-bottom: 0.1vw;
+    text-align: center;
+    height: 3vh;
+    font-size: var(--dx-size);
+} #wrapper{
+    height: 100%;
+    position: fixed;
+    overflow-y: scroll;
+    border-width:0px 0px 0px 0.1vw;
+    border-style: solid;
+    border-color: var(--rose);
 }

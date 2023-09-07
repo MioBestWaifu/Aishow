@@ -1,11 +1,11 @@
 .standardButton{
     width: 8vw;
     position: absolute;
-    bottom: 3vw;
+    bottom: 22%;
     height: 5vh;
-    margin-left: 30%;
+    left: 70%;
 } .borda{
-    width: 100%;
+    width: 60%;
     border-bottom-width: 0.1vw;
     border-top-width: 0vw;
     border-left-width: 0vw;
