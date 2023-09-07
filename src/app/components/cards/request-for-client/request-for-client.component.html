@@ -1,0 +1,19 @@
+<div class="flexbox main centerHor">
+    <img class="highlightImage" [src]="request.service.templateImageUrl">
+    <div class="flexbox pad highlightBox rightBorder" style="width: 50%; max-width: 50%; overflow: hidden; overflow-x: auto;">
+        <div>
+            <p class="standardText highlightText">Service: {{request.service.serviceName}}</p>
+            <p class="standardText">From: {{request.startDate}}</p>
+            <p class="standardText">From: {{request.startTime}}</p>
+            <p class="standardText">Cost: R${{request.cost}}</p>
+        </div>
+        <div class="pad">
+            <p class="standardText highlightText">Provider: {{request.service.providerName}}</p>
+            <p class="standardText">To: {{request.endDate}}</p>
+            <p class="standardText">To: {{request.endTime}}</p>
+        </div>
+    </div>
+    <div class="highlightBox hoverPointer" style="height:100%; text-align: center;">
+        <i class="material-symbols-outlined icon centerHor">close</i>
+    </div>
+</div>

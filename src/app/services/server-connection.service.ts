@@ -29,7 +29,7 @@ export class ServerConnectionService {
   loginParams = new HttpParams();
   test:UserInformation;
   constructor(private http:HttpClient, private buffer:BufferserviceService) {
-    this.requestsUrl = "/api/"
+    this.requestsUrl = "http://20.206.240.87:80/api/"
   }
 
   EstablishConnection(){
@@ -69,7 +69,7 @@ export class ServerConnectionService {
   
   TryToUpdateService(info:ServiceInformation):Observable<HttpResponse<string>>{
     info.providerId = this.buffer.userInfo.userId;
-    return this.http.post(this.requestsUrl+"services?type=update",JSON.stringify(info),{observe:'response',responseType: 'text',headers:this.jsonHeader});
+    return this.http.post(this.requestsUrl+"updateService",JSON.stringify(info),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
 
   TryToUpdateServicePicture(image:string,id:number):Observable<HttpResponse<string>>{
@@ -146,6 +146,10 @@ export class ServerConnectionService {
 
   GetSchedule():Observable<ServiceSchedule>{
     return this.http.get<ServiceSchedule>(this.requestsUrl+"getAgenda?id="+this.buffer.userInfo.userId);
+  }
+
+  GetUserServiceRequests():Observable<ClientServiceInteraction[]>{
+    return this.http.get<ClientServiceInteraction[]>(this.requestsUrl+"getUserRequests?id="+this.buffer.userInfo.userId);
   }
 
   SetLastPage(currentPage:string):Observable<HttpResponse<string>>{

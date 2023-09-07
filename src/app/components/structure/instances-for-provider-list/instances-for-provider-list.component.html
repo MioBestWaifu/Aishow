@@ -1,5 +1,10 @@
-<ol>
-    <li *ngFor="let ins of buffer.schedule.pendingInstances">
-        <app-instance-for-provider-card [request]=ins></app-instance-for-provider-card>
-    </li>
-</ol>
+<div id="wrapper">
+    <div id="topDiv" class="roseBorder standardText roseText">
+        Schedule
+    </div>
+    <ol>
+        <li *ngFor="let ins of buffer.schedule.pendingInstances">
+            <app-instance-for-provider-card [request]=ins></app-instance-for-provider-card>
+        </li>
+    </ol>
+</div>

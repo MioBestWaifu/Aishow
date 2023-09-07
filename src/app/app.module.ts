@@ -44,6 +44,8 @@ import { InstancesForProviderListComponent } from './components/structure/instan
 import { ServicesForProviderListComponent } from './components/structure/services-for-provider-list/services-for-provider-list.component';
 import { FullServiceCardComponent } from './components/cards/full-service-card/full-service-card.component';
 import { EditServiceDialogComponent } from './components/dialogs/edit-service-dialog/edit-service-dialog.component';
+import { RequestForClientComponent } from './components/cards/request-for-client/request-for-client.component';
+import { RequestsForUserListComponent } from './components/structure/requests-for-user-list/requests-for-user-list.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,9 @@ import { EditServiceDialogComponent } from './components/dialogs/edit-service-di
     InstancesForProviderListComponent,
     ServicesForProviderListComponent,
     FullServiceCardComponent,
-    EditServiceDialogComponent
+    EditServiceDialogComponent,
+    RequestForClientComponent,
+    RequestsForUserListComponent
   ],
   imports: [
     BrowserModule,

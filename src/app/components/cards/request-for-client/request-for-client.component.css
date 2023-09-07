@@ -6,7 +6,6 @@
     overflow: hidden; /* make sure it hides the content that overflows */
     white-space: nowrap; /* don't break the line */
     text-overflow: ellipsis; /* give the beautiful '...' effect */
-    overflow-x: auto;
 } img{
     width: 25%;
     aspect-ratio: 1/1;
@@ -14,7 +13,7 @@
     padding-left: 2%;
 } i{
     color: var(--rose);
-    font-size: 250%;
+    font-size: 600%;
     aspect-ratio: 1/1;
 } .btns{
     width: 25%;
@@ -33,6 +32,4 @@
     border-right-width: 0.1vw;
     border-color: var(--rose);
     border-style: solid;
-} p {
-    font-size: var(--a-size);
 }
