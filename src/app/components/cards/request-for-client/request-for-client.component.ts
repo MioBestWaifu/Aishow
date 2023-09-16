@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
+import { ServerConnectionService } from 'src/app/services/server-connection.service';
 import { ClientServiceInteraction } from 'src/clientServiceInteraction';
 
 @Component({
@@ -8,4 +10,12 @@ import { ClientServiceInteraction } from 'src/clientServiceInteraction';
 })
 export class RequestForClientComponent {
   @Input() request:ClientServiceInteraction;
+  @Output() cancelEvent = new EventEmitter<string>();
+  
+  constructor(private conn:ServerConnectionService){}
+
+  async cancel(){
+    await firstValueFrom(this.conn.CancelRequest(this.request.id));
+    this.cancelEvent.emit();
+  }
 }

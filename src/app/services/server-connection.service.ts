@@ -19,6 +19,7 @@ import { ClientServiceInteraction } from 'src/clientServiceInteraction';
 import {Utils} from 'src/utils';
 import { ServiceSchedule } from 'src/serviceSchedule';
 import { BufferserviceService } from './bufferservice.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -87,6 +88,7 @@ export class ServerConnectionService {
   TryToScheduleService(dia:ScheduleServiceDialogComponent):Observable<HttpResponse<string>>{
     const x = new ClientServiceInteraction();
     x.templateId = dia.buffer.lastService.templateId;
+    x.service = this.buffer.lastService;
     x.clientId = this.buffer.userInfo.userId;
     x.cost = dia.cost;
     x.hasFinished = false;
@@ -169,6 +171,11 @@ export class ServerConnectionService {
 
   DenyRequest(req:ClientServiceInteraction):Observable<HttpResponse<string>>{
     return this.http.get(this.requestsUrl+"answerRequest?type=deny&id="+req.id+"&idProvider="+this.buffer.userInfo.userId,{observe:'response',responseType: 'text'});
+  }
+
+  CancelRequest(id:number):Observable<HttpResponse<string>>{
+    const x = this.http.get(this.requestsUrl+"cancelRequest?id="+id,{observe:'response',responseType: 'text'});
+    return x;
   }
   
 }

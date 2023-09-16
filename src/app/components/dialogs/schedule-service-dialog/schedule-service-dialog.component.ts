@@ -25,12 +25,12 @@ export class ScheduleServiceDialogComponent {
   };
 
   dayChanged(){
-    document.getElementById("from").textContent = "From (Min "+this.buffer.lastService.availableFroms[this.selected.getDay()].substring(11,16)+"):";
-    document.getElementById("to").textContent = "To (Max "+this.buffer.lastService.availableTos[this.selected.getDay()].substring(11,16)+"):";
-    document.getElementById("fromInput").setAttribute("min",this.buffer.lastService.availableFroms[this.selected.getDay()].substring(11,16));
-    document.getElementById("toInput").setAttribute("min",this.buffer.lastService.availableFroms[this.selected.getDay()].substring(11,16));
-    document.getElementById("fromInput").setAttribute("max",this.buffer.lastService.availableTos[this.selected.getDay()].substring(11,16));
-    document.getElementById("toInput").setAttribute("max",this.buffer.lastService.availableTos[this.selected.getDay()].substring(11,16));
+    document.getElementById("from").textContent = "From (Min "+this.buffer.lastService.availableFroms[this.selected.getDay()].substring(0,5)+"):";
+    document.getElementById("to").textContent = "To (Max "+this.buffer.lastService.availableTos[this.selected.getDay()].substring(0,5)+"):";
+    document.getElementById("fromInput").setAttribute("min",this.buffer.lastService.availableFroms[this.selected.getDay()].substring(0,5));
+    document.getElementById("toInput").setAttribute("min",this.buffer.lastService.availableFroms[this.selected.getDay()].substring(0,5));
+    document.getElementById("fromInput").setAttribute("max",this.buffer.lastService.availableTos[this.selected.getDay()].substring(0,5));
+    document.getElementById("toInput").setAttribute("max",this.buffer.lastService.availableTos[this.selected.getDay()].substring(0,5));
   }
 
   hourChanged(){
@@ -56,8 +56,8 @@ export class ScheduleServiceDialogComponent {
   async save(){
     const currStart = Date.parse("1970-01-01:"+this.startHour+":00");
     const currEnd = Date.parse("1970-01-01:"+this.endHour+":00");
-    const min = Date.parse(this.buffer.lastService.availableFroms[this.selected.getDay()]);
-    const max = Date.parse(this.buffer.lastService.availableTos[this.selected.getDay()]);
+    const min = Date.parse("1970-01-01:"+this.buffer.lastService.availableFroms[this.selected.getDay()]);
+    const max = Date.parse("1970-01-01:"+this.buffer.lastService.availableTos[this.selected.getDay()]);
     console.log(currStart);
     console.log(currEnd);
     console.log(min);
@@ -66,11 +66,10 @@ export class ScheduleServiceDialogComponent {
     if ((currStart < min || currStart > max) || (currEnd < min || currEnd > max)){
       alert("Select a valid time range");
     } else {
-    
     const x = await firstValueFrom(this.conn.TryToScheduleService(this));
 
-    if(x.status != 201){
-      alert("A server error has happened");
+    if(x.body != "OK"){
+      alert(x.body);
     }
     
     this.dialog.closeAll();
