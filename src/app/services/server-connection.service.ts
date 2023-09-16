@@ -19,6 +19,7 @@ import { ClientServiceInteraction } from 'src/clientServiceInteraction';
 import {Utils} from 'src/utils';
 import { ServiceSchedule } from 'src/serviceSchedule';
 import { BufferserviceService } from './bufferservice.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,7 @@ export class ServerConnectionService {
   loginParams = new HttpParams();
   test:UserInformation;
   constructor(private http:HttpClient, private buffer:BufferserviceService) {
-    this.requestsUrl = "http://20.206.240.87:80/api/"
+    this.requestsUrl = "http://20.206.240.87:8000/api/"
   }
 
   EstablishConnection(){
@@ -170,6 +171,11 @@ export class ServerConnectionService {
 
   DenyRequest(req:ClientServiceInteraction):Observable<HttpResponse<string>>{
     return this.http.get(this.requestsUrl+"answerRequest?type=deny&id="+req.id+"&idProvider="+this.buffer.userInfo.userId,{observe:'response',responseType: 'text'});
+  }
+
+  CancelRequest(id:number):Observable<HttpResponse<string>>{
+    const x = this.http.get(this.requestsUrl+"cancelRequest?id="+id,{observe:'response',responseType: 'text'});
+    return x;
   }
   
 }
