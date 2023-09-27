@@ -17,6 +17,7 @@ export class MainPageComponent implements OnInit{
   if (this.buffer.userInfo == null){
     ////this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
   }
-  ////const x = await firstValueFrom (this.conn.SetLastPage("/pages/main"));
+  
+  await this.buffer.getMoreBundles(3);
   }
 }

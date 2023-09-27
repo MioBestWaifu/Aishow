@@ -20,6 +20,7 @@ import {Utils} from 'src/utils';
 import { ServiceSchedule } from 'src/serviceSchedule';
 import { BufferserviceService } from './bufferservice.service';
 import { Router } from '@angular/router';
+import { ServiceBundle } from 'src/serviceBundle';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,7 @@ export class ServerConnectionService {
   test:UserInformation;
   constructor(private http:HttpClient, private buffer:BufferserviceService) {
     this.requestsUrl = "/api/"
+    buffer.conn = this;
   }
 
   EstablishConnection(){
@@ -176,6 +178,10 @@ export class ServerConnectionService {
   CancelRequest(id:number):Observable<HttpResponse<string>>{
     const x = this.http.get(this.requestsUrl+"cancelRequest?id="+id,{observe:'response',responseType: 'text'});
     return x;
+  }
+
+  GetAnotherBundle(alreadyHas:number[]):Observable<ServiceBundle>{
+    return this.http.post<ServiceBundle>(this.requestsUrl+"getAnotherBundle",JSON.stringify(alreadyHas),{headers:this.jsonHeader})
   }
   
 }

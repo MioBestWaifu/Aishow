@@ -4,7 +4,7 @@
     <app-lateral-bar [user]=buffer.userInfo class="lateralDiv roseBorder"></app-lateral-bar>
     <div class="contentWrapper flexbox">
         <ol>
-            <li *ngFor="let bundle of buffer.userInfo.serviceRecs">
+            <li *ngFor="let bundle of buffer.bundles">
                 <app-service-row [bundle] = bundle></app-service-row>
             </li>
         </ol>
