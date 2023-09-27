@@ -107,8 +107,7 @@ export class ServerConnectionService {
   }
 
   ReloadUser():Observable<UserInformation>{
-    return null;
-    return this.http.get<UserInformation>(this.requestsUrl+"personal?type=reload");
+    return this.http.get<UserInformation>(this.requestsUrl+"reload?id="+this.buffer.userInfo.userId);
   }
 
   GetAreas():Observable<GenericInformation[]>{
