@@ -4,6 +4,7 @@ import { buffer } from 'rxjs';
 import { BufferserviceService } from 'src/app/services/bufferservice.service';
 import { ServiceInformation } from 'src/serviceInformation';
 import { EditServiceDialogComponent } from '../../dialogs/edit-service-dialog/edit-service-dialog.component';
+import { Utils } from 'src/utils';
 
 @Component({
   selector: 'app-full-service-card',
@@ -14,6 +15,7 @@ export class FullServiceCardComponent implements OnInit{
 @Input() info:ServiceInformation;
 @Input() canEdit:boolean;
 dayInfos:string[];
+altUrl = Utils.altUrl;
 
 constructor(private buffer:BufferserviceService,private dialog:MatDialog){}
 

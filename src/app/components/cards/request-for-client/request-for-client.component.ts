@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { ServerConnectionService } from 'src/app/services/server-connection.service';
 import { ClientServiceInteraction } from 'src/clientServiceInteraction';
+import { Utils } from 'src/utils';
 
 @Component({
   selector: 'app-request-for-client',
@@ -11,6 +12,7 @@ import { ClientServiceInteraction } from 'src/clientServiceInteraction';
 export class RequestForClientComponent {
   @Input() request:ClientServiceInteraction;
   @Output() cancelEvent = new EventEmitter<string>();
+  altUrl = Utils.altUrl;
   
   constructor(private conn:ServerConnectionService){}
 

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ServiceBundle } from 'src/serviceBundle';
 import { ServiceInformation } from 'src/serviceInformation';
+import { Utils } from 'src/utils';
 
 @Component({
   selector: 'app-service-card',
@@ -9,6 +10,7 @@ import { ServiceInformation } from 'src/serviceInformation';
 })
 export class ServiceCardComponent implements OnInit{
   starWidth = "1.6vw"
+  altUrl = Utils.altUrl;
   @Input() service:ServiceInformation
 
   ngOnInit(): void {

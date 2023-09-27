@@ -12,6 +12,7 @@ import {Utils} from 'src/utils';
 })
 export class RequestForProviderCardComponent {
   @Input() request:ClientServiceInteraction;
+  altUrl = Utils.altUrl;
 
   constructor(private conn:ServerConnectionService, private buffer:BufferserviceService){}
 
@@ -24,7 +25,7 @@ export class RequestForProviderCardComponent {
   }
 
   async interpretResult(res:HttpResponse<String>){
-    if (res.status != 201){
+    if (res.status != 200){
       alert("Interaction failed");
     } else {
       this.buffer.schedule = await firstValueFrom(this.conn.GetSchedule());

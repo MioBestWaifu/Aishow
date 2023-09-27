@@ -2,6 +2,7 @@ import { registerLocaleData } from "@angular/common";
 
 export abstract class Utils{
     public static imgUrl:string = "https://aishow.blob.core.windows.net/images/";
+    public static altUrl:string = "https://aishow.blob.core.windows.net/images/0.png";
 
     public static DateToSqlString (date:Date):string{
         var toReturn:string = date.getFullYear().toString();

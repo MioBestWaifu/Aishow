@@ -63,7 +63,7 @@ export class EditServiceDialogComponent implements OnInit, AfterContentInit{
     if (this.imageChanged){
       const y = await firstValueFrom(this.conn.TryToUpdateServicePicture(this.croppedImage,this.buffer.update.templateId));
 
-      if (y.status != 201){
+      if (y.status != 200){
         this.buffer.services = await firstValueFrom(this.conn.GetServiceList(this.buffer.userInfo.userId));
         alert ("Image update failed");
       }

@@ -30,7 +30,7 @@ export class ServerConnectionService {
   loginParams = new HttpParams();
   test:UserInformation;
   constructor(private http:HttpClient, private buffer:BufferserviceService) {
-    this.requestsUrl = "http://20.206.240.87:8000/api/"
+    this.requestsUrl = "/api/"
   }
 
   EstablishConnection(){

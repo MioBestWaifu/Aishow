@@ -1,6 +1,6 @@
 <div class="wrapper">
     <div class="centerHor">
-        <img class="cardImage highlightImage" [src]="service.templateImageUrl" alt="" [title]="service.description" [routerLink]="['/services',service.templateId]">
+        <img class="cardImage highlightImage" [src]="service.templateImageUrl" [alt]="altUrl" [title]="service.description" [routerLink]="['/services',service.templateId]">
         <p [textContent]="service.shortServiceName" class="standardText serviceNameText highlightText" [title]="service.serviceName" [routerLink]="['/services',service.templateId]"></p>
         <p [textContent]="service.providerName" class="standardText serviceMinorText highlightText" [routerLink]="['/users',service.providerId]"></p>
         <p class="standardText roseText serviceCostText">R${{service.costPerHour}}</p>

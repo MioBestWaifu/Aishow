@@ -54,7 +54,7 @@ export class EditUserDialogComponent {
         return
       }
     }
-    //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
+    this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     this.dialog.closeAll();
   }
 }
