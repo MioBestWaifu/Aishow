@@ -1,5 +1,7 @@
 ol{
-    display: inline-block;
     list-style: none;
-    width: 70%;
+} span {
+    color: var(--rose);
+    font-size: 45px;
+    cursor: pointer;
 }

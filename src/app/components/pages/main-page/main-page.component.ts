@@ -20,4 +20,28 @@ export class MainPageComponent implements OnInit{
   
   await this.buffer.getMoreBundles(3);
   }
+
+  async evaluateScroll(){
+    console.log("Called evaluate scroll");
+    const listContainer = document.getElementById('overList');
+    const myList = document.getElementById('list');
+      // Calculate the scroll position
+    const scrollTop = listContainer.scrollTop;
+    const containerHeight = listContainer.clientHeight;
+    const listHeight = myList.clientHeight;
+
+      // Check if we've reached the end of the list
+    if (scrollTop + containerHeight >= listHeight) {
+      console.log(scrollTop);
+      console.log(containerHeight);
+      console.log(listHeight);
+      console.log('Scrolled to the end of the list');
+      await this.buffer.getMoreBundles(2);
+    }
+  }
+
+  async getMoreBundles(){
+    //await this.buffer.getMoreBundles(2);
+  }
+
 }

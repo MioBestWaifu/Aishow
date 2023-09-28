@@ -9,6 +9,7 @@
     border-style: solid;
     border-width: 0.1vw;
     border-color: var(--rose);
+    text-align: left;
 } .serviceNameText{
     font-size: 1vw;
     cursor: pointer;

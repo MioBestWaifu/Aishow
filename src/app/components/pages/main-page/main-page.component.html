@@ -2,12 +2,14 @@
 <div class="pageWrapper">
     <app-header></app-header>
     <app-lateral-bar [user]=buffer.userInfo class="lateralDiv roseBorder"></app-lateral-bar>
-    <div class="contentWrapper flexbox">
-        <ol>
-            <li *ngFor="let bundle of buffer.bundles">
-                <app-service-row [bundle] = bundle></app-service-row>
-            </li>
-        </ol>
+    <div id="overList"  class="contentWrapper flexbox" (scroll)="evaluateScroll()">
+        <div style="text-align: center;">
+            <ol id="list">
+                <li *ngFor="let bundle of buffer.bundles">
+                    <app-service-row [bundle] = bundle></app-service-row>
+                </li>
+            </ol>
+        </div>
         <app-instances-for-provider-list></app-instances-for-provider-list>
     </div>
 </div>
