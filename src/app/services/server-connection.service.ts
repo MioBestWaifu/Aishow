@@ -122,7 +122,7 @@ export class ServerConnectionService {
 
   GetUser(id:string):Observable<UserInformation>{
     try{
-    return this.http.get<UserInformation>(this.requestsUrl+"getUser?id="+id);
+    return this.http.get<UserInformation>(this.requestsUrl+"/users?id="+id);
     } catch (error){
       console.log(error);
       return null;
