@@ -41,14 +41,14 @@ export class ServerConnectionService {
   
   TryToLogin(forms:LoginTemplate):Observable<HttpResponse<UserInformation>>{
     try{
-    return this.http.post<UserInformation>(this.requestsUrl+"login",JSON.stringify(forms),{observe:'response', headers:this.jsonHeader});
+    return this.http.post<UserInformation>(this.requestsUrl+"users/login",JSON.stringify(forms),{observe:'response', headers:this.jsonHeader});
     } catch(error){
       return null;
     }
   }
 
   TryToRegister(forms:RegisterTemplate):Observable<HttpResponse<string>>{
-    return this.http.post(this.requestsUrl+"register",JSON.stringify(forms),{observe:'response',responseType: 'text',headers:this.jsonHeader});
+    return this.http.post(this.requestsUrl+"users/register",JSON.stringify(forms),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
 
   TryToCreateService(dia:CreateServiceDialogComponent):Observable<HttpResponse<string>>{
@@ -67,20 +67,20 @@ export class ServerConnectionService {
         x.availableTos[a] += ":00";
       }
     }
-    return this.http.post(this.requestsUrl+"createService?id="+this.buffer.userInfo.userId,JSON.stringify(x),{observe:'response',responseType: 'text',headers:this.jsonHeader});
+    return this.http.post(this.requestsUrl+"services/create?id="+this.buffer.userInfo.userId,JSON.stringify(x),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
   
   TryToUpdateService(info:ServiceInformation):Observable<HttpResponse<string>>{
     info.providerId = this.buffer.userInfo.userId;
-    return this.http.post(this.requestsUrl+"updateService",JSON.stringify(info),{observe:'response',responseType: 'text',headers:this.jsonHeader});
+    return this.http.post(this.requestsUrl+"services/update",JSON.stringify(info),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
 
   TryToUpdateServicePicture(image:string,id:number):Observable<HttpResponse<string>>{
-    return this.http.post(this.requestsUrl+"imageUpdate?type=service&id="+id+"&idProvider="+this.buffer.userInfo.userId,base64ToFile(image),{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"images/update?type=service&id="+id+"&idProvider="+this.buffer.userInfo.userId,base64ToFile(image),{observe:'response',responseType: 'text'});
   }
 
   TryToUpdateUserPicture(dia:EditUserDialogComponent, id:number):Observable<HttpResponse<string>>{
-    return this.http.post(this.requestsUrl+"imageUpdate?type=user&id="+id,base64ToFile(dia.croppedImage),{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"images/update?type=user&id="+id,base64ToFile(dia.croppedImage),{observe:'response',responseType: 'text'});
   }
 
   TryToUpdateUserName(dia:EditUserDialogComponent):Observable<HttpResponse<string>>{
@@ -103,26 +103,26 @@ export class ServerConnectionService {
     x.endTime = dia.endHour.substring(0,2)+":"+dia.endHour.substring(3,5)+":00";
     console.log(x.endTime);
 
-    return this.http.post(this.requestsUrl+"scheduleService",JSON.stringify(x),{observe:'response',responseType: 'text',headers:this.jsonHeader});
+    return this.http.post(this.requestsUrl+"services/schedule",JSON.stringify(x),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
 
   ReloadUser():Observable<UserInformation>{
-    return this.http.get<UserInformation>(this.requestsUrl+"reload?id="+this.buffer.userInfo.userId);
+    return this.http.get<UserInformation>(this.requestsUrl+"users/reload?id="+this.buffer.userInfo.userId);
   }
 
   GetAreas():Observable<GenericInformation[]>{
-    return this.http.get<GenericInformation[]>(this.requestsUrl+"info?type=request&category=areas");
+    return this.http.get<GenericInformation[]>(this.requestsUrl+"app/info?type=request&category=areas");
   }
   GetModalities():Observable<GenericInformation[]>{
-    return this.http.get<GenericInformation[]>(this.requestsUrl+"info?type=request&category=mod");
+    return this.http.get<GenericInformation[]>(this.requestsUrl+"app/info?type=request&category=mod");
   }
   GetCategories():Observable<GenericInformation[]>{
-    return this.http.get<GenericInformation[]>(this.requestsUrl+"info?type=request&category=cat");
+    return this.http.get<GenericInformation[]>(this.requestsUrl+"app/info?type=request&category=cat");
   }
 
   GetUser(id:string):Observable<UserInformation>{
     try{
-    return this.http.get<UserInformation>(this.requestsUrl+"/users?id="+id);
+    return this.http.get<UserInformation>(this.requestsUrl+"users?id="+id);
     } catch (error){
       console.log(error);
       return null;
@@ -131,7 +131,7 @@ export class ServerConnectionService {
 
   GetService(id:string):Observable<ServiceInformation>{
     try{
-    return this.http.get<ServiceInformation>(this.requestsUrl+"getService?id="+id);
+    return this.http.get<ServiceInformation>(this.requestsUrl+"services?id="+id);
     } catch (error){
       console.log(error)
       return null;
@@ -139,7 +139,7 @@ export class ServerConnectionService {
   }
 
   GetServiceList(id:number):Observable<ServiceInformation[]>{
-    return this.http.get<ServiceInformation[]>(this.requestsUrl+"getAllServices?id="+id);
+    return this.http.get<ServiceInformation[]>(this.requestsUrl+"services/userServices?id="+id);
   }
 
   GetTargetPage():Observable<string>{
@@ -148,11 +148,11 @@ export class ServerConnectionService {
   }
 
   GetSchedule():Observable<ServiceSchedule>{
-    return this.http.get<ServiceSchedule>(this.requestsUrl+"getAgenda?id="+this.buffer.userInfo.userId);
+    return this.http.get<ServiceSchedule>(this.requestsUrl+"agenda?id="+this.buffer.userInfo.userId);
   }
 
   GetUserServiceRequests():Observable<ClientServiceInteraction[]>{
-    return this.http.get<ClientServiceInteraction[]>(this.requestsUrl+"getUserRequests?id="+this.buffer.userInfo.userId);
+    return this.http.get<ClientServiceInteraction[]>(this.requestsUrl+"userRequests?id="+this.buffer.userInfo.userId);
   }
 
   SetLastPage(currentPage:string):Observable<HttpResponse<string>>{
@@ -180,7 +180,7 @@ export class ServerConnectionService {
   }
 
   GetAnotherBundle(alreadyHas:number[]):Observable<ServiceBundle>{
-    return this.http.post<ServiceBundle>(this.requestsUrl+"getAnotherBundle",JSON.stringify(alreadyHas),{headers:this.jsonHeader})
+    return this.http.post<ServiceBundle>(this.requestsUrl+"anotherBundle",JSON.stringify(alreadyHas),{headers:this.jsonHeader})
   }
   
 }
