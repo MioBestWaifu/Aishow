@@ -10,7 +10,7 @@
                         <p [textContent]="info.serviceName" class="titleText"></p>
                         <app-star-rating [rating]="info.averageScore" [imgWidth]="w"></app-star-rating>
                         <!-- Botar link pra pag de areas qnd tiver -->
-                        <p [textContent]="info.providerName" class="standardText highlightText" id="providerText" [routerLink]="['/users',info.providerId]"></p>
+                        <p [textContent]="info.provider.name" class="standardText highlightText" id="providerText" [routerLink]="['/users',info.provider.userId]"></p>
                         <p class="standardText rose" style="font-size: var(--e-size); padding-top: 3%;">R${{info.costPerHour}}</p>
                     </div>
                 </div>

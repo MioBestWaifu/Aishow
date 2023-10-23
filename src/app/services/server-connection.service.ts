@@ -71,7 +71,7 @@ export class ServerConnectionService {
   }
   
   TryToUpdateService(info:ServiceInformation):Observable<HttpResponse<string>>{
-    info.providerId = this.buffer.userInfo.userId;
+    info.provider.userId = this.buffer.userInfo.userId;
     return this.http.post(this.requestsUrl+"services/update",JSON.stringify(info),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
 

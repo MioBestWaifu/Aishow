@@ -1,11 +1,10 @@
 import { ReviewInformation } from "./reviewInformation";
+import { UserInformation } from "./userInformation";
 
 export class ServiceInformation{
-    serviceName:string; description:string; providerName:string; providerUrl:string; providerImageUrl:string;
+    serviceName:string; description:string;
     shortServiceName:string;
     costPerHour:number;
-    providerId:number;
-    providerArea:string;
     averageScore:number;
     templateId:number;
     modality:number;category:number;
@@ -13,4 +12,5 @@ export class ServiceInformation{
     availableDays:boolean[]; availableFroms:string[]; availableTos:string[];
     templateImageUrl:string;
     reviews:ReviewInformation[];
+    provider:UserInformation;
 }
