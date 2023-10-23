@@ -1,9 +1,11 @@
+import { GenericInformation } from "./genericInformation";
+
 export class RegisterTemplate{
     email:string;
     password:string;
     name:string;
     birthday:Date;
-    areaCode:number;
+    area:GenericInformation;
     gender:string
 
     constructor(e:string,p:string,u:string,b:Date,g:string,a:number){
@@ -11,7 +13,8 @@ export class RegisterTemplate{
         this.password = p;
         this.name = u;
         this.birthday = b;
-        this.areaCode = a;
         this.gender = g;
+        this.area = new GenericInformation();
+        this.area.Id = a;
     }
 }
