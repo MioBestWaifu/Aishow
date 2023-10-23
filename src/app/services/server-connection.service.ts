@@ -89,9 +89,8 @@ export class ServerConnectionService {
 
   TryToScheduleService(dia:ScheduleServiceDialogComponent):Observable<HttpResponse<string>>{
     const x = new ClientServiceInteraction();
-    x.templateId = dia.buffer.lastService.templateId;
     x.service = this.buffer.lastService;
-    x.clientId = this.buffer.userInfo.userId;
+    x.client.userId = this.buffer.userInfo.userId;
     x.cost = dia.cost;
     x.hasFinished = false;
     x.isAccepted = false;

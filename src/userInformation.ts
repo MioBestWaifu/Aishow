@@ -16,5 +16,4 @@ export class UserInformation{
     services:ServiceInformation[];
     averageScore:number;
     area:GenericInformation;
-
 }
