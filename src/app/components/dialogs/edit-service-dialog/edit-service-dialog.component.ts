@@ -20,12 +20,14 @@ export class EditServiceDialogComponent implements OnInit, AfterContentInit{
 
   constructor(public buffer:BufferserviceService, private dialog:MatDialog, private conn:ServerConnectionService){
     this.croppedImage = buffer.update.templateImageUrl;
-    console.log(this.buffer.update);
+    //console.log(this.buffer.update);
   }
 
   async ngOnInit() {
     this.Categories = await firstValueFrom(this.conn.GetCategories());
     this.Modalities = await firstValueFrom(this.conn.GetModalities());
+    //console.log("TESTANDOOOOOO");
+    //console.log(this.buffer.update)
   }
 
   async ngAfterContentInit(){

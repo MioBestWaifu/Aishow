@@ -22,7 +22,7 @@ export class MainPageComponent implements OnInit{
   }
 
   async evaluateScroll(){
-    console.log("Called evaluate scroll");
+    //console.log("Called evaluate scroll");
     const listContainer = document.getElementById('overList');
     const myList = document.getElementById('list');
       // Calculate the scroll position
@@ -32,10 +32,10 @@ export class MainPageComponent implements OnInit{
 
       // Check if we've reached the end of the list
     if (scrollTop + containerHeight >= listHeight) {
-      console.log(scrollTop);
-      console.log(containerHeight);
-      console.log(listHeight);
-      console.log('Scrolled to the end of the list');
+      //console.log(scrollTop);
+      //console.log(containerHeight);
+      //console.log(listHeight);
+      //console.log('Scrolled to the end of the list');
       await this.buffer.getMoreBundles(2);
     }
   }

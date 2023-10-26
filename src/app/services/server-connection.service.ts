@@ -31,7 +31,7 @@ export class ServerConnectionService {
   loginParams = new HttpParams();
   test:UserInformation;
   constructor(private http:HttpClient, private buffer:BufferserviceService) {
-    this.requestsUrl = "/api/"
+    this.requestsUrl = "http://yancosta.online/api/"
     buffer.conn = this;
   }
 
@@ -84,23 +84,23 @@ export class ServerConnectionService {
   }
 
   TryToUpdateUserName(dia:EditUserDialogComponent):Observable<HttpResponse<string>>{
-    return this.http.post(this.requestsUrl+"updateName?id="+this.buffer.userInfo.userId,dia.newName,{observe:'response',responseType: 'text'});
+    return this.http.post(this.requestsUrl+"users/updateName?id="+this.buffer.userInfo.userId,dia.newName,{observe:'response',responseType: 'text'});
   }
 
   TryToScheduleService(dia:ScheduleServiceDialogComponent):Observable<HttpResponse<string>>{
     const x = new ClientServiceInteraction();
     x.service = this.buffer.lastService;
-    x.client.userId = this.buffer.userInfo.userId;
+    x.client = this.buffer.userInfo;
     x.cost = dia.cost;
     x.hasFinished = false;
     x.isAccepted = false;
     x.startDate = Utils.DateToSqlString(dia.selected);
     x.endDate = x.startDate;
-    console.log(x.startDate);
+    //console.log(x.startDate);
     x.startTime = dia.startHour.substring(0,2)+":"+dia.startHour.substring(3,5)+":00";
-    console.log(x.startTime);
+    //console.log(x.startTime);
     x.endTime = dia.endHour.substring(0,2)+":"+dia.endHour.substring(3,5)+":00";
-    console.log(x.endTime);
+    //console.log(x.endTime);
 
     return this.http.post(this.requestsUrl+"services/schedule",JSON.stringify(x),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
@@ -123,7 +123,7 @@ export class ServerConnectionService {
     try{
     return this.http.get<UserInformation>(this.requestsUrl+"users?id="+id);
     } catch (error){
-      console.log(error);
+      //console.log(error);
       return null;
     }
   }
@@ -132,7 +132,7 @@ export class ServerConnectionService {
     try{
     return this.http.get<ServiceInformation>(this.requestsUrl+"services?id="+id);
     } catch (error){
-      console.log(error)
+      //console.log(error)
       return null;
     }
   }
@@ -147,16 +147,16 @@ export class ServerConnectionService {
   }
 
   GetSchedule():Observable<ServiceSchedule>{
-    return this.http.get<ServiceSchedule>(this.requestsUrl+"agenda?id="+this.buffer.userInfo.userId);
+    return this.http.get<ServiceSchedule>(this.requestsUrl+"services/agenda?id="+this.buffer.userInfo.userId);
   }
 
   GetUserServiceRequests():Observable<ClientServiceInteraction[]>{
-    return this.http.get<ClientServiceInteraction[]>(this.requestsUrl+"userRequests?id="+this.buffer.userInfo.userId);
+    return this.http.get<ClientServiceInteraction[]>(this.requestsUrl+"services/userRequests?id="+this.buffer.userInfo.userId);
   }
 
   SetLastPage(currentPage:string):Observable<HttpResponse<string>>{
     return null;
-    console.log("CHAMADO DE: " +currentPage)
+    //console.log("CHAMADO DE: " +currentPage)
     return this.http.post(this.requestsUrl+"pages?type=target",currentPage,{observe:'response',responseType: 'text'});
   }
 
@@ -166,20 +166,24 @@ export class ServerConnectionService {
   }
 
   AcceptRequest(req:ClientServiceInteraction):Observable<HttpResponse<string>>{
-    return this.http.get(this.requestsUrl+"answerRequest?type=accept&id="+req.id+"&idProvider="+this.buffer.userInfo.userId,{observe:'response',responseType: 'text'});
+    return this.http.get(this.requestsUrl+"services/answerRequest?type=accept&id="+req.id+"&idProvider="+this.buffer.userInfo.userId,{observe:'response',responseType: 'text'});
   }
 
   DenyRequest(req:ClientServiceInteraction):Observable<HttpResponse<string>>{
-    return this.http.get(this.requestsUrl+"answerRequest?type=deny&id="+req.id+"&idProvider="+this.buffer.userInfo.userId,{observe:'response',responseType: 'text'});
+    return this.http.get(this.requestsUrl+"services/answerRequest?type=deny&id="+req.id+"&idProvider="+this.buffer.userInfo.userId,{observe:'response',responseType: 'text'});
   }
 
   CancelRequest(id:number):Observable<HttpResponse<string>>{
-    const x = this.http.get(this.requestsUrl+"cancelRequest?id="+id,{observe:'response',responseType: 'text'});
+    const x = this.http.get(this.requestsUrl+"services/cancelRequest?id="+id,{observe:'response',responseType: 'text'});
     return x;
   }
 
   GetAnotherBundle(alreadyHas:number[]):Observable<ServiceBundle>{
-    return this.http.post<ServiceBundle>(this.requestsUrl+"anotherBundle",JSON.stringify(alreadyHas),{headers:this.jsonHeader})
+    return this.http.post<ServiceBundle>(this.requestsUrl+"services/anotherBundle",JSON.stringify(alreadyHas),{headers:this.jsonHeader})
+  }
+
+  SearchServices(toSearch:string):Observable<ServiceInformation[]>{
+    return this.http.get<ServiceInformation[]>(this.requestsUrl+"app/search?type=service&q="+toSearch+"&offset=0");
   }
   
 }

@@ -36,16 +36,16 @@ export class ScheduleServiceDialogComponent {
   hourChanged(){
     const x = Date.parse("1970-01-01:"+this.startHour+":00");
     const y = Date.parse("1970-01-01:"+this.endHour+":00");
-    console.log(this.startHour);
-    console.log(this.endHour);
-    console.log(x);
-    console.log(y);
-    console.log(this.buffer.lastService);
-    console.log(this.buffer.lastService.costPerHour/60);
+    //console.log(this.startHour);
+    //console.log(this.endHour);
+    //console.log(x);
+    //console.log(y);
+    //console.log(this.buffer.lastService);
+    //console.log(this.buffer.lastService.costPerHour/60);
     var diffMs = (y - x);
     var diffMins = Math.round(diffMs/60000);
-    console.log(diffMs);
-    console.log(diffMins);
+    //console.log(diffMs);
+    //console.log(diffMins);
     this.cost = diffMins * this.buffer.lastService.costPerHour/60;
   }
 
@@ -58,10 +58,10 @@ export class ScheduleServiceDialogComponent {
     const currEnd = Date.parse("1970-01-01:"+this.endHour+":00");
     const min = Date.parse("1970-01-01:"+this.buffer.lastService.availableFroms[this.selected.getDay()]);
     const max = Date.parse("1970-01-01:"+this.buffer.lastService.availableTos[this.selected.getDay()]);
-    console.log(currStart);
-    console.log(currEnd);
-    console.log(min);
-    console.log(max);
+    //console.log(currStart);
+    //console.log(currEnd);
+    //console.log(min);
+    //console.log(max);
 
     if ((currStart < min || currStart > max) || (currEnd < min || currEnd > max)){
       alert("Select a valid time range");

@@ -13,5 +13,6 @@ export class InstancesForProviderListComponent implements OnInit {
   
   async ngOnInit(){
     this.buffer.schedule = await firstValueFrom(this.conn.GetSchedule());
+    //console.log(this.buffer.schedule);
   }
 }

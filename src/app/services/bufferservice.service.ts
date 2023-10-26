@@ -26,10 +26,13 @@ export class BufferserviceService {
   }
 
   async getMoreBundles(amount:number){
-    console.log("Entrou no get more");
+    if (this.servCodes == undefined){
+      this.servCodes = [-1];
+    }
+    //console.log("Entrou no get more");
     for (let a = 1; a<= amount; a++){
       let x = await firstValueFrom(this.conn.GetAnotherBundle(this.servCodes));
-      console.log(x);
+      //console.log(x);
       this.bundles.push(x);
       if (this.servCodes[0] == -1){
         this.servCodes = [x.serviceInfos[0].templateId,x.serviceInfos[1].templateId,x.serviceInfos[2].templateId,

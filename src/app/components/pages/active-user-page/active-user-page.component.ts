@@ -21,7 +21,7 @@ export class ActiveUserPageComponent implements OnInit{
       //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     }
 
-    console.log(this.buffer.userInfo);
+    //console.log(this.buffer.userInfo);
     //const x = await firstValueFrom (this.conn.SetLastPage("/viewprofile"));
   }
 

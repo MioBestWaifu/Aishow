@@ -20,6 +20,7 @@ altUrl = Utils.altUrl;
 constructor(private buffer:BufferserviceService,private dialog:MatDialog){}
 
   ngOnInit(): void {
+    //console.log(this.info);
     this.dayInfos = Array<string>(7);
     if (!this.canEdit){
       document.getElementById("editService").style.display = "none";
@@ -35,15 +36,15 @@ constructor(private buffer:BufferserviceService,private dialog:MatDialog){}
         this.dayInfos[i] = x[i] +": N/A";
       }
       } catch(error){
-        console.log("ERRRRR")
-        console.log(error);
+        //console.log("ERRRRR")
+        //console.log(error);
       }
     }
 
   }
 
   edit(){
-    this.buffer.update = JSON.parse(JSON.stringify(this.info));
+    this.buffer.update = this.info;
     this.dialog.open(EditServiceDialogComponent);
   }
 }

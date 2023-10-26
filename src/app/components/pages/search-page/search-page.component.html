@@ -2,5 +2,11 @@
     <app-header></app-header>
     <app-lateral-bar [user]=buffer.userInfo class="lateralDiv roseBorder"></app-lateral-bar>
     <div class="contentWrapper">
+        <input type="text" (keyup.enter)="search()" [(ngModel)] = "text">
+        <ol>
+            <li *ngFor="let service of resultServices">
+                <app-service-card [service]=service></app-service-card>
+            </li>
+        </ol>
     </div>
 </div>

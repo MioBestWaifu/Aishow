@@ -14,6 +14,6 @@ export class ServiceCardComponent implements OnInit{
   @Input() service:ServiceInformation
 
   ngOnInit(): void {
-    //console.log("AVG"+this.service.AverageScore)
+    ////console.log("AVG"+this.service.AverageScore)
   }
 }

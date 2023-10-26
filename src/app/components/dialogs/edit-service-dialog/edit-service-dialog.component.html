@@ -64,9 +64,9 @@
             </div>
             <div class="flexbox verticalFlex centerHor" style="padding-left: 8%;">
                 <p class="standardText reverseText">Settings</p>
-                <label class="standardText reverseText">Service name:</label><input type="text" placeholder="Name" maxlength="32" [(ngModel)]="buffer.update.serviceName">
-                <label class="standardText reverseText">Description:</label><input type="text" placeholder="Describe what your service is like" maxlength="256" [(ngModel)]="buffer.update.description">
-                <label class="standardText reverseText">Cost per hour:</label><input type="number" min="0" max ="99999" step="any"  [(ngModel)]="buffer.update.costPerHour">
+                <label class="standardText reverseText">Service name:</label><input type="text" [placeholder]="buffer.update.serviceName" maxlength="32" [(ngModel)]="buffer.update.serviceName">
+                <label class="standardText reverseText">Description:</label><input type="text" [placeholder]="buffer.update.description" maxlength="256" [(ngModel)]="buffer.update.description">
+                <label class="standardText reverseText">Cost per hour:</label><input type="number" min="0" max ="99999" step="any" [placeholder]="buffer.update.costPerHour"  [(ngModel)]="buffer.update.costPerHour">
                 <div class="formsDiv">
                     <label for="mod" class="standardText reverseText block">Modality</label>
                     <select name="mod" id="mod" [(ngModel)]="buffer.update.modality">
