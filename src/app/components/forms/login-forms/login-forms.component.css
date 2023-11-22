@@ -13,6 +13,8 @@
     padding-top: 4%;
     padding-left: 2vw;
 } .textbox {
-    width: 16vw;
+    width: 70%;
     aspect-ratio: 16/1.5;
+} form{
+    width: 100%;
 }

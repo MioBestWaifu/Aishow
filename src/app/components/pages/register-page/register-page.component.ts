@@ -10,7 +10,7 @@ import { ServerConnectionService } from 'src/app/services/server-connection.serv
 })
 export class RegisterPageComponent implements OnInit{
 
-  constructor (private conn:ServerConnectionService, private buffer:BufferserviceService){}
+  constructor (private conn:ServerConnectionService, public buffer:BufferserviceService){}
   async ngOnInit(){
     this.buffer.runResposiveness();
     ////const x = await firstValueFrom (this.conn.SetLastPage("/pages/register"));

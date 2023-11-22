@@ -1,11 +1,11 @@
-<form (ngSubmit)="Submit()" class="formTemplate" style="width: 20vw;">
+<form (ngSubmit)="Submit()" class="formTemplate">
     <div class="cont">
-        <label for="user" class="standardText block">Email</label>
+        <label for="user" class="standardText block">User</label>
         <input id="user" name="username" type="email" class = "block textbox" [(ngModel)]="email"/>
     </div>
     <div class="cont">
         <label for="psswrd" class="standardText block">Password</label>
         <input id="psswrd" name="password" type="password" class="block textbox" [(ngModel)]="password"/>
     </div>
-    <input type="submit" value="Login" class="standardButton block" style="width: 8vw; aspect-ratio: 6/2;margin-top: 5%;margin-bottom: 5%;">
+    <input type="submit" value="Login" class="standardButton block" style="width: 28%; aspect-ratio: 6/2;margin-top: 5%;margin-bottom: 5%;">
 </form>

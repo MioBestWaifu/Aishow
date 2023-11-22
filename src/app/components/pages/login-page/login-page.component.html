@@ -1,10 +1,14 @@
 <div class="pageWrapper">
     <app-header></app-header>
-    <div style="height: 92vh; width: 100%; position: absolute; top: 8vh;">
+    <div *ngIf="!buffer.isPortrait" style="height: 92vh; width: 100%; position: absolute; top: 8vh;">
         <div style="width: 35%; height: 100%; position: absolute; left: 5vw;">
             <img src="{{imgUrl}}app/ai.png" style="height: 80%; position: absolute; bottom: 0px;">
             <div class="bubble standardText" routerLink="/register">Haven't registered yet onii-san? <br> Do it, onegaaaai &#10084; &#10084; &#10084;</div>
         </div>
-        <app-login-forms style="position: absolute; top:38%; left: 75%;"></app-login-forms>
+        <app-login-forms style="position: absolute; top:38%; left:55%; width: 30%;"></app-login-forms>
+    </div>
+    <div *ngIf="buffer.isPortrait" style="height: 92vh; width: 100%; position: absolute; top: 8vh;">
+        <app-login-forms style="position: absolute; top:35%; left: 0; right: 0; width: 90%; margin: auto;"></app-login-forms>
+        <p class="standardText" style="text-decoration: underline; position: absolute; top: 57%;" routerLink="/register">Register here!</p>
     </div>
 </div>

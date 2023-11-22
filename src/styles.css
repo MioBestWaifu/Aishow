@@ -11,12 +11,12 @@
     --secondary-background-color:#5c5959;
     --maroon: #d3c0cdff;
     --font-color: #ffffffff;
-    --a-size: 1vw;
-    --b-size:1.1vw;
-    --c-size: 1.3vw;
-    --d-size:1.5vw;
-    --dx-size:1.9vw;
-    --e-size:2.8vw;
+    --a-size: 13px;
+    --b-size:15px;
+    --c-size: 18px;
+    --d-size:20px;
+    --dx-size:26px;
+    --e-size:38px;
     --mdc-icon-button-icon-color: var(--rose);
 }.appWrapper{
     position: relative;

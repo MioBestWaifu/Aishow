@@ -11,7 +11,7 @@ import { BufferserviceService } from 'src/app/services/bufferservice.service';
 })
 export class LoginPageComponent implements OnInit{
   imgUrl:string = Utils.imgUrl;
-  constructor (private conn:ServerConnectionService, private buffer:BufferserviceService){}
+  constructor (private conn:ServerConnectionService, public buffer:BufferserviceService){}
   
   async ngOnInit(){
     this.buffer.runResposiveness();
