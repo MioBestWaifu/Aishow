@@ -6,6 +6,7 @@
     --maroon: #d3c0cdff;
     --font-color: #3d3a4bff; */
     --rose: #eb4b9bff;
+    --light-rose: rgb(255, 94, 174);
     --purple: #35143dff;
     --background-color: #323030;
     --secondary-background-color:#5c5959;
@@ -30,10 +31,9 @@
     width: 100vw;
 } .contentWrapper{
     position: absolute;
-    left: 15vw;
     top: 8vh;
     height: 92vh;
-    width: 85vw;
+    width: 100vw;
     overflow-y: scroll;
 } .standardText{
     color: var(--font-color);
@@ -126,6 +126,13 @@
     width: 100vw;
     border-color: var(--rose);
     position: fixed;
+    z-index: 100;
+} app-full-header{
+    height: 8vh;
+    width: 100vw;
+    border-color: var(--rose);
+    position: fixed;
+    z-index: 100;
 } .cardShadow{
     box-shadow: rgba(235, 75, 155, 0.35) 0px 0.2vw 0.9vw;
 } .centerHor{
@@ -139,6 +146,8 @@
 }.highlightBox:hover{
     background-color: var(--secondary-background-color);
     cursor: pointer;
+}.roseHighlight:hover{
+    background-color: var(--light-rose);
 }.highlightText:hover{
     text-decoration: underline;
     cursor: pointer;
@@ -159,6 +168,13 @@
 } .roseBorder{
     border-style: solid;
     border-color: var(--rose);
+    border-bottom-width: 0.2vw;
+    border-top-width: 0.2vw;
+    border-left-width: 0.2vw;
+    border-right-width: 0.2vw;
+}.whiteBorder{
+    border-style: solid;
+    border-color: var(--font-color);
     border-bottom-width: 0.2vw;
     border-top-width: 0.2vw;
     border-left-width: 0.2vw;

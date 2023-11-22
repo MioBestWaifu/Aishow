@@ -46,6 +46,7 @@ import { FullServiceCardComponent } from './components/cards/full-service-card/f
 import { EditServiceDialogComponent } from './components/dialogs/edit-service-dialog/edit-service-dialog.component';
 import { RequestForClientComponent } from './components/cards/request-for-client/request-for-client.component';
 import { RequestsForUserListComponent } from './components/structure/requests-for-user-list/requests-for-user-list.component';
+import { FullHeaderComponent } from './components/structure/full-header/full-header.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { RequestsForUserListComponent } from './components/structure/requests-fo
     FullServiceCardComponent,
     EditServiceDialogComponent,
     RequestForClientComponent,
-    RequestsForUserListComponent
+    RequestsForUserListComponent,
+    FullHeaderComponent
   ],
   imports: [
     BrowserModule,
