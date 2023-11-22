@@ -6,6 +6,7 @@ import { ServiceInformation } from 'src/serviceInformation';
 import { ServiceSchedule } from 'src/serviceSchedule';
 import { ServiceBundle } from 'src/serviceBundle';
 import { firstValueFrom } from 'rxjs';
+import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +20,9 @@ export class BufferserviceService {
   bundles:ServiceBundle[];
   servCodes:number[];
   conn:ServerConnectionService;
+  isPortrait:boolean;
 
-  constructor(){
+  constructor(private responsive: BreakpointObserver){
     this.bundles = [];
     this.servCodes = [-1];
   }
@@ -43,5 +45,23 @@ export class BufferserviceService {
         this.servCodes.push(x.serviceInfos[b].templateId)
       }
     }
+  }
+
+  runResposiveness(){
+    this.responsive.observe([
+      Breakpoints.HandsetPortrait,      
+      Breakpoints.TabletPortrait,
+      Breakpoints.WebPortrait
+      ])
+      .subscribe(result => {
+
+        this.isPortrait = false; 
+
+        if (result.matches) {
+          this.isPortrait = true;
+          console.log("É RETRATO CARAI");
+        }
+
+  });
   }
 }

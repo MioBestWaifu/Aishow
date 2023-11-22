@@ -52,20 +52,6 @@
     color: transparent;
     -webkit-text-stroke:2px var(--rose)
     /* text-shadow: -2px 0 var(--rose), 0 2px var(--rose), 2px 0 var(--rose), 0 -2px var(--rose); */
-}.roseBorder{
-    border-style: solid;
-    border-color: var(--rose);
-    border-bottom-width: 0.2vw;
-    border-top-width: 0.2vw;
-    border-left-width: 0.2vw;
-    border-right-width: 0.2vw;
-}.smallRoseBorder{
-    border-style: solid;
-    border-color: var(--rose);
-    border-bottom-width: 0.1vw;
-    border-top-width: 0.1vw;
-    border-left-width: 0.1vw;
-    border-right-width: 0.1vw;
 }.flexbox{
     position: relative;
     display: flex;
@@ -74,15 +60,16 @@
 }.formTemplate{
     margin: auto;
     padding: 1%;
-    /* border-style: solid; */
+    border-style: solid;
     border-width: 0.2vw;
     border-radius: 8px;
-    /* border-color: var(--rose); */
+    border-color: var(--font-color);
     width: 35%;
     position: absolute;
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: var(--rose);
 }  .formsDiv{
     display: inline-block;
     margin: 1.5%;
@@ -166,6 +153,20 @@
         transition: all 0.50s;
         cursor: pointer;
     }
+} .roseBorder{
+    border-style: solid;
+    border-color: var(--rose);
+    border-bottom-width: 0.2vw;
+    border-top-width: 0.2vw;
+    border-left-width: 0.2vw;
+    border-right-width: 0.2vw;
+}.smallRoseBorder{
+    border-style: solid;
+    border-color: var(--rose);
+    border-bottom-width: 0.1vw;
+    border-top-width: 0.1vw;
+    border-left-width: 0.1vw;
+    border-right-width: 0.1vw;
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

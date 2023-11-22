@@ -17,6 +17,7 @@ export class ActiveUserPageComponent implements OnInit{
   }
   
   async ngOnInit(){
+    this.buffer.runResposiveness();
     if (this.buffer.userInfo == null){
       //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     }

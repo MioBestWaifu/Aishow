@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "C:/Users/yan/Documents/Programas/Honoka/Backend/Hirotsuka/src/main/resources/dist/hayasaka",
+            "outputPath": "D:/Programs/Aishow-backend/src/main/resources/dist/hayasaka",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -98,5 +98,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

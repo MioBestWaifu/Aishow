@@ -14,6 +14,7 @@ export class MainPageComponent implements OnInit{
  constructor(public buffer:BufferserviceService, private conn:ServerConnectionService){}
 
  async ngOnInit(){
+  this.buffer.runResposiveness();
   if (this.buffer.userInfo == null){
     ////this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
   }

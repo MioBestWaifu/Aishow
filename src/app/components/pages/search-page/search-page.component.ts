@@ -17,6 +17,7 @@ export class SearchPageComponent implements OnInit{
   constructor(public buffer:BufferserviceService, private conn:ServerConnectionService){}
 
   async ngOnInit(){
+    this.buffer.runResposiveness();
   }
 
   async search(){
