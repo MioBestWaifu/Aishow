@@ -11,13 +11,15 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 @Injectable({
   providedIn: 'root'
 })
+
+//TODO organizar essa putaria de serviços diferentes
 export class BufferserviceService {
   userInfo:UserInformation;
   lastService:ServiceInformation;
   schedule:ServiceSchedule;
   services:ServiceInformation[];
   update:ServiceInformation;
-  bundles:ServiceBundle[];
+  bundles:ServiceInformation[];
   servCodes:number[];
   conn:ServerConnectionService;
   isPortrait:boolean;
@@ -35,14 +37,13 @@ export class BufferserviceService {
     for (let a = 1; a<= amount; a++){
       let x = await firstValueFrom(this.conn.GetAnotherBundle(this.servCodes));
       //console.log(x);
-      this.bundles.push(x);
       if (this.servCodes[0] == -1){
-        this.servCodes = [x.serviceInfos[0].templateId,x.serviceInfos[1].templateId,x.serviceInfos[2].templateId,
-        x.serviceInfos[3].templateId];
-        continue;
+        this.servCodes = [];
+        this.bundles = [];
       }
       for (let b = 0; b < x.serviceInfos.length; b++){
         this.servCodes.push(x.serviceInfos[b].templateId)
+        this.bundles.push(x.serviceInfos[b]);
       }
     }
   }

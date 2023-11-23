@@ -47,6 +47,7 @@ import { EditServiceDialogComponent } from './components/dialogs/edit-service-di
 import { RequestForClientComponent } from './components/cards/request-for-client/request-for-client.component';
 import { RequestsForUserListComponent } from './components/structure/requests-for-user-list/requests-for-user-list.component';
 import { FullHeaderComponent } from './components/structure/full-header/full-header.component';
+import { ServicesListComponent } from './components/structure/services-list/services-list.component';
 
 @NgModule({
   declarations: [
@@ -86,7 +87,8 @@ import { FullHeaderComponent } from './components/structure/full-header/full-hea
     EditServiceDialogComponent,
     RequestForClientComponent,
     RequestsForUserListComponent,
-    FullHeaderComponent
+    FullHeaderComponent,
+    ServicesListComponent
   ],
   imports: [
     BrowserModule,

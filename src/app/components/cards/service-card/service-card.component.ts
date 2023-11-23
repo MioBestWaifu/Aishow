@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BufferserviceService } from 'src/app/services/bufferservice.service';
 import { ServiceBundle } from 'src/serviceBundle';
 import { ServiceInformation } from 'src/serviceInformation';
 import { Utils } from 'src/utils';
@@ -12,6 +13,8 @@ export class ServiceCardComponent implements OnInit{
   starWidth = "1.6vw"
   altUrl = Utils.altUrl;
   @Input() service:ServiceInformation
+
+  constructor(public buffer:BufferserviceService){}
 
   ngOnInit(): void {
     ////console.log("AVG"+this.service.AverageScore)

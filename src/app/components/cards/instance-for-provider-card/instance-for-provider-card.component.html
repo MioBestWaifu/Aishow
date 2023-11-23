@@ -5,6 +5,10 @@
             <p class="standardText highlightText">{{request.client.name}}</p>
             <p class="standardText highlightText">{{request.service.serviceName}}</p>
             <p class=" standardText">R${{request.cost}}</p>
+            <div class="flexbox" style="margin-top: 6px; align-items: center">
+                <i class="material-symbols-outlined roseText">emoji_people</i>
+                <p class="standardText bigText roseText">Client</p>
+            </div>
         </div>
         <div class="pad">
             <p class="standardText">{{request.startDate}} - {{request.endDate}}</p>
@@ -20,6 +24,10 @@
                 <p class="standardText highlightText">{{request.service.provider.name}}</p>
                 <p class="standardText highlightText">{{request.service.serviceName}}</p>
                 <p class=" standardText">R${{request.cost}}</p>
+                <div class="flexbox" style="margin-top: 6px; align-items: center;">
+                    <i class="material-symbols-outlined roseText">support_agent</i>
+                    <p class="standardText bigText roseText">Provider</p>
+                </div>
             </div>
             <div class="pad">
                 <p class="standardText">{{request.startDate}} - {{request.endDate}}</p>

@@ -38,6 +38,8 @@
 } .standardText{
     color: var(--font-color);
     font-size:var(--c-size);
+} .bigText{
+    font-size:var(--dx-size);
 } .titleText{
     color: var(--font-color);
     /*-webkit-text-fill-color: var(--background-color);*/
@@ -117,10 +119,6 @@
     margin: auto;
     width: 20%;
     height: 8%;
-} .cardImage{
-    width: 12vw;
-    aspect-ratio:1/1;
-    cursor: pointer;
 } app-header{
     height: 8vh;
     width: 100vw;

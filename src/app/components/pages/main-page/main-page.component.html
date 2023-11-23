@@ -1,14 +1,11 @@
 
 <div class="pageWrapper">
     <app-full-header></app-full-header>
-    <div id="overList"  class="contentWrapper flexbox" (scroll)="evaluateScroll()">
-        <div style="text-align: center;">
-            <ol id="list">
-                <li *ngFor="let bundle of buffer.bundles">
-                    <app-service-row [bundle] = bundle></app-service-row>
-                </li>
-            </ol>
-        </div>
+    <div *ngIf="buffer.isPortrait" id="overList"  class="contentWrapper flexbox" (scroll)="evaluateScroll()">
+        <app-services-list class="servicesListPortrait"></app-services-list>
+    </div>
+    <div *ngIf="!buffer.isPortrait" id="overList"  class="contentWrapper flexbox" (scroll)="evaluateScroll()">
+        <app-services-list class="servicesList"></app-services-list>
         <app-instances-for-provider-list></app-instances-for-provider-list>
     </div>
 </div>
