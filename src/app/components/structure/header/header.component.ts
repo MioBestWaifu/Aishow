@@ -4,7 +4,7 @@ import { Utils } from 'src/utils';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
   imgUrl:string = Utils.imgUrl;

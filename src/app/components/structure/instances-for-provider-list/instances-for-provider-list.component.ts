@@ -6,7 +6,7 @@ import { ServerConnectionService } from 'src/app/services/server-connection.serv
 @Component({
   selector: 'app-instances-for-provider-list',
   templateUrl: './instances-for-provider-list.component.html',
-  styleUrls: ['./instances-for-provider-list.component.css']
+  styleUrls: ['./instances-for-provider-list.component.scss']
 })
 export class InstancesForProviderListComponent implements OnInit {
   constructor(public buffer:BufferserviceService, private conn:ServerConnectionService){}

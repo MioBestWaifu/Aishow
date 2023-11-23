@@ -15,7 +15,7 @@ import { WrongCredentialsDialogComponent } from '../../dialogs/wrong-credentials
 @Component({
   selector: 'app-login-forms',
   templateUrl: './login-forms.component.html',
-  styleUrls: ['./login-forms.component.css']
+  styleUrls: ['./login-forms.component.scss']
 })
 export class LoginFormsComponent {
   email:string;

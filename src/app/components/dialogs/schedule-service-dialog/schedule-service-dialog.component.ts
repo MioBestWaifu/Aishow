@@ -10,7 +10,7 @@ import { firstValueFrom } from 'rxjs';
 @Component({
   selector: 'app-schedule-service-dialog',
   templateUrl: './schedule-service-dialog.component.html',
-  styleUrls: ['./schedule-service-dialog.component.css']
+  styleUrls: ['./schedule-service-dialog.component.scss']
 })
 export class ScheduleServiceDialogComponent {
   selected:Date | null;

@@ -10,7 +10,7 @@ import { FailedUpdateDialogComponent } from '../failed-update-dialog/failed-upda
 @Component({
   selector: 'app-create-service-dialog',
   templateUrl: './create-service-dialog.component.html',
-  styleUrls: ['./create-service-dialog.component.css']
+  styleUrls: ['./create-service-dialog.component.scss']
 })
 export class CreateServiceDialogComponent implements OnInit{
   Categories:GenericInformation[];

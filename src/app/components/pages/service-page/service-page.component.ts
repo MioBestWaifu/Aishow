@@ -10,7 +10,7 @@ import { ScheduleServiceDialogComponent } from '../../dialogs/schedule-service-d
 @Component({
   selector: 'app-service-page',
   templateUrl: './service-page.component.html',
-  styleUrls: ['./service-page.component.css']
+  styleUrls: ['./service-page.component.scss']
 })
 export class ServicePageComponent implements OnInit{
   id:number;

@@ -5,7 +5,7 @@ import { Utils } from 'src/utils';
 @Component({
   selector: 'app-star-rating',
   templateUrl: './star-rating.component.html',
-  styleUrls: ['./star-rating.component.css']
+  styleUrls: ['./star-rating.component.scss']
 })
 export class StarRatingComponent implements OnInit{
   @Input() rating:number;

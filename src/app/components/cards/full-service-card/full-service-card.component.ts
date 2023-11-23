@@ -9,7 +9,7 @@ import { Utils } from 'src/utils';
 @Component({
   selector: 'app-full-service-card',
   templateUrl: './full-service-card.component.html',
-  styleUrls: ['./full-service-card.component.css']
+  styleUrls: ['./full-service-card.component.scss']
 })
 export class FullServiceCardComponent implements OnInit{
 @Input() info:ServiceInformation;

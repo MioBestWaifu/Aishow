@@ -6,7 +6,7 @@ import { Utils } from 'src/utils';
 @Component({
   selector: 'app-service-card',
   templateUrl: './service-card.component.html',
-  styleUrls: ['./service-card.component.css']
+  styleUrls: ['./service-card.component.scss']
 })
 export class ServiceCardComponent implements OnInit{
   starWidth = "1.6vw"

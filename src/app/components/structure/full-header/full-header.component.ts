@@ -5,7 +5,7 @@ import { Utils } from 'src/utils';
 @Component({
   selector: 'app-full-header',
   templateUrl: './full-header.component.html',
-  styleUrls: ['./full-header.component.css']
+  styleUrls: ['./full-header.component.scss']
 })
 export class FullHeaderComponent {
   imgUrl:string = Utils.imgUrl;

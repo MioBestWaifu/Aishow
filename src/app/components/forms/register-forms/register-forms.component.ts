@@ -12,7 +12,7 @@ import { BufferserviceService } from 'src/app/services/bufferservice.service';
 @Component({
   selector: 'app-register-forms',
   templateUrl: './register-forms.component.html',
-  styleUrls: ['./register-forms.component.css']
+  styleUrls: ['./register-forms.component.scss']
 })
 export class RegisterFormsComponent{
   AreaInfos:GenericInformation[];

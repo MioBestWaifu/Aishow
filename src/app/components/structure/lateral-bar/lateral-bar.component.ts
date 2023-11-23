@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-lateral-bar',
   templateUrl: './lateral-bar.component.html',
-  styleUrls: ['./lateral-bar.component.css']
+  styleUrls: ['./lateral-bar.component.scss']
 })
 export class LateralBarComponent {
   @Input() user:UserInformation;

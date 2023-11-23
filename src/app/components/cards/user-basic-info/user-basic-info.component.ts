@@ -8,7 +8,7 @@ import { Utils } from 'src/utils';
 @Component({
   selector: 'app-user-basic-info',
   templateUrl: './user-basic-info.component.html',
-  styleUrls: ['./user-basic-info.component.css']
+  styleUrls: ['./user-basic-info.component.scss']
 })
 export class UserBasicInfoComponent{
   w = "3.5vw";
