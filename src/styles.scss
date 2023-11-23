@@ -29,6 +29,12 @@
     background-color: var(--background-color);
     height: 100vh;
     width: 100vw;
+} .portraitContentWrapper{
+    position: absolute;
+    top: 0px;
+    height: 92vh;
+    width: 100vw;
+    overflow-y: scroll;
 } .contentWrapper{
     position: absolute;
     top: 8vh;
@@ -59,6 +65,10 @@
     display: flex;
 }.verticalFlex{
     flex-direction: column;
+}.justifySpaceFlex{
+    justify-content: space-evenly;
+}.alignCenterFlex{
+    align-items: center;
 }.formTemplate{
     margin: auto;
     padding: 1%;
@@ -131,6 +141,8 @@
     border-color: var(--rose);
     position: fixed;
     z-index: 100;
+} .botHeader{
+    bottom: 0px;
 } .cardShadow{
     box-shadow: rgba(235, 75, 155, 0.35) 0px 0.2vw 0.9vw;
 } .centerHor{

@@ -1,7 +1,8 @@
 
 <div class="pageWrapper">
-    <app-full-header></app-full-header>
-    <div *ngIf="buffer.isPortrait" id="overList"  class="contentWrapper flexbox" (scroll)="evaluateScroll()">
+    <app-full-header [ngClass]="{'botHeader':buffer.isPortrait}"></app-full-header>
+    <div *ngIf="buffer.isPortrait" id="overList"  class="portraitContentWrapper" (scroll)="evaluateScroll()">
+        <app-portrait-instance-warning-card></app-portrait-instance-warning-card>
         <app-services-list class="servicesListPortrait"></app-services-list>
     </div>
     <div *ngIf="!buffer.isPortrait" id="overList"  class="contentWrapper flexbox" (scroll)="evaluateScroll()">

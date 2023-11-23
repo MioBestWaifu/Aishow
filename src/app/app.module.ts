@@ -48,6 +48,8 @@ import { RequestForClientComponent } from './components/cards/request-for-client
 import { RequestsForUserListComponent } from './components/structure/requests-for-user-list/requests-for-user-list.component';
 import { FullHeaderComponent } from './components/structure/full-header/full-header.component';
 import { ServicesListComponent } from './components/structure/services-list/services-list.component';
+import { PortraitInstancesListComponent } from './components/structure/portrait-instances-list/portrait-instances-list.component';
+import { PortraitInstanceWarningCardComponent } from './components/cards/portrait-instance-warning-card/portrait-instance-warning-card.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +90,9 @@ import { ServicesListComponent } from './components/structure/services-list/serv
     RequestForClientComponent,
     RequestsForUserListComponent,
     FullHeaderComponent,
-    ServicesListComponent
+    ServicesListComponent,
+    PortraitInstancesListComponent,
+    PortraitInstanceWarningCardComponent
   ],
   imports: [
     BrowserModule,

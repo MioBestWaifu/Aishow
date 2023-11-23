@@ -7,11 +7,13 @@
     white-space: nowrap; /* don't break the line */
     text-overflow: ellipsis; /* give the beautiful '...' effect */
     overflow-x: auto;
+} .portraitWidth{
+    width: 240px;
 } img{
     width: 25%;
     aspect-ratio: 1/1;
 } .pad{
-    padding-left: 2%;
+    padding-left: 4%;
 } i{
     color: var(--rose);
     font-size: 250%;
