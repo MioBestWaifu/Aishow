@@ -50,6 +50,7 @@ import { FullHeaderComponent } from './components/structure/full-header/full-hea
 import { ServicesListComponent } from './components/structure/services-list/services-list.component';
 import { PortraitInstancesListComponent } from './components/structure/portrait-instances-list/portrait-instances-list.component';
 import { PortraitInstanceWarningCardComponent } from './components/cards/portrait-instance-warning-card/portrait-instance-warning-card.component';
+import { SchedulePageComponent } from './components/pages/schedule-page/schedule-page.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { PortraitInstanceWarningCardComponent } from './components/cards/portrai
     FullHeaderComponent,
     ServicesListComponent,
     PortraitInstancesListComponent,
-    PortraitInstanceWarningCardComponent
+    PortraitInstanceWarningCardComponent,
+    SchedulePageComponent
   ],
   imports: [
     BrowserModule,
