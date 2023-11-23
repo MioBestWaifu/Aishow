@@ -1,6 +1,8 @@
 <div class="pageWrapper">
-    <app-full-header></app-full-header>
-    <div class="contentWrapper flexbox">
+    <app-full-header [ngClass]="{'botHeader':buffer.isPortrait}"></app-full-header>
+    <div *ngIf="buffer.isPortrait" class="portraitContentWrapper">
+    </div>
+    <div *ngIf="!buffer.isPortrait" class="contentWrapper flexbox">
         <div id="tabGroup">
             <div class="flexbox">
                 <div id="templatesTab" class="standardText roseText tab highlightBox"(click)="goToTemplates()">Templates</div>
