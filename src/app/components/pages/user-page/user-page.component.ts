@@ -27,6 +27,12 @@ export class UserPageComponent implements OnInit{
    })
    //const x = await firstValueFrom (this.conn.SetLastPage("/user/"+this.id));
    this.info = await firstValueFrom(this.conn.GetUser(this.id.toString()));
+   this.info.reviews = await firstValueFrom(this.conn.GetReviews(this.id.toString(),"users"));
+   this.info.services = await firstValueFrom(this.conn.GetServiceList(this.id));
+
+   this.info.services.forEach(element => {
+    element.provider = this.info;
+   });
   }
 
 }
