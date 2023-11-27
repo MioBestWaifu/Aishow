@@ -17,7 +17,7 @@ export class FullServiceCardComponent implements OnInit{
 dayInfos:string[];
 altUrl = Utils.altUrl;
 
-constructor(private buffer:BufferserviceService,private dialog:MatDialog){}
+constructor(public buffer:BufferserviceService,private dialog:MatDialog){}
 
   ngOnInit(): void {
     //console.log(this.info);
@@ -26,7 +26,12 @@ constructor(private buffer:BufferserviceService,private dialog:MatDialog){}
       document.getElementById("editService").style.display = "none";
     }
 
+    if (!this.buffer.isPortrait){
     var x = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    } else {
+      //Populate a var x with the first letter of each day of the week, starting with monday and ending with sunday
+      var x = ["M", "T", "W", "T", "F", "S", "S"];
+    }
 
     for (let i = 0; i <= 6; i++) {
       try{

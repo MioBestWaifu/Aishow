@@ -8,6 +8,7 @@ import { ServerConnectionService } from 'src/app/services/server-connection.serv
   templateUrl: './instances-for-provider-list.component.html',
   styleUrls: ['./instances-for-provider-list.component.scss']
 })
+//TODO #6 linkar essa porra com a schedulepage
 export class InstancesForProviderListComponent implements OnInit {
   constructor(public buffer:BufferserviceService, private conn:ServerConnectionService){}
   

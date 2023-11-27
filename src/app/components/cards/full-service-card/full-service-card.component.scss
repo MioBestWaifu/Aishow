@@ -1,10 +1,14 @@
 .main{
     width: 95%;
+    height: 210px;
     border-style: solid;
     border-width: 0.1vw;
     border-color: var(--rose);
     overflow: hidden; /* make sure it hides the content that overflows */
     text-overflow: ellipsis; /* give the beautiful '...' effect */
+}.mainPortrait{
+    @extend .main;
+    height: 126px;
 } img{
     width: 25%;
     aspect-ratio: 1/1;
@@ -17,6 +21,9 @@
 } .btns{
     width: 25%;
     min-height: 100%;
+} .btnsPortrait{
+    @extend .btns;
+    overflow-y: scroll;
 } .lowBorder{
     border-bottom-width: 0.1vw;
     border-top-width: 0vw;
@@ -31,8 +38,6 @@
     border-right-width: 0.1vw;
     border-color: var(--rose);
     border-style: solid;
-} #title{
-    font-size: var(--dx-size);
 } p {
     padding-top: 1.5%;
 } #editService{
@@ -43,6 +48,8 @@
 } app-star-rating{
     padding-left: 3%;
     transform: translateY(15%);
-} .dayDiv{
-    height: 14.3%;
+} .dayDivPortrait{
+    height: 30px;
+}.dayDiv{
+    height: 30px;
 }
