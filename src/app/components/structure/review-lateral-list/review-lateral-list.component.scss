@@ -8,6 +8,13 @@ div{
     display: flex;
     flex-direction: column;
     width: 15vw;
+} .divPortrait{
+    width: 100vw;
+    border-right-width: 0.1vw;
+    border-bottom-width: 0vw;
+    border-top-width: 0.1vw;
 } ol{
     list-style: none;
+} app-star-rating{
+    width: 150px;
 }

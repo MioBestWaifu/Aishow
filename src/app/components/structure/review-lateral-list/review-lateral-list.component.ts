@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { BufferserviceService } from 'src/app/services/bufferservice.service';
 import { ReviewInformation } from 'src/reviewInformation';
 
 @Component({
@@ -9,4 +10,7 @@ import { ReviewInformation } from 'src/reviewInformation';
 export class ReviewLateralListComponent {
   starWidth = "1.4vw";
   @Input() reviews:ReviewInformation[];
+
+  constructor(public buffer:BufferserviceService){
+  }
 }

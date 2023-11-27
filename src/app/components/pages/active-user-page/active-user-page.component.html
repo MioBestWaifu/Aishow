@@ -1,6 +1,13 @@
 <div class="pageWrapper">
     <app-full-header [ngClass]="{'botHeader':buffer.isPortrait}"></app-full-header>
     <div *ngIf="buffer.isPortrait" class="portraitContentWrapper">
+        <div style="width: 100%;">
+            <div id="info" class="centerHor">
+                <app-user-basic-info [user]="buffer.userInfo"></app-user-basic-info>
+                <!-- <button class="standardButton" (click)="edit()">Edit profile</button> -->
+            </div>
+            <app-requests-for-user-list></app-requests-for-user-list>
+        </div>
     </div>
     <div *ngIf="!buffer.isPortrait" class="contentWrapper">
         <div class="flexbox borda">
