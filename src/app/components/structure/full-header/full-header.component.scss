@@ -1,0 +1,31 @@
+div {
+    background-color: var(--rose);
+    height: 8vh;
+    width: 100vw;
+    border-style: solid;
+    border-bottom-width: 0.2vw;
+    border-top-width: 0vw;
+    border-left-width: 0vw;
+    border-right-width: 0vw;
+    border-color: var(--font-color);
+    position: fixed;
+    text-overflow: clip;
+    cursor: pointer;
+} p{
+    cursor: pointer;
+} .flexbox{
+    justify-content: space-evenly;
+    align-items: center;
+} i {
+    color: var(--font-color);
+} #icons{
+    position: unset;
+    background-color: inherit;
+    border: 0;
+} #profilePic{
+    border-radius: 50%;
+    height: 6vh;
+    aspect-ratio: 1/1;
+} .iconPortrait{
+    
+}

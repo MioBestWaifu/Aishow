@@ -7,7 +7,7 @@ import { Utils } from 'src/utils';
 @Component({
   selector: 'app-request-for-client',
   templateUrl: './request-for-client.component.html',
-  styleUrls: ['./request-for-client.component.css']
+  styleUrls: ['./request-for-client.component.scss']
 })
 export class RequestForClientComponent {
   @Input() request:ClientServiceInteraction;

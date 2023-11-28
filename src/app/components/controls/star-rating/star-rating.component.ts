@@ -5,7 +5,7 @@ import { Utils } from 'src/utils';
 @Component({
   selector: 'app-star-rating',
   templateUrl: './star-rating.component.html',
-  styleUrls: ['./star-rating.component.css']
+  styleUrls: ['./star-rating.component.scss']
 })
 export class StarRatingComponent implements OnInit{
   @Input() rating:number;
@@ -43,10 +43,8 @@ export class StarRatingComponent implements OnInit{
     
     //console.log("IMAGE WIDTH");
     //console.log(y.length);
-    for (let a = 0; a < y.length; a++) {
-      if (y[a].style.width == "1.6vw"){
-        y[a].style.width = this.imgWidth
-      }
-    }
+    /* for (let a = 0; a < y.length; a++) {
+      y[a].style.width = this.imgWidth
+    } */
   }
 }

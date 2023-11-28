@@ -1,6 +1,6 @@
-<div class="wrapper">
+<div [ngClass]="{'wrapperPortrait':buffer.isPortrait,'wrapper':!buffer.isPortrait}">
     <div class="centerHor">
-        <img class="cardImage highlightImage" [src]="service.templateImageUrl" [alt]="altUrl" [title]="service.description" [routerLink]="['/services',service.templateId]">
+        <img [ngClass]="{'cardImagePortrait':buffer.isPortrait,'cardImage':!buffer.isPortrait}" [src]="service.templateImageUrl" [alt]="altUrl" [title]="service.description" [routerLink]="['/services',service.templateId]">
         <p [textContent]="service.serviceName" class="standardText serviceNameText highlightText" [title]="service.serviceName" [routerLink]="['/services',service.templateId]"></p>
         <p [textContent]="service.provider.name" class="standardText serviceMinorText highlightText" [routerLink]="['/users',service.provider.userId]"></p>
         <p class="standardText roseText serviceCostText">R${{service.costPerHour}}</p>

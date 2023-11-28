@@ -6,7 +6,7 @@ import { ServerConnectionService } from 'src/app/services/server-connection.serv
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.css']
+  styleUrls: ['./main-page.component.scss']
 })
 export class MainPageComponent implements OnInit{
  test:string = "TESTE";
@@ -14,6 +14,7 @@ export class MainPageComponent implements OnInit{
  constructor(public buffer:BufferserviceService, private conn:ServerConnectionService){}
 
  async ngOnInit(){
+  this.buffer.runResposiveness();
   if (this.buffer.userInfo == null){
     ////this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
   }

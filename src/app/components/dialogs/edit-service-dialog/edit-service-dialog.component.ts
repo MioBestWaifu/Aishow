@@ -9,7 +9,7 @@ import { ImageCroppedEvent} from 'ngx-image-cropper';
 @Component({
   selector: 'app-edit-service-dialog',
   templateUrl: './edit-service-dialog.component.html',
-  styleUrls: ['./edit-service-dialog.component.css']
+  styleUrls: ['./edit-service-dialog.component.scss']
 })
 export class EditServiceDialogComponent implements OnInit, AfterContentInit{
   Categories:GenericInformation[];

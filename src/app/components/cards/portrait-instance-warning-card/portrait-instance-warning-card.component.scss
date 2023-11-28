@@ -1,0 +1,15 @@
+.counter{
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 4px;
+    border-color: var(--font-color);
+    color: var(--font-color);
+    background-color: var(--rose);
+    width: 50px;
+    height: 50px;
+    aspect-ratio: 1/1;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    cursor: pointer;
+}

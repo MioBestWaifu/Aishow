@@ -10,13 +10,14 @@ import { ServiceInformation } from 'src/serviceInformation';
 @Component({
   selector: 'app-my-services-page',
   templateUrl: './my-services-page.component.html',
-  styleUrls: ['./my-services-page.component.css']
+  styleUrls: ['./my-services-page.component.scss']
 })
 export class MyServicesPageComponent implements OnInit{
 
   constructor(public buffer:BufferserviceService, private conn:ServerConnectionService,private dialog:MatDialog){}
 
   async ngOnInit(){
+    this.buffer.runResposiveness();
     if (this.buffer.userInfo == null){
       //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     }

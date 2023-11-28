@@ -21,6 +21,7 @@ import { ServiceSchedule } from 'src/serviceSchedule';
 import { BufferserviceService } from './bufferservice.service';
 import { Router } from '@angular/router';
 import { ServiceBundle } from 'src/serviceBundle';
+import { ReviewInformation } from 'src/reviewInformation';
 
 @Injectable({
   providedIn: 'root'
@@ -122,6 +123,15 @@ export class ServerConnectionService {
   GetUser(id:string):Observable<UserInformation>{
     try{
     return this.http.get<UserInformation>(this.requestsUrl+"users?id="+id);
+    } catch (error){
+      //console.log(error);
+      return null;
+    }
+  }
+
+  GetReviews(id:string, type:string):Observable<ReviewInformation[]>{
+    try{
+    return this.http.get<ReviewInformation[]>(this.requestsUrl+type+"/reviews?id="+id);
     } catch (error){
       //console.log(error);
       return null;

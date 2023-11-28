@@ -1,0 +1,48 @@
+.wrapperPortrait{
+    width: 140px;
+    overflow: hidden; /* make sure it hides the content that overflows */
+    white-space: nowrap; /* don't break the line */
+    text-overflow: ellipsis; /* give the beautiful '...' effect */
+    aspect-ratio: 2/3.4;
+    position: relative;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--rose);
+    text-align: left;
+}.wrapper{
+    /*word-wrap: break-word;*/
+    width: 180px;
+    overflow: hidden; /* make sure it hides the content that overflows */
+    white-space: nowrap; /* don't break the line */
+    text-overflow: ellipsis; /* give the beautiful '...' effect */
+    aspect-ratio: 2/3.2;
+    position: relative;
+    border-style: solid;
+    border-width: 0.1vw;
+    border-color: var(--rose);
+    text-align: left;
+} .serviceNameText{
+    font-size: var(--a-size);
+    cursor: pointer;
+} .serviceCostText{
+    font-size: var(--b-size);
+} .serviceMinorText{
+    font-size: var(--a-size);
+    cursor: pointer;
+} p {
+    margin-left: 0.1vw;
+    margin-top: 0.1vw;
+} app-star-rating {
+    display: block;
+    margin-left: 0.1vw;
+    margin-top: 0.1vw;
+    width: 122px;
+} .cardImagePortrait{
+    width: 140px;
+    aspect-ratio:1/1;
+    cursor: pointer;
+}.cardImage{
+    width: 180px;
+    aspect-ratio:1/1;
+    cursor: pointer;
+} 

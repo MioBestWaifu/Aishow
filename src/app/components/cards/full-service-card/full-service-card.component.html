@@ -1,25 +1,25 @@
-<div class="flexbox main centerHor">
+<div [ngClass]="{'main':!buffer.isPortrait,'mainPortrait':buffer.isPortrait}" class="flexbox centerHor">
     <img class="highlightImage" [src]="info.templateImageUrl" [alt]="altUrl">
     <div class="pad rightBorder" style="width: 50%; max-width: 50%; overflow-y: scroll;">
         <div class="flexbox centerHor" style="text-align: center; width: fit-content;">
-            <p id="title" class="standardText roseText">{{info.serviceName}}</p>
-            <app-star-rating [rating]="info.averageScore" imgWidth="1.8vw"></app-star-rating>
+            <p [ngClass]="{'bigText':!buffer.isPortrait,'bigTextPortrait':buffer.isPortrait}" class="roseText">{{info.serviceName}}</p>
+            <app-star-rating [rating]="info.averageScore" imgWidth="16px"></app-star-rating>
         </div>
         <div>
-            <p class="standardText">Modality: {{info.modText}}</p>
-            <p class="standardText">Category: {{info.catText}}</p>
-            <p class="standardText">Cost: R${{info.costPerHour}}</p>
-            <p class="standardText">Description: {{info.description}}</p>
+            <p [ngClass]="{'standardText':!buffer.isPortrait,'standardTextPortrait':buffer.isPortrait}">Modality: {{info.modText}}</p>
+            <p [ngClass]="{'standardText':!buffer.isPortrait,'standardTextPortrait':buffer.isPortrait}">Category: {{info.catText}}</p>
+            <p [ngClass]="{'standardText':!buffer.isPortrait,'standardTextPortrait':buffer.isPortrait}">Cost: R${{info.costPerHour}}</p>
+            <p [ngClass]="{'standardText':!buffer.isPortrait,'standardTextPortrait':buffer.isPortrait}">Description: {{info.description}}</p>
         </div>
         <div id="editService" class="centerHor highlightBox smallRoseBorder standardText roseText" (click)="edit()">Edit</div>
     </div>
-    <div class="btns">
-        <div class="standardText roseText lowBorder dayDiv">{{dayInfos[0]}}</div>
-        <div class="standardText roseText lowBorder dayDiv">{{dayInfos[1]}}</div>
-        <div class="standardText roseText lowBorder dayDiv">{{dayInfos[2]}}</div>
-        <div class="standardText roseText lowBorder dayDiv">{{dayInfos[3]}}</div>
-        <div class="standardText roseText lowBorder dayDiv">{{dayInfos[4]}}</div>
-        <div class="standardText roseText lowBorder dayDiv">{{dayInfos[5]}}</div>
-        <div class="standardText roseText lowBorder dayDiv">{{dayInfos[6]}}</div>
+    <div [ngClass]="{'btns':!buffer.isPortrait,'btnsPortrait':buffer.isPortrait}">
+        <div [ngClass]="{'standardText':!buffer.isPortrait,'standardTextPortrait':buffer.isPortrait , 'dayDiv':!buffer.isPortrait, 'dayDivPortrait':buffer.isPortrait}" class="roseText lowBorder">{{dayInfos[0]}}</div>
+        <div [ngClass]="{'standardText':!buffer.isPortrait,'standardTextPortrait':buffer.isPortrait, 'dayDiv':!buffer.isPortrait, 'dayDivPortrait':buffer.isPortrait}" class="roseText lowBorder">{{dayInfos[1]}}</div>
+        <div [ngClass]="{'standardText':!buffer.isPortrait,'standardTextPortrait':buffer.isPortrait, 'dayDiv':!buffer.isPortrait, 'dayDivPortrait':buffer.isPortrait}" class="roseText lowBorder">{{dayInfos[2]}}</div>
+        <div [ngClass]="{'standardText':!buffer.isPortrait,'standardTextPortrait':buffer.isPortrait, 'dayDiv':!buffer.isPortrait, 'dayDivPortrait':buffer.isPortrait}" class="roseText lowBorder">{{dayInfos[3]}}</div>
+        <div [ngClass]="{'standardText':!buffer.isPortrait,'standardTextPortrait':buffer.isPortrait, 'dayDiv':!buffer.isPortrait, 'dayDivPortrait':buffer.isPortrait}" class="roseText lowBorder">{{dayInfos[4]}}</div>
+        <div [ngClass]="{'standardText':!buffer.isPortrait,'standardTextPortrait':buffer.isPortrait, 'dayDiv':!buffer.isPortrait, 'dayDivPortrait':buffer.isPortrait}" class="roseText lowBorder">{{dayInfos[5]}}</div>
+        <div [ngClass]="{'standardText':!buffer.isPortrait,'standardTextPortrait':buffer.isPortrait, 'dayDiv':!buffer.isPortrait, 'dayDivPortrait':buffer.isPortrait}" class="roseText lowBorder">{{dayInfos[6]}}</div>
     </div>
 </div>

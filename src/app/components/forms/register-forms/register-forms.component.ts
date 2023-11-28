@@ -7,11 +7,12 @@ import { ServerConnectionService } from 'src/app/services/server-connection.serv
 import { RegisterTemplate } from 'src/registerTemplate';
 import { MissingInfoDialogComponent } from 'src/app/components/dialogs/missing-info-dialog/missing-info-dialog.component';
 import { GenericInformation } from 'src/genericInformation';
+import { BufferserviceService } from 'src/app/services/bufferservice.service';
 
 @Component({
   selector: 'app-register-forms',
   templateUrl: './register-forms.component.html',
-  styleUrls: ['./register-forms.component.css']
+  styleUrls: ['./register-forms.component.scss']
 })
 export class RegisterFormsComponent{
   AreaInfos:GenericInformation[];
@@ -22,7 +23,7 @@ export class RegisterFormsComponent{
   gender:string;
   areaCode:number;
 
-  constructor(private conn:ServerConnectionService, private router:Router,private dialog:MatDialog){
+  constructor(private conn:ServerConnectionService, private router:Router,private dialog:MatDialog, public buffer:BufferserviceService){
     this.Init();
   }
   /* async ngOnInit(): Promise<void> {

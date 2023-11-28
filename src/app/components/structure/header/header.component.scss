@@ -1,0 +1,14 @@
+div {
+    background-color: var(--rose);
+    height: 8vh;
+    width: 100vw;
+    border-style: solid;
+    border-bottom-width: 0.2vw;
+    border-top-width: 0vw;
+    border-left-width: 0vw;
+    border-right-width: 0vw;
+    border-color: var(--font-color);
+    position: fixed;
+    text-overflow: clip;
+} p{
+}

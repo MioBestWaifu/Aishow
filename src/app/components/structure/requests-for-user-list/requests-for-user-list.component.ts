@@ -7,7 +7,7 @@ import { firstValueFrom } from 'rxjs';
 @Component({
   selector: 'app-requests-for-user-list',
   templateUrl: './requests-for-user-list.component.html',
-  styleUrls: ['./requests-for-user-list.component.css']
+  styleUrls: ['./requests-for-user-list.component.scss']
 })
 export class RequestsForUserListComponent implements OnInit{
   @Output() cancelEvent = new EventEmitter<string>()

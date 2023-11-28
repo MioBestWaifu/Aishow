@@ -1,15 +1,12 @@
 
 <div class="pageWrapper">
-    <app-header></app-header>
-    <app-lateral-bar [user]=buffer.userInfo class="lateralDiv roseBorder"></app-lateral-bar>
-    <div id="overList"  class="contentWrapper flexbox" (scroll)="evaluateScroll()">
-        <div style="text-align: center;">
-            <ol id="list">
-                <li *ngFor="let bundle of buffer.bundles">
-                    <app-service-row [bundle] = bundle></app-service-row>
-                </li>
-            </ol>
-        </div>
+    <app-full-header [ngClass]="{'botHeader':buffer.isPortrait}"></app-full-header>
+    <div *ngIf="buffer.isPortrait" id="overList"  class="portraitContentWrapper" (scroll)="evaluateScroll()">
+        <app-portrait-instance-warning-card></app-portrait-instance-warning-card>
+        <app-services-list class="servicesListPortrait"></app-services-list>
+    </div>
+    <div *ngIf="!buffer.isPortrait" id="overList"  class="contentWrapper flexbox" (scroll)="evaluateScroll()">
+        <app-services-list class="servicesList"></app-services-list>
         <app-instances-for-provider-list></app-instances-for-provider-list>
     </div>
 </div>

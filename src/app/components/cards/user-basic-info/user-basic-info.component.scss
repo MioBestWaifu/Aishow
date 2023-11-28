@@ -1,0 +1,35 @@
+img{
+    border-radius: 50%; 
+    width: 15vw; 
+    aspect-ratio: 1/1;
+    margin-top: 1vw;
+    margin-bottom: 1vw;
+} .imgPortrait{
+    width: auto;
+    max-width: 120px;
+} #areaText{
+    font-size: var(--d-size);
+    margin-top: 2vw;
+} .femIcon{
+    color: #E52B50;
+    font-size: 3.2vw;
+}.maleIcon{
+    color: #007FFF;
+    font-size: 3.2vw;
+} .iconPortrait{
+    font-size: 40px;
+} app-star-rating{
+    margin-top: 1vw;
+} #nameDiv{
+    margin-top: 1vw;
+} #all{
+    margin-left: 1vw;
+} #father{
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+} .rating{
+    width: 200px;
+} .ratingPortrait{
+    width: 150px;
+}
