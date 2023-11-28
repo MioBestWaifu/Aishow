@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { UserInformation } from 'src/userInformation';
 import { ServerConnectionService } from 'src/app/services/server-connection.service';
+import { ReviewInformation } from 'src/reviewInformation';
 
 @Component({
   selector: 'app-user-page',
@@ -29,10 +30,22 @@ export class UserPageComponent implements OnInit{
    this.info = await firstValueFrom(this.conn.GetUser(this.id.toString()));
    this.info.reviews = await firstValueFrom(this.conn.GetReviews(this.id.toString(),"users"));
    this.info.services = await firstValueFrom(this.conn.GetServiceList(this.id));
+   console.log(this.info);
+   this.info.averageScore = this.averageFromReviews(this.info.reviews);
 
    this.info.services.forEach(element => {
     element.provider = this.info;
    });
   }
+
+  public averageFromReviews(reviews:ReviewInformation[]): number{
+    let sum = 0;
+    reviews.forEach(element => {
+      sum += element.score;
+    });
+    sum = sum/reviews.length;
+    sum = Math.round(sum * 10) / 10;
+    return sum;
+}
 
 }

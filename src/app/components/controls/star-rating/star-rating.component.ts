@@ -22,6 +22,14 @@ export class StarRatingComponent implements OnInit{
     this.emptystar = Utils.imgUrl+"app/emptystar.png"
   }
   ngOnInit(): void {
+    this.setSources();
+  }
+
+  ngOnChanges() { 
+    this.setSources();
+  }
+
+  setSources(){
     var x = this.rating;
     ////console.log("PRIM" + x)
     x *= 10; 
