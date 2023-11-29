@@ -189,11 +189,11 @@ export class ServerConnectionService {
   }
 
   GetAnotherBundle(alreadyHas:number[]):Observable<ServiceBundle>{
-    return this.http.post<ServiceBundle>(this.requestsUrl+"services/anotherBundle",JSON.stringify(alreadyHas),{headers:this.jsonHeader})
+    return this.http.post<ServiceBundle>(this.requestsUrl+"services/anotherBundle?userIdArea="+this.buffer.userInfo.area.Id,JSON.stringify(alreadyHas),{headers:this.jsonHeader})
   }
 
   SearchServices(toSearch:string):Observable<ServiceInformation[]>{
-    return this.http.get<ServiceInformation[]>(this.requestsUrl+"app/search?type=service&q="+toSearch+"&offset=0");
+    return this.http.get<ServiceInformation[]>(this.requestsUrl+"app/search?type=service&q="+toSearch+"&offset=0&userIdArea="+this.buffer.userInfo.area.Id);
   }
   
 }
