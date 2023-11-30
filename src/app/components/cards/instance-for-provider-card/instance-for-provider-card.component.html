@@ -3,13 +3,13 @@
     <div style="flex-direction: column;">
         <div class="flexbox pad highlightBox">
             <div>
-                <p class="standardText highlightText">{{request.client.name}}</p>
-                <p class="standardText highlightText">{{request.service.serviceName}}</p>
-                <p class=" standardText">R${{request.cost}}</p>
+                <p [ngClass]="{'biggerText':biggerText}" class="standardText highlightText">{{request.client.name}}</p>
+                <p [ngClass]="{'biggerText':biggerText}" class="standardText highlightText">{{request.service.serviceName}}</p>
+                <p [ngClass]="{'biggerText':biggerText}" class=" standardText">R${{request.cost}}</p>
             </div>
             <div class="pad">
-                <p class="standardText">{{request.startDate}} - {{request.endDate}}</p>
-                <p class="standardText">{{request.startTime}} - {{request.endTime}}</p>
+                <p [ngClass]="{'biggerText':biggerText}" class="standardText">{{request.startDate}} - {{request.endDate}}</p>
+                <p [ngClass]="{'biggerText':biggerText}" class="standardText">{{request.startTime}} - {{request.endTime}}</p>
             </div>
         </div>
         <div class="flexbox" style="margin-top: 6px; align-items: center">
@@ -24,17 +24,17 @@
         <img class="highlightImage" [src]="request.client.imageUrl">
         <div class="flexbox pad highlightBox">
             <div>
-                <p class="standardText highlightText">{{request.service.provider.name}}</p>
-                <p class="standardText highlightText">{{request.service.serviceName}}</p>
-                <p class=" standardText">R${{request.cost}}</p>
+                <p [ngClass]="{'biggerText':biggerText}" class="standardText highlightText">{{request.service.provider.name}}</p>
+                <p [ngClass]="{'biggerText':biggerText}" class="standardText highlightText">{{request.service.serviceName}}</p>
+                <p [ngClass]="{'biggerText':biggerText}" class=" standardText">R${{request.cost}}</p>
                 <div class="flexbox" style="margin-top: 6px; align-items: center;">
-                    <i class="material-symbols-outlined roseText">support_agent</i>
-                    <p class="standardText bigText roseText">Provider</p>
+                    <i  class="material-symbols-outlined roseText">support_agent</i>
+                    <p [ngClass]="{'biggerText':biggerText}" class="standardText bigText roseText">Provider</p>
                 </div>
             </div>
             <div class="pad">
-                <p class="standardText">{{request.startDate}} - {{request.endDate}}</p>
-                <p class="standardText">{{request.startTime}} - {{request.endTime}}</p>
+                <p [ngClass]="{'biggerText':biggerText}" class="standardText">{{request.startDate}} - {{request.endDate}}</p>
+                <p [ngClass]="{'biggerText':biggerText}" class="standardText">{{request.startTime}} - {{request.endTime}}</p>
             </div>
         </div>
     </div>

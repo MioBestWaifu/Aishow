@@ -195,5 +195,9 @@ export class ServerConnectionService {
   SearchServices(toSearch:string):Observable<ServiceInformation[]>{
     return this.http.get<ServiceInformation[]>(this.requestsUrl+"app/search?type=service&q="+toSearch+"&offset=0&userIdArea="+this.buffer.userInfo.area.Id);
   }
+
+  GetHistory():Observable<ClientServiceInteraction[]>{ 
+    return this.http.get<ClientServiceInteraction[]>(this.requestsUrl+"services/history?id="+this.buffer.userInfo.userId);
+  }
   
 }

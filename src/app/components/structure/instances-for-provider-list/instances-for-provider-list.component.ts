@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
 import { BufferserviceService } from 'src/app/services/bufferservice.service';
 import { ServerConnectionService } from 'src/app/services/server-connection.service';
+import { ClientServiceInteraction } from 'src/clientServiceInteraction';
 
 @Component({
   selector: 'app-instances-for-provider-list',
@@ -10,10 +11,17 @@ import { ServerConnectionService } from 'src/app/services/server-connection.serv
 })
 //TODO #6 linkar essa porra com a schedulepage
 export class InstancesForProviderListComponent implements OnInit {
+  instances:ClientServiceInteraction[];
+  @Input() isHistory:boolean = false;
+  @Input() isInSchedule:boolean = false;
   constructor(public buffer:BufferserviceService, private conn:ServerConnectionService){}
   
   async ngOnInit(){
-    this.buffer.schedule = await firstValueFrom(this.conn.GetSchedule());
+    if (this.isHistory){
+      this.instances = (await firstValueFrom(this.conn.GetHistory()));
+      return;
+    }
+    this.instances = (await firstValueFrom(this.conn.GetSchedule())).pendingInstances;
     //console.log(this.buffer.schedule);
   }
 }

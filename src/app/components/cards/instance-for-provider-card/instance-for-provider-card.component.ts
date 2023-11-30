@@ -10,5 +10,6 @@ import { Utils } from 'src/utils';
 export class InstanceForProviderCardComponent {
   @Input() request:ClientServiceInteraction;
   @Input() bottom:boolean;
+  @Input() biggerText:boolean = false;
   altUrl = Utils.altUrl;
 }

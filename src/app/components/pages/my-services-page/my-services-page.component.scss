@@ -15,7 +15,7 @@
 }.tab{
     width: 50%;
     max-width: 50%;
-    border-width:  0vw 0.1vw 0.1vw 0vw;
+    border-width:  0px 1px 1px 0px;
     border-style: solid;
     border-color: var(--rose);
     font-size: var(--d-size);
@@ -24,6 +24,11 @@
     &:hover{
         cursor: pointer;
     }
+} .selectedTab{
+    background-color: var(--rose);
+    border-width:  1px 1px 1px 1px;
+    border-color: var(--font-color);
+    color: var(--font-color);
 } #schedule{
     font-size: var(--d-size);
     text-align: center;

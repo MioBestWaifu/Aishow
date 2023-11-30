@@ -14,10 +14,14 @@ import { ServiceInformation } from 'src/serviceInformation';
 })
 export class MyServicesPageComponent implements OnInit{
 
+  //True = requests, false = templates
+  mode:boolean = true;
+
   constructor(public buffer:BufferserviceService, private conn:ServerConnectionService,private dialog:MatDialog){}
 
   async ngOnInit(){
     this.buffer.runResposiveness();
+    this.buffer.schedule = await firstValueFrom(this.conn.GetSchedule());
     if (this.buffer.userInfo == null){
       //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     }
@@ -36,12 +40,13 @@ export class MyServicesPageComponent implements OnInit{
      x.style.display = "none";
      x = document.getElementById("services");
      x.style.display = "block";
-     x = document.getElementById("requestsTab");
+     this.mode = false;
+     /* x = document.getElementById("requestsTab");
      x.style.removeProperty("background-color");
      x.style.removeProperty("color");
      x = document.getElementById("templatesTab");
      x.style.backgroundColor = "var (--rose)";
-     x.style.color = "var (--secondary-background-color)";
+     x.style.color = "var (--secondary-background-color)"; */
   } 
 
   goToRequests(){
@@ -50,11 +55,12 @@ export class MyServicesPageComponent implements OnInit{
     x.style.display = "none";
     x = document.getElementById("requests");
     x.style.display = "block";
-    x = document.getElementById("templatesTab");
+    this.mode = true;
+    /* x = document.getElementById("templatesTab");
     x.style.removeProperty("background-color");
     x.style.removeProperty("color");
     x = document.getElementById("requestsTab");
     x.style.backgroundColor = "var (--rose)";
-    x.style.color = "var (--secondary-background-color)";
+    x.style.color = "var (--secondary-background-color)"; */
   }
 }

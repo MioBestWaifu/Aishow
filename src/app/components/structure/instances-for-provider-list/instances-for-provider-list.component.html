@@ -1,10 +1,10 @@
 <div id="wrapper">
-    <div id="topDiv" class="roseBorder standardText roseText">
+    <div *ngIf="!isInSchedule" id="topDiv" class="roseBorder standardText roseText">
         Schedule
     </div>
     <ol>
-        <li *ngFor="let ins of buffer.schedule.pendingInstances">
-            <app-instance-for-provider-card [request]=ins [bottom]=false></app-instance-for-provider-card>
+        <li *ngFor="let ins of instances">
+            <app-instance-for-provider-card [request]=ins [bottom]=false [biggerText]="isInSchedule"></app-instance-for-provider-card>
         </li>
     </ol>
 </div>
