@@ -23,6 +23,7 @@ export class BufferserviceService {
   servCodes:number[];
   conn:ServerConnectionService;
   isPortrait:boolean;
+  rate:number;
 
   constructor(private responsive: BreakpointObserver){
     this.bundles = [];

@@ -1,6 +1,9 @@
 <div [ngClass]="{'divPortrait':buffer.isPortrait}">
     <p class="standardText roseText">Reviews</p>
 </div>
+<div *ngIf="canReview" [ngClass]="{'divPortrait':buffer.isPortrait}">
+    <p class="standardText roseText highlightBox" (click)="addReview()">Add Review</p>
+</div>
 <ol>
     <li *ngFor="let x of reviews">
         <div [ngClass]="{'divPortrait':buffer.isPortrait}">

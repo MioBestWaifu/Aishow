@@ -215,5 +215,20 @@ export class ServerConnectionService {
     }
     return this.http.post(this.requestsUrl+"users/updateGeoLimitations",JSON.stringify(limits),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
+
+  FindIfCanReview(type:string,id:string):Observable<HttpResponse<string>>{
+    if (type == "users" || type == "user"){
+      return this.http.get(this.requestsUrl+"users/checkReview?idUser="+this.buffer.userInfo.userId+"&idProvider="+id,{observe:'response',responseType: 'text'});
+    } else {
+      return this.http.get(this.requestsUrl+"services/checkReview?idUser="+this.buffer.userInfo.userId+"&idService="+id,{observe:'response',responseType: 'text'});
+    }
+  }
+
+  Review(info:ReviewInformation):Observable<HttpResponse<string>>{
+    if (info.type == 0){
+      return this.http.post(this.requestsUrl+"users/review?id="+info.target,JSON.stringify(info),{observe:'response',responseType: 'text',headers:this.jsonHeader});
+    }
+    return this.http.post(this.requestsUrl+"services/review?id="+info.target,JSON.stringify(info),{observe:'response',responseType: 'text',headers:this.jsonHeader});
+  }
   
 }

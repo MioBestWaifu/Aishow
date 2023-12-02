@@ -12,7 +12,7 @@
                 <button class="standardButtonPortrait" (click)="schedule()">SCHEDULE</button>
             </div>
         </div>
-    <app-review-lateral-list class="reviewPad" [reviews]="info.reviews"></app-review-lateral-list>
+    <app-review-lateral-list [type]=1 class="reviewPad" [reviews]="info.reviews" [canReview]="canReview" [target]="info.templateId"></app-review-lateral-list>
     </div>
     <div *ngIf="!buffer.isPortrait" class="contentWrapper">
         <div class="flexbox">
@@ -31,6 +31,6 @@
                     </div>
                 </div>
             </div>
-        <app-review-lateral-list [reviews]="info.reviews"></app-review-lateral-list>
+        <app-review-lateral-list [type]=1 [reviews]="info.reviews" [canReview]="canReview" [target]="info.templateId"></app-review-lateral-list>
         </div>
 </div>

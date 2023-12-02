@@ -16,6 +16,7 @@ export class ServicePageComponent implements OnInit{
   id:number;
   sub:any;
   info:ServiceInformation;
+  canReview:boolean = false;
   w = "3.5vw"
 
   constructor(public buffer:BufferserviceService, private router:ActivatedRoute, private conn:ServerConnectionService,private dialog:MatDialog){}
@@ -35,6 +36,11 @@ export class ServicePageComponent implements OnInit{
    this.buffer.lastService = this.info;
    this.info.provider = await firstValueFrom(this.conn.GetUser(this.info.provider.userId.toString()));
    //console.log(this.info);
+   //call ServerConnectionService.FindIfCanReview with info.temlateId and set canReview to true if the result is "OK"
+   var x = await firstValueFrom(this.conn.FindIfCanReview("service",this.info.templateId.toString()));
+   if (x.body == "OK"){
+     this.canReview = true;
+   }
   }
 
   schedule(){

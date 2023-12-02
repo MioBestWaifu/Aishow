@@ -15,6 +15,7 @@ export class UserPageComponent implements OnInit{
   id:number;
   sub:any;
   info:UserInformation;
+  canReview:boolean = false;
   constructor(public buffer:BufferserviceService, private router:ActivatedRoute, private conn:ServerConnectionService){}
 
   async ngOnInit(){
@@ -36,6 +37,11 @@ export class UserPageComponent implements OnInit{
    this.info.services.forEach(element => {
     element.provider = this.info;
    });
+
+   var x = await firstValueFrom(this.conn.FindIfCanReview("users",this.info.userId.toString()));
+   if (x.body == "OK"){
+     this.canReview = true;
+   }
   }
 
   public averageFromReviews(reviews:ReviewInformation[]): number{

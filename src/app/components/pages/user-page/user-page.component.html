@@ -11,7 +11,7 @@
                 </li>
             </ol>
         </div>
-        <app-review-lateral-list [reviews]="info.reviews"></app-review-lateral-list>
+        <app-review-lateral-list [type]=0 [reviews]="info.reviews" [canReview]="canReview" [target]="info.userId"></app-review-lateral-list>
     </div>
     <div *ngIf="!buffer.isPortrait" class="contentWrapper">
         <div class="flexbox">
@@ -25,7 +25,7 @@
                     </li>
                 </ol>
             </div>
-            <app-review-lateral-list [reviews]="info.reviews"></app-review-lateral-list>
+            <app-review-lateral-list [type]=0 [reviews]="info.reviews" [canReview]="canReview" [target]="info.userId"></app-review-lateral-list>
         </div>
     </div>
 </div>

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BufferserviceService } from 'src/app/services/bufferservice.service';
 import { ServerConnectionService } from 'src/app/services/server-connection.service';
 import { Utils } from 'src/utils';
 
@@ -11,21 +12,34 @@ export class StarRatingComponent implements OnInit{
   @Input() rating:number;
   @Input() isEnabled:boolean;
   @Input() imgWidth:string;
+  @Input() forReview:boolean = false;
+  @Output() rated = new EventEmitter<number>();
+
   fullstar:string;
   halfstar:string;
   emptystar:string;
   sources:string[];
 
-  constructor(private conn:ServerConnectionService){
+  constructor(private conn:ServerConnectionService, public buffer:BufferserviceService){
     this.fullstar = Utils.imgUrl+"app/fullstar.png"
     this.halfstar = Utils.imgUrl+"app/halfstar.png"
     this.emptystar = Utils.imgUrl+"app/emptystar.png"
   }
   ngOnInit(): void {
     this.setSources();
+    this.buffer.rate = 0;
   }
 
   ngOnChanges() { 
+    this.setSources();
+  }
+
+  rate (score:number){
+    if (!this.forReview){
+      return;
+    }
+    this.rating = score;
+    this.buffer.rate = score;
     this.setSources();
   }
 

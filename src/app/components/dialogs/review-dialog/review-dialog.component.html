@@ -1,1 +1,10 @@
-<p>review-dialog works!</p>
+<div class="roseBorder">
+    <h2 mat-dialog-title class="reverseText">Add review</h2>
+    <mat-dialog-content >
+        <app-star-rating [forReview]=true [rating]="4" style="width: 200px;"></app-star-rating>
+        <input type="text" maxlength="200" placeholder="Comment" [(ngModel)] = "comment">
+    </mat-dialog-content>
+    <mat-dialog-actions>
+        <button class="mat-raised-button standardButton"(click)="send()">Send</button>
+    </mat-dialog-actions>
+</div>
