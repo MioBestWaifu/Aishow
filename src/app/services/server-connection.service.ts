@@ -22,6 +22,7 @@ import { BufferserviceService } from './bufferservice.service';
 import { Router } from '@angular/router';
 import { ServiceBundle } from 'src/serviceBundle';
 import { ReviewInformation } from 'src/reviewInformation';
+import { GeoLimitation } from 'src/geoLimitation';
 
 @Injectable({
   providedIn: 'root'
@@ -198,6 +199,21 @@ export class ServerConnectionService {
 
   GetHistory():Observable<ClientServiceInteraction[]>{ 
     return this.http.get<ClientServiceInteraction[]>(this.requestsUrl+"services/history?id="+this.buffer.userInfo.userId);
+  }
+
+  GetUserGeoLimitations():Observable<GeoLimitation[]>{
+    return this.http.get<GeoLimitation[]>(this.requestsUrl+"users/geoLimitations?id="+this.buffer.userInfo.userId);
+  }
+
+  UpdateUserGeoLimitations(limits:GeoLimitation[]):Observable<HttpResponse<string>>{
+    if (limits.length == 0 || limits == null || limits == undefined){
+      limits = new Array<GeoLimitation>();
+      var x = new GeoLimitation();
+      x.idArea = 99;
+      x.idUser = this.buffer.userInfo.userId;
+      limits.push(x);
+    }
+    return this.http.post(this.requestsUrl+"users/updateGeoLimitations",JSON.stringify(limits),{observe:'response',responseType: 'text',headers:this.jsonHeader});
   }
   
 }

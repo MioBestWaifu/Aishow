@@ -20,6 +20,13 @@
             <p class="standardText reverseText">Username:</p>
             <input style="display: block;" type="text" [placeholder]="buffer.userInfo.name" maxlength="32" [(ngModel)]="newName">
         </div>
+        <div>
+            <p class="standardText reverseText">Geographic limitations</p>
+            <select (change)="selectArea()" [(ngModel)]="lastClicked" [ngClass]="{'inputPortrait':buffer.isPortrait,'input':!buffer.isPortrait}" name="area" id="area" >
+                <option *ngFor="let a of possibleAreas" [value]="a.Id">{{a.Name}}</option>
+            </select>
+            <p *ngFor="let selected of selectedAreas" class="standardText reverseText highlightText" (click)="removeArea(selected.Id)">{{selected.Name}}</p>
+        </div>
     </mat-dialog-content>
     <mat-dialog-actions>
         <button class="mat-raised-button standardButton"(click)="cancel()">Cancel</button>

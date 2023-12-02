@@ -51,6 +51,7 @@ import { ServicesListComponent } from './components/structure/services-list/serv
 import { PortraitInstancesListComponent } from './components/structure/portrait-instances-list/portrait-instances-list.component';
 import { PortraitInstanceWarningCardComponent } from './components/cards/portrait-instance-warning-card/portrait-instance-warning-card.component';
 import { SchedulePageComponent } from './components/pages/schedule-page/schedule-page.component';
+import { ReviewDialogComponent } from './components/dialogs/review-dialog/review-dialog.component';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { SchedulePageComponent } from './components/pages/schedule-page/schedule
     ServicesListComponent,
     PortraitInstancesListComponent,
     PortraitInstanceWarningCardComponent,
-    SchedulePageComponent
+    SchedulePageComponent,
+    ReviewDialogComponent
   ],
   imports: [
     BrowserModule,
