@@ -111,13 +111,13 @@ export class ServerConnectionService {
   }
 
   GetAreas():Observable<GenericInformation[]>{
-    return this.http.get<GenericInformation[]>(this.requestsUrl+"app/info?type=request&category=areas");
+    return this.http.get<GenericInformation[]>(this.requestsUrl+"app/info?type=request&category=areas&amount=all");
   }
   GetModalities():Observable<GenericInformation[]>{
-    return this.http.get<GenericInformation[]>(this.requestsUrl+"app/info?type=request&category=mod");
+    return this.http.get<GenericInformation[]>(this.requestsUrl+"app/info?type=request&category=mod&amount=all");
   }
   GetCategories():Observable<GenericInformation[]>{
-    return this.http.get<GenericInformation[]>(this.requestsUrl+"app/info?type=request&category=cat");
+    return this.http.get<GenericInformation[]>(this.requestsUrl+"app/info?type=request&category=cat&amount=all");
   }
 
   GetUser(id:string):Observable<UserInformation>{
