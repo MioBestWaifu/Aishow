@@ -1,6 +1,10 @@
 <div class="pageWrapper">
     <app-full-header [ngClass]="{'botHeader':buffer.isPortrait}"></app-full-header>
     <div *ngIf="buffer.isPortrait" class="portraitContentWrapper">
+        <input type="text" (keyup.enter)="search()" [(ngModel)] = "text">
+        <div class="flex">
+            <app-service-card *ngFor="let service of resultServices" class="card" [service]=service></app-service-card>
+        </div>
     </div>
     <div *ngIf="!buffer.isPortrait" class="contentWrapper">
         <div class="flex">

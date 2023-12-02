@@ -1,6 +1,16 @@
 <div class="pageWrapper">
     <app-full-header [ngClass]="{'botHeader':buffer.isPortrait}"></app-full-header>
     <div *ngIf="buffer.isPortrait" class="portraitContentWrapper">
+        <div id="tabGroup">
+            <div class="flexbox">
+                <div [ngClass]="{'selectedTab':instances}" id="instancesTab" class="standardText roseText tab highlightBox"(click)="goToInstances()">Instances</div>
+                <div [ngClass]="{'selectedTab':history}" id="historyTab" class="standardText roseText tab highlightBox" (click)="goToHistory()">History</div>
+                <div [ngClass]="{'selectedTab':requests}" id="requestsTab" class="standardText roseText tab highlightBox" (click)="goToRequests()">Requests</div>
+            </div>
+            <app-instances-for-provider-list style="display: block; margin: auto;" id="instances"></app-instances-for-provider-list>
+            <app-instances-for-provider-list style="display: none; margin: auto;" id="history" [isHistory]=true></app-instances-for-provider-list>
+            <app-requests-for-user-list style="display: none;" id="requests"></app-requests-for-user-list>
+        </div>
     </div>
     <div *ngIf="!buffer.isPortrait" class="contentWrapper">
         <div id="tabGroup">

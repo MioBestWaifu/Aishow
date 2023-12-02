@@ -18,12 +18,14 @@ export class StarRatingComponent implements OnInit{
   fullstar:string;
   halfstar:string;
   emptystar:string;
+  selectablestar:string;
   sources:string[];
 
   constructor(private conn:ServerConnectionService, public buffer:BufferserviceService){
     this.fullstar = Utils.imgUrl+"app/fullstar.png"
     this.halfstar = Utils.imgUrl+"app/halfstar.png"
     this.emptystar = Utils.imgUrl+"app/emptystar.png"
+    this.selectablestar = Utils.imgUrl+"app/selectablestar.png"
   }
   ngOnInit(): void {
     this.setSources();
@@ -44,6 +46,14 @@ export class StarRatingComponent implements OnInit{
   }
 
   setSources(){
+    if (this.forReview){
+      var i = 0;
+      this.sources = new Array<string>(5).fill(this.selectablestar)
+      for (i; i<this.rating;i++){
+        this.sources[i] = this.fullstar
+      }
+      return;
+    }
     var x = this.rating;
     ////console.log("PRIM" + x)
     x *= 10; 

@@ -23,12 +23,12 @@ export class SearchPageComponent implements OnInit{
     this.sub = this.router.params.subscribe((params: { [x: string]: string; }) => {
       this.text = params['query']; 
    })
-
-   console.log(this.text);
+   if (this.text != undefined && this.text != ""){
+    this.resultServices = await firstValueFrom(this.conn.SearchServices(this.text));
+   }
   }
 
   async search(){
-    console.log(this.text);
     this.resultServices = await firstValueFrom(this.conn.SearchServices(this.text));
   }
 }
