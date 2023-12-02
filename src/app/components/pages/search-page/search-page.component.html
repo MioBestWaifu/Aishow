@@ -3,7 +3,6 @@
     <div *ngIf="buffer.isPortrait" class="portraitContentWrapper">
     </div>
     <div *ngIf="!buffer.isPortrait" class="contentWrapper">
-        <input type="text" (keyup.enter)="search()" [(ngModel)] = "text">
         <div class="flex">
             <app-service-card *ngFor="let service of resultServices" class="card" [service]=service></app-service-card>
         </div>

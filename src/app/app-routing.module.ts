@@ -19,6 +19,7 @@ const routes: Routes = [
   {path:'services/:id',component:ServicePageComponent},
   {path:'viewprofile',component:ActiveUserPageComponent},
   {path:'search',component:SearchPageComponent},
+  {path:'search/:query',component:SearchPageComponent},
   {path:'settings',component:SettingsPageComponent},
   {path:'myservices',component:MyServicesPageComponent},
   {path:'schedule',component:SchedulePageComponent}

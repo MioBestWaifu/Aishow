@@ -4,6 +4,7 @@ import { ServerConnectionService } from 'src/app/services/server-connection.serv
 import {firstValueFrom} from 'rxjs';
 import { ServiceInformation } from 'src/serviceInformation';
 import { UserInformation } from 'src/userInformation';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-page',
@@ -14,10 +15,16 @@ export class SearchPageComponent implements OnInit{
   resultServices:ServiceInformation[];
   resultUsers:UserInformation[];
   text:string;
-  constructor(public buffer:BufferserviceService, private conn:ServerConnectionService){}
+  sub:any;
+  constructor(public buffer:BufferserviceService, private conn:ServerConnectionService, private router:ActivatedRoute){}
 
   async ngOnInit(){
     this.buffer.runResposiveness();
+    this.sub = this.router.params.subscribe((params: { [x: string]: string; }) => {
+      this.text = params['query']; 
+   })
+
+   console.log(this.text);
   }
 
   async search(){
