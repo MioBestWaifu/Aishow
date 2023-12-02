@@ -14,7 +14,7 @@
         </div>
     </div>
     <div *ngIf="!buffer.isPortrait" class="contentWrapper flexbox">
-        <div id="tabGroup">
+        <div [ngClass]="{'fullWidth':buffer.zeroInstances}" class="tabGroup">
             <div class="flexbox">
                 <div [ngClass]="{'selectedTab':!mode}" id="templatesTab" class="standardText roseText tab highlightBox"(click)="goToTemplates()">Templates</div>
                 <div [ngClass]="{'selectedTab':mode}" id="requestsTab" class="standardText roseText tab highlightBox" (click)="goToRequests()">Requests</div>

@@ -10,7 +10,7 @@
         </div>
     </div>
     <div *ngIf="!buffer.isPortrait" class="contentWrapper">
-        <div class="flexbox borda">
+        <div [ngClass]="{'fullWidth':buffer.zeroInstances}" class="flexbox borda">
             <div style="width: 100%;">
                 <div id="info" class="centerHor">
                     <app-user-basic-info [user]="buffer.userInfo"></app-user-basic-info>

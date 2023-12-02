@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs/internal/firstValueFrom';
 import { BufferserviceService } from 'src/app/services/bufferservice.service';
 import { ServerConnectionService } from 'src/app/services/server-connection.service';
@@ -14,7 +14,7 @@ export class InstancesForProviderListComponent implements OnInit {
   instances:ClientServiceInteraction[];
   @Input() isHistory:boolean = false;
   @Input() isInSchedule:boolean = false;
-  constructor(public buffer:BufferserviceService, private conn:ServerConnectionService){}
+  constructor(public buffer:BufferserviceService, private conn:ServerConnectionService, private elementRef: ElementRef){}
   
   async ngOnInit(){
     if (this.isHistory){
@@ -22,6 +22,12 @@ export class InstancesForProviderListComponent implements OnInit {
       return;
     }
     this.instances = (await firstValueFrom(this.conn.GetSchedule())).pendingInstances;
-    //console.log(this.buffer.schedule);
+    if (this.instances.length == 0){
+      this.elementRef.nativeElement.style.display = "none";
+      this.buffer.zeroInstances = true;
+      return;
+    }
+
+    this.buffer.zeroInstances = false;
   }
 }
