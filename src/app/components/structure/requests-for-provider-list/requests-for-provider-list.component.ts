@@ -4,7 +4,7 @@ import { BufferserviceService } from 'src/app/services/bufferservice.service';
 @Component({
   selector: 'app-requests-for-provider-list',
   templateUrl: './requests-for-provider-list.component.html',
-  styleUrls: ['./requests-for-provider-list.component.css']
+  styleUrls: ['./requests-for-provider-list.component.scss']
 })
 export class RequestsForProviderListComponent {
   constructor(public buffer:BufferserviceService){}

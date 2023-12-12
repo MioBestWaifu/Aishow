@@ -9,7 +9,7 @@ import { FailedUpdateDialogComponent } from '../failed-update-dialog/failed-upda
 @Component({
   selector: 'app-edit-user-dialog',
   templateUrl: './edit-user-dialog.component.html',
-  styleUrls: ['./edit-user-dialog.component.css']
+  styleUrls: ['./edit-user-dialog.component.scss']
 })
 export class EditUserDialogComponent {
   imageChangedEvent: any = '';

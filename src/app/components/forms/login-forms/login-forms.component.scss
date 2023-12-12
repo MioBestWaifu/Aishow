@@ -1,0 +1,20 @@
+.block{
+    display: block
+} .topRel{
+    position: relative; 
+    top: 0px;
+} .autoMargin{
+    margin: auto;
+} .padTop{
+    padding-top: 3%;
+} label{
+    font-size: var(--dx-size);
+} .cont{
+    padding-top: 4%;
+    padding-left: 2vw;
+} .textbox {
+    width: 70%;
+    aspect-ratio: 16/1.5;
+} form{
+    width: 100%;
+}

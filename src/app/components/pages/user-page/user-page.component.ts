@@ -8,7 +8,7 @@ import { ServerConnectionService } from 'src/app/services/server-connection.serv
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
-  styleUrls: ['./user-page.component.css']
+  styleUrls: ['./user-page.component.scss']
 })
 export class UserPageComponent implements OnInit{
   id:number;
@@ -17,6 +17,7 @@ export class UserPageComponent implements OnInit{
   constructor(public buffer:BufferserviceService, private router:ActivatedRoute, private conn:ServerConnectionService){}
 
   async ngOnInit(){
+    this.buffer.runResposiveness();
     if (this.buffer.userInfo == null){
       //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     }
@@ -26,6 +27,12 @@ export class UserPageComponent implements OnInit{
    })
    //const x = await firstValueFrom (this.conn.SetLastPage("/user/"+this.id));
    this.info = await firstValueFrom(this.conn.GetUser(this.id.toString()));
+   this.info.reviews = await firstValueFrom(this.conn.GetReviews(this.id.toString(),"users"));
+   this.info.services = await firstValueFrom(this.conn.GetServiceList(this.id));
+
+   this.info.services.forEach(element => {
+    element.provider = this.info;
+   });
   }
 
 }

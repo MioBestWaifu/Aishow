@@ -1,0 +1,34 @@
+#requests{
+    width: 100%;
+} #instances{
+    width: 35%;
+} #services{
+    width: 100%;
+} #tabGroupPortrait{
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+}#tabGroup{
+    width: 75%;
+    min-width: 75%;
+    max-width: 75%;
+}.tab{
+    width: 50%;
+    max-width: 50%;
+    border-width:  0vw 0.1vw 0.1vw 0vw;
+    border-style: solid;
+    border-color: var(--rose);
+    font-size: var(--d-size);
+    height:7%;
+    text-align: center;
+    &:hover{
+        cursor: pointer;
+    }
+} #schedule{
+    font-size: var(--d-size);
+    text-align: center;
+} app-services-for-provider-list {
+    width: 100%;
+} #requestsTab{
+    border-right: 0px;
+}

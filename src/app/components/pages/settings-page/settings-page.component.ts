@@ -6,12 +6,13 @@ import { ServerConnectionService } from 'src/app/services/server-connection.serv
 @Component({
   selector: 'app-settings-page',
   templateUrl: './settings-page.component.html',
-  styleUrls: ['./settings-page.component.css']
+  styleUrls: ['./settings-page.component.scss']
 })
 export class SettingsPageComponent implements OnInit{
   constructor(public buffer:BufferserviceService, private conn:ServerConnectionService){}
 
   async ngOnInit(){
+    this.buffer.runResposiveness();
     if (this.buffer.userInfo == null){
       //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     }

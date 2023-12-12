@@ -1,9 +1,9 @@
-<div>
+<div [ngClass]="{'divPortrait':buffer.isPortrait}">
     <p class="standardText roseText">Reviews</p>
 </div>
 <ol>
     <li *ngFor="let x of reviews">
-        <div>
+        <div [ngClass]="{'divPortrait':buffer.isPortrait}">
             <p [textContent]="x.reviewer.name" class="standardText roseText"></p>
             <app-star-rating [rating]="x.score" [imgWidth]="starWidth"></app-star-rating>
             <p [textContent]="x.comment" class="standardText"></p>

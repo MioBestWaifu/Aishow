@@ -9,13 +9,11 @@ export class UserInformation{
     name:string;
     imageUrl:string;
     gender:string;
-    areaCode:number;
-    areaName:string;
     birthday:Date;
     description:string;
     serviceRecs:ServiceBundle[];
     reviews:ReviewInformation[];
     services:ServiceInformation[];
     averageScore:number;
-
+    area:GenericInformation;
 }

@@ -1,30 +1,30 @@
-<form (ngSubmit)="Submit()" class="formTemplate roseBorder">
+<form (ngSubmit)="Submit()" class="formTemplate">
     <div class="formsDiv">
-        <label for="email" class="standardText">Email</label>
-        <input id="email" name="email" type="email" maxlength="320" [(ngModel)]="email"/>
+        <label for="email" class="standardText">User</label>
+        <input [ngClass]="{'inputPortrait':buffer.isPortrait,'input':!buffer.isPortrait}" id="email" name="email" type="email" maxlength="320" [(ngModel)]="email"/>
     </div>
     <div class="formsDiv">
-        <label for="username" class="standardText">Username</label>
-        <input id="username" name="username" type="text" maxlength="32" [(ngModel)]="username"/>
+        <label for="username" class="standardText">Name</label>
+        <input [ngClass]="{'inputPortrait':buffer.isPortrait,'input':!buffer.isPortrait}" id="username" name="username" type="text" maxlength="32" [(ngModel)]="username"/>
     </div>
     <div class="formsDiv">
         <label for="psswrd" class="standardText">Password</label>
-        <input id="psswrd" name="password" type="password" [(ngModel)]="password"/>
+        <input [ngClass]="{'inputPortrait':buffer.isPortrait,'input':!buffer.isPortrait}" id="psswrd" name="password" type="password" [(ngModel)]="password"/>
     </div>
     <div class="formsDiv">
         <label for="birthday" class="standardText block">Birthday</label>
-        <input id="birthday" name="birthday" type="date" max="2005-03-31" class="block;"[(ngModel)]="birthday"/>
+        <input [ngClass]="{'inputPortrait':buffer.isPortrait,'input':!buffer.isPortrait}" id="birthday" name="birthday" type="date" max="2005-03-31" class="block;"[(ngModel)]="birthday"/>
     </div>
     <div class="formsDiv">
         <label for="gender" class="standardText block">Gender</label>
-        <select name="gender" id="gender" [(ngModel)]="gender">
+        <select [ngClass]="{'inputPortrait':buffer.isPortrait,'input':!buffer.isPortrait}" name="gender" id="gender" [(ngModel)]="gender">
             <option value="M">Male</option>
             <option value="F">Female</option>
         </select>
     </div>
     <div class="formsDiv">
         <label for="area" class="standardText block">Area</label>
-        <select name="area" id="area" [(ngModel)]="areaCode">
+        <select [ngClass]="{'inputPortrait':buffer.isPortrait,'input':!buffer.isPortrait}" name="area" id="area" [(ngModel)]="areaCode">
             <option *ngFor="let a of AreaInfos" [value]="a.Id" >{{a.Name}}</option>
         </select>
     </div>

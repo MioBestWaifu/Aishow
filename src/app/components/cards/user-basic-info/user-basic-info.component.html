@@ -1,13 +1,13 @@
 <div id="father" class="flexbox">
-    <img [src]="user.imageUrl" [alt]="altUrl" class="roseBorder">
+    <img [ngClass]="{'imgPortrait':buffer.isPortrait}" [src]="user.imageUrl" [alt]="altUrl" class="roseBorder">
     <div id="all">
         <div class="flexbox" id="nameDiv">
-            <p [textContent]="user.name" class="titleText"></p>
-            <i *ngIf="user.gender=='M'; else elseGender" class="material-symbols-outlined maleIcon">male</i>
-            <ng-template #elseGender><i class="material-symbols-outlined femIcon">female</i></ng-template>
+            <p [ngClass]="{'bigText':buffer.isPortrait}" [textContent]="user.name" class="titleText"></p>
+            <i *ngIf="user.gender=='M'; else elseGender" [ngClass]="{'iconPortrait':buffer.isPortrait}" class="material-symbols-outlined maleIcon">male</i>
+            <ng-template #elseGender><i [ngClass]="{'iconPortrait':buffer.isPortrait}" class="material-symbols-outlined femIcon">female</i></ng-template>
         </div>
-        <app-star-rating [rating]="user.averageScore" [imgWidth]="w"></app-star-rating>
+        <app-star-rating [rating]="user.averageScore" [ngClass]="{'ratingPortrait':buffer.isPortrait,'rating':!buffer.isPortrait}"></app-star-rating>
         <!-- Botar link pra pag de areas qnd tiver -->
-        <p [textContent]="user.areaName" class="standardText highlightText" id="areaText"></p>
+        <p [textContent]="user.area.Name" class="standardText highlightText" id="areaText"></p>
     </div>
 </div>

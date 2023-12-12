@@ -1,25 +1,36 @@
-<div *ngIf="!request.provider; else isTheProvider" class="flexbox main centerHor">
-    <img class="highlightImage" [src]="request.client.imageUrl" [alt]="altUrl">
-    <div class="flexbox pad highlightBox">
-        <div>
-            <p class="standardText highlightText">{{request.client.name}}</p>
-            <p class="standardText highlightText">{{request.service.serviceName}}</p>
-            <p class=" standardText">R${{request.cost}}</p>
-        </div>
-        <div class="pad">
-            <p class="standardText">{{request.startDate}} - {{request.endDate}}</p>
-            <p class="standardText">{{request.startTime}} - {{request.endTime}}</p>
-        </div>
-    </div>
-</div>
-<ng-template #isTheProvider>
-    <div class="flexbox main centerHor">
-        <img class="highlightImage" [src]="request.service.templateImageUrl">
+<div *ngIf="!request.provider; else isTheProvider" [ngClass]="{'portraitWidth':bottom}" class="flexbox main centerHor">
+    <img class="highlightImage" [src]="request.service.templateImageUrl" [alt]="altUrl">
+    <div style="flex-direction: column;">
         <div class="flexbox pad highlightBox">
             <div>
-                <p class="standardText highlightText">{{request.service.providerName}}</p>
+                <p class="standardText highlightText">{{request.client.name}}</p>
                 <p class="standardText highlightText">{{request.service.serviceName}}</p>
                 <p class=" standardText">R${{request.cost}}</p>
+            </div>
+            <div class="pad">
+                <p class="standardText">{{request.startDate}} - {{request.endDate}}</p>
+                <p class="standardText">{{request.startTime}} - {{request.endTime}}</p>
+            </div>
+        </div>
+        <div class="flexbox" style="margin-top: 6px; align-items: center">
+            <i class="material-symbols-outlined roseText">emoji_people</i>
+            <p class="standardText bigText roseText">Client</p>
+        </div>
+    </div>
+    
+</div>
+<ng-template #isTheProvider>
+    <div [ngClass]="{'portraitWidth':bottom}" class="flexbox main centerHor">
+        <img class="highlightImage" [src]="request.client.imageUrl">
+        <div class="flexbox pad highlightBox">
+            <div>
+                <p class="standardText highlightText">{{request.service.provider.name}}</p>
+                <p class="standardText highlightText">{{request.service.serviceName}}</p>
+                <p class=" standardText">R${{request.cost}}</p>
+                <div class="flexbox" style="margin-top: 6px; align-items: center;">
+                    <i class="material-symbols-outlined roseText">support_agent</i>
+                    <p class="standardText bigText roseText">Provider</p>
+                </div>
             </div>
             <div class="pad">
                 <p class="standardText">{{request.startDate}} - {{request.endDate}}</p>

@@ -8,7 +8,7 @@ import { ServerConnectionService } from 'src/app/services/server-connection.serv
 @Component({
   selector: 'app-active-user-page',
   templateUrl: './active-user-page.component.html',
-  styleUrls: ['./active-user-page.component.css']
+  styleUrls: ['./active-user-page.component.scss']
 })
 export class ActiveUserPageComponent implements OnInit{
 
@@ -17,11 +17,12 @@ export class ActiveUserPageComponent implements OnInit{
   }
   
   async ngOnInit(){
+    this.buffer.runResposiveness();
     if (this.buffer.userInfo == null){
       //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     }
 
-    console.log(this.buffer.userInfo);
+    //console.log(this.buffer.userInfo);
     //const x = await firstValueFrom (this.conn.SetLastPage("/viewprofile"));
   }
 

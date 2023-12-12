@@ -1,10 +1,10 @@
-<div class="wrapper">
+<div [ngClass]="{'wrapperPortrait':buffer.isPortrait,'wrapper':!buffer.isPortrait}">
     <div class="centerHor">
-        <img class="cardImage highlightImage" [src]="service.templateImageUrl" [alt]="altUrl" [title]="service.description" [routerLink]="['/services',service.templateId]">
-        <p [textContent]="service.shortServiceName" class="standardText serviceNameText highlightText" [title]="service.serviceName" [routerLink]="['/services',service.templateId]"></p>
-        <p [textContent]="service.providerName" class="standardText serviceMinorText highlightText" [routerLink]="['/users',service.providerId]"></p>
+        <img [ngClass]="{'cardImagePortrait':buffer.isPortrait,'cardImage':!buffer.isPortrait}" [src]="service.templateImageUrl" [alt]="altUrl" [title]="service.description" [routerLink]="['/services',service.templateId]">
+        <p [textContent]="service.serviceName" class="standardText serviceNameText highlightText" [title]="service.serviceName" [routerLink]="['/services',service.templateId]"></p>
+        <p [textContent]="service.provider.name" class="standardText serviceMinorText highlightText" [routerLink]="['/users',service.provider.userId]"></p>
         <p class="standardText roseText serviceCostText">R${{service.costPerHour}}</p>
         <app-star-rating [isEnabled]=false [rating]="service.averageScore" [imgWidth]="starWidth"></app-star-rating>
-        <p [textContent]="service.providerArea" class="standardText serviceMinorText highlightText"></p>
+        <p [textContent]="service.provider.area.Name" class="standardText serviceMinorText highlightText"></p>
     </div>
 </div>

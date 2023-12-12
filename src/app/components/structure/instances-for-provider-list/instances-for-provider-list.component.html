@@ -4,7 +4,7 @@
     </div>
     <ol>
         <li *ngFor="let ins of buffer.schedule.pendingInstances">
-            <app-instance-for-provider-card [request]=ins></app-instance-for-provider-card>
+            <app-instance-for-provider-card [request]=ins [bottom]=false></app-instance-for-provider-card>
         </li>
     </ol>
 </div>

@@ -10,7 +10,7 @@ import { ScheduleServiceDialogComponent } from '../../dialogs/schedule-service-d
 @Component({
   selector: 'app-service-page',
   templateUrl: './service-page.component.html',
-  styleUrls: ['./service-page.component.css']
+  styleUrls: ['./service-page.component.scss']
 })
 export class ServicePageComponent implements OnInit{
   id:number;
@@ -21,6 +21,7 @@ export class ServicePageComponent implements OnInit{
   constructor(public buffer:BufferserviceService, private router:ActivatedRoute, private conn:ServerConnectionService,private dialog:MatDialog){}
 
   async ngOnInit(){
+    this.buffer.runResposiveness();
     if (this.buffer.userInfo == null){
       //this.buffer.userInfo = await firstValueFrom(this.conn.ReloadUser());
     }
@@ -32,7 +33,7 @@ export class ServicePageComponent implements OnInit{
    //const x = await firstValueFrom (this.conn.SetLastPage("/services/"+this.id))
    this.info = await firstValueFrom(this.conn.GetService(this.id.toString()))
    this.buffer.lastService = this.info;
-   console.log(this.info);
+   //console.log("My jonga");
   }
 
   schedule(){

@@ -9,7 +9,7 @@ import { ImageCroppedEvent} from 'ngx-image-cropper';
 @Component({
   selector: 'app-edit-service-dialog',
   templateUrl: './edit-service-dialog.component.html',
-  styleUrls: ['./edit-service-dialog.component.css']
+  styleUrls: ['./edit-service-dialog.component.scss']
 })
 export class EditServiceDialogComponent implements OnInit, AfterContentInit{
   Categories:GenericInformation[];
@@ -20,12 +20,14 @@ export class EditServiceDialogComponent implements OnInit, AfterContentInit{
 
   constructor(public buffer:BufferserviceService, private dialog:MatDialog, private conn:ServerConnectionService){
     this.croppedImage = buffer.update.templateImageUrl;
-    console.log(this.buffer.update);
+    //console.log(this.buffer.update);
   }
 
   async ngOnInit() {
     this.Categories = await firstValueFrom(this.conn.GetCategories());
     this.Modalities = await firstValueFrom(this.conn.GetModalities());
+    //console.log("TESTANDOOOOOO");
+    //console.log(this.buffer.update)
   }
 
   async ngAfterContentInit(){

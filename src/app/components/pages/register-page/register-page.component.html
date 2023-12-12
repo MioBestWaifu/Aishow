@@ -1,4 +1,4 @@
 <div class="pageWrapper">
     <app-header></app-header>
-    <app-register-forms></app-register-forms>
+    <app-register-forms [ngClass]="{'mobileForm':buffer.isPortrait,'form':!buffer.isPortrait}"></app-register-forms>
 </div>

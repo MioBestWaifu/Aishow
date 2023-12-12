@@ -9,6 +9,7 @@ import { ActiveUserPageComponent } from './components/pages/active-user-page/act
 import { SearchPageComponent } from './components/pages/search-page/search-page.component';
 import { SettingsPageComponent } from './components/pages/settings-page/settings-page.component';
 import { MyServicesPageComponent } from './components/pages/my-services-page/my-services-page.component';
+import { SchedulePageComponent } from './components/pages/schedule-page/schedule-page.component';
 
 const routes: Routes = [
   {path:'pages/login',component:LoginPageComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'viewprofile',component:ActiveUserPageComponent},
   {path:'search',component:SearchPageComponent},
   {path:'settings',component:SettingsPageComponent},
-  {path:'myservices',component:MyServicesPageComponent}
+  {path:'myservices',component:MyServicesPageComponent},
+  {path:'schedule',component:SchedulePageComponent}
 ];
 
 @NgModule({

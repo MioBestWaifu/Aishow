@@ -15,7 +15,7 @@ import { WrongCredentialsDialogComponent } from '../../dialogs/wrong-credentials
 @Component({
   selector: 'app-login-forms',
   templateUrl: './login-forms.component.html',
-  styleUrls: ['./login-forms.component.css']
+  styleUrls: ['./login-forms.component.scss']
 })
 export class LoginFormsComponent {
   email:string;
@@ -31,7 +31,7 @@ export class LoginFormsComponent {
     
     let t:LoginTemplate = new LoginTemplate(this.email,this.password);
     const x = await firstValueFrom(this.conn.TryToLogin(t));
-    if (x.status == 200){
+    if (x.body.email !== "WRONG"){
       this.user = x.body;
       this.email = "";
       this.password = "";

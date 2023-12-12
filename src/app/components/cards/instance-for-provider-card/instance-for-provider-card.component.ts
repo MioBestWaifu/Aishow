@@ -5,9 +5,10 @@ import { Utils } from 'src/utils';
 @Component({
   selector: 'app-instance-for-provider-card',
   templateUrl: './instance-for-provider-card.component.html',
-  styleUrls: ['./instance-for-provider-card.component.css']
+  styleUrls: ['./instance-for-provider-card.component.scss']
 })
 export class InstanceForProviderCardComponent {
   @Input() request:ClientServiceInteraction;
+  @Input() bottom:boolean;
   altUrl = Utils.altUrl;
 }
